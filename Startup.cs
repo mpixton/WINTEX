@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +42,13 @@ namespace WINTEX
             services.AddDbContext<FagElGamousDbContext>(options => {
                 options.UseSqlServer(Configuration["ConnectionStrings:FagElGamousSqlServer"]);
                 });
+
+            Log.Logger = new LoggerConfiguration()
+                                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                                .MinimumLevel.Override("WINTEX", LogEventLevel.Information)
+                                .WriteTo.Console()
+                                .WriteTo.Debug()
+                                .CreateLogger();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
