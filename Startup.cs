@@ -37,7 +37,9 @@ namespace WINTEX
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
 
-            services.AddDbContext<FagElGamousDbContext>();
+            services.AddDbContext<FagElGamousDbContext>(options => {
+                options.UseSqlServer(Configuration["ConnectionStrings:FagElGamousSqlServer"]);
+                });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
