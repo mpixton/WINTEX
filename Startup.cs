@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WINTEX.DAL;
 using WINTEX.Data;
+using WINTEX.Models.Authentication;
 
 namespace WINTEX
 {
@@ -30,13 +31,18 @@ namespace WINTEX
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            ///Adds DB context for ApplicationDb/UserDb and configures identity authentication resources
+            ///From Here
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("AuthenicationSqlServer")));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultUI()
+                    .AddDefaultTokenProviders();
+            ///Up to Here
             services.AddDatabaseDeveloperPageExceptionFilter();
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddRazorPages();
             services.AddControllersWithViews();
 
             services.AddDbContext<FagElGamousDbContext>(options => {
