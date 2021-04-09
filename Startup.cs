@@ -7,12 +7,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WINTEX.DAL;
 using WINTEX.Data;
+using WINTEX.Models.Authentication;
 
 namespace WINTEX
 {
@@ -28,18 +31,30 @@ namespace WINTEX
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            ///Adds DB context for ApplicationDb/UserDb and configures identity authentication resources
+            ///From Here
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("AuthenicationSqlServer")));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultUI()
+                    .AddDefaultTokenProviders();
+            ///Up to Here
             services.AddDatabaseDeveloperPageExceptionFilter();
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddRazorPages();
             services.AddControllersWithViews();
 
             services.AddDbContext<FagElGamousDbContext>(options => {
                 options.UseSqlServer(Configuration["ConnectionStrings:FagElGamousSqlServer"]);
                 });
+
+            Log.Logger = new LoggerConfiguration()
+                                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                                .MinimumLevel.Override("WINTEX", LogEventLevel.Information)
+                                .WriteTo.Console()
+                                .WriteTo.Debug()
+                                .CreateLogger();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
