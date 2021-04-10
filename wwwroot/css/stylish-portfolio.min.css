@@ -22,7 +22,7 @@ html {
 }
 
 body {
-    font-family: 'Source Sans Pro'
+    font-family: 'Montserrat', sans-serif;
 }
 
 .btn-xl {
@@ -35,7 +35,9 @@ body {
 }
 
 .content-section-heading h2 {
-    font-size: 3rem
+    font-size: 3rem;
+    font-family: 'Montserrat', sans-serif;
+/*    font-family: 'Spectral SC', serif;*/
 }
 
 .content-section-heading h3 {
