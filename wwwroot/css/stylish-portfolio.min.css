@@ -62,6 +62,11 @@ h6 {
     height: 30rem
 }
 
+.map-caption {
+    font-style: italic;
+    font-size: 10px;
+}
+
 @media (max-width:992px) {
     .map {
         height: 75%
@@ -226,6 +231,17 @@ h6 {
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .1);
 }
 
+.service-icon:hover {
+    background-color: #fff;
+    color: #343a40;
+    height: 7rem;
+    width: 7rem;
+    display: block;
+    line-height: 7.5rem;
+    font-size: 3.5rem;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .callout {
     padding: 15rem 0;
     background: linear-gradient(90deg, rgba(255, 255, 255, .1) 0, rgba(255, 255, 255, .1) 100%), url(../img/bg-callout.jpg);
@@ -246,7 +262,8 @@ h6 {
     position: relative;
     overflow: hidden;
     max-width: 530px;
-    margin: auto auto 1rem
+    margin: auto auto 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
     .portfolio-item .caption {
@@ -262,17 +279,20 @@ h6 {
 
         .portfolio-item .caption .caption-content {
             color: #fff;
-            margin: auto 2rem 2rem
+            margin: auto 2rem 2rem;
+            visibility: hidden;
         }
 
             .portfolio-item .caption .caption-content h2 {
                 font-size: .8rem;
-                text-transform: uppercase
+                text-transform: uppercase;
+                visibility: hidden;
             }
 
             .portfolio-item .caption .caption-content p {
                 font-weight: 300;
-                font-size: 1.2rem
+                font-size: 1.2rem;
+                visibility: hidden;
             }
 
 @media (min-width:992px) {
@@ -312,8 +332,28 @@ h6 {
         .portfolio-item:hover .caption {
             background-color: rgba(214, 119, 81, .9);
             -webkit-clip-path: inset(2rem);
-            clip-path: inset(2rem)
+            clip-path: inset(2rem);
         }
+
+/*        This is to make the words visible in the portfolio on hover*/
+
+        .portfolio-item:hover .caption .caption-content {
+            visibility: visible;
+        }
+
+        .portfolio-item:hover .caption .caption-content h2 {
+            font-size: .8rem;
+            text-transform: uppercase;
+            visibility: visible;
+        }
+
+        .portfolio-item:hover .caption .caption-content p {
+            font-weight: 300;
+            font-size: 1.2rem;
+            visibility: visible;
+        }
+
+        
 }
 
 .map iframe {
@@ -340,7 +380,8 @@ footer.footer {
 
         footer.footer .social-link:hover {
             background-color: #bb6643;
-            text-decoration: none
+            text-decoration: none;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
 a {
