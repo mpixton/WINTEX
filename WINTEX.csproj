@@ -25,9 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="%28copy%29.gitignore" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>
