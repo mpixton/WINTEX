@@ -135,7 +135,7 @@ h6 {
     height: 100%;
     transition: all .4s ease 0s;
     transform: translateX(250px);
-    background: #2593b4;
+    background: #d67751;
     border-left: 1px solid rgba(255, 255, 255, .1)
 }
 
@@ -215,16 +215,13 @@ h6 {
 
 .service-icon {
     background-color: #fff;
-    color: #1d809f;
+    color: #343a40;
     height: 7rem;
     width: 7rem;
     display: block;
     line-height: 7.5rem;
     font-size: 3rem;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .1);
-    border: solid;
-    border-width: thin;
-    border-color: #343a40
 }
 
 .callout {
@@ -311,7 +308,7 @@ h6 {
         }
 
         .portfolio-item:hover .caption {
-            background-color: rgba(29, 128, 159, .9);
+            background-color: rgba(214, 119, 81, .9);
             -webkit-clip-path: inset(2rem);
             clip-path: inset(2rem)
         }
@@ -334,13 +331,13 @@ footer.footer {
         width: 4rem;
         line-height: 4.3rem;
         font-size: 1.5rem;
-        background-color: #1d809f;
+        background-color: #d67751;
         transition: background-color .15s ease-in-out;
         box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .1)
     }
 
         footer.footer .social-link:hover {
-            background-color: #155d74;
+            background-color: #bb6643;
             text-decoration: none
         }
 
@@ -355,7 +352,7 @@ a {
     }
 
 .btn-primary {
-    background-color: #2593b4 !important;
+    background-color: #d67751 !important;
     border-color: #343a40 !important;
     color: #fff !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -364,26 +361,26 @@ a {
     .btn-primary:active,
     .btn-primary:focus,
     .btn-primary:hover {
-        background-color: #155d74 !important;
-        border-color: #155d74 !important
+        background-color: #bb6643 !important;
+        border-color: #c94b17 !important
     }
 
 .btn-secondary {
-    background-color: #ecb807 !important;
-    border-color: #ecb807 !important;
+    background-color: #ecc38e !important;
+    border-color: #343a40 !important;
     color: #fff !important
 }
 
     .btn-secondary:active,
     .btn-secondary:focus,
     .btn-secondary:hover {
-        background-color: #ba9106 !important;
-        border-color: #ba9106 !important
+        background-color: #cca776 !important;
+        border-color: #aa742d !important
     }
 
 .btn-dark {
     color: #fff !important;
-    background-color: #cd9b1d;
+    background-color: #d67751;
 }
 
 .btn {
@@ -392,13 +389,13 @@ a {
 }
 
 .bg-primary {
-    background-color: #2593b4 !important
+    background-color: #75a8b3 !important
 }
 
 .text-primary {
-    color: #1d809f !important
+    color: #ecc38e !important
 }
 
 .text-secondary {
-    color: #ecb807 !important
+    color: #d67751 !important
 }
