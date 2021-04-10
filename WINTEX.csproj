@@ -28,4 +28,7 @@
   <ItemGroup>
     <None Include="%28copy%29.gitignore" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Shared\_HomeLayout.cshtml" />
+  </ItemGroup>
 </Project>
