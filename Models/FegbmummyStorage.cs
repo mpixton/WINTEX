@@ -15,12 +15,14 @@ namespace WINTEX.Models
     {
         [Key]
         public int MummyId { get; set; }
+
         [Key]
         public int ShelfId { get; set; }
 
         [ForeignKey(nameof(MummyId))]
         [InverseProperty("FegbmummyStorages")]
         public virtual Mummy Mummy { get; set; }
+
         [ForeignKey(nameof(ShelfId))]
         [InverseProperty(nameof(FegbstorageLocation.FegbmummyStorages))]
         public virtual FegbstorageLocation Shelf { get; set; }

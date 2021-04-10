@@ -17,10 +17,13 @@ namespace WINTEX.Models
 
         [Key]
         public int TombLocationId { get; set; }
+
         [StringLength(10)]
         public string LookupValue { get; set; }
+
         [StringLength(5)]
         public string AreaHillBurial { get; set; }
+
         [StringLength(5)]
         public string Tomb { get; set; }
 

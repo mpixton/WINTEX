@@ -13,9 +13,12 @@ namespace WINTEX.Models
     {
         [Key]
         public int MummyId { get; set; }
+
         [Required]
         public string MaturityCode { get; set; }
+
         public string WrappingCode { get; set; }
+
         [Column("GISId")]
         public int? Gisid { get; set; }
 

@@ -45,7 +45,7 @@ namespace WINTEX
             services.AddRazorPages();
             services.AddControllersWithViews();
 
-            services.AddDbContext<FagElGamousDbContext>(options => {
+            services.AddDbContext<FEGBExcavationContext>(options => {
                 options.UseNpgsql(Configuration["ConnectionStrings:FagElGamousPostGres"]);
                 });
 

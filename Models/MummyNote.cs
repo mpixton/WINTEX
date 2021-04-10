@@ -13,9 +13,12 @@ namespace WINTEX.Models
     {
         [Key]
         public long NoteId { get; set; }
+
         public int MummyId { get; set; }
+
         [StringLength(15)]
         public string NoteType { get; set; }
+
         [StringLength(500)]
         public string NoteBody { get; set; }
 
