@@ -15,10 +15,14 @@ namespace WINTEX.Models
         public int BioNoteId { get; set; }
 
         public int BioSampleId { get; set; }
-
+        
         [StringLength(200)]
         public string NoteBody { get; set; }
 
+        public int BioSampleId { get; set; }
+
+        [StringLength(200)]
+        public string NoteBody { get; set; }
 
         [ForeignKey(nameof(BioSampleId))]
         [InverseProperty(nameof(BiologicalSample.BioSamplesNotes))]

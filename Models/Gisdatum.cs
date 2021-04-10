@@ -22,7 +22,6 @@ namespace WINTEX.Models
         [Column("GISId")]
         public int? Gisid { get; set; }
 
-
         [ForeignKey(nameof(MummyId))]
         [InverseProperty("Gisdatum")]
         public virtual Mummy Mummy { get; set; }

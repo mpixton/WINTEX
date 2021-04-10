@@ -63,7 +63,7 @@ namespace WINTEX.Models
 
         [StringLength(25)]
         public string Category { get; set; }
-
+        
         [StringLength(50)]
         public string Notes { get; set; }
 

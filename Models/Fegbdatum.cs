@@ -35,7 +35,6 @@ namespace WINTEX.Models
 
         public string Skull2018StudyAge { get; set; }
 
-
         [ForeignKey(nameof(MummyId))]
         [InverseProperty("Fegbdatum")]
         public virtual Mummy Mummy { get; set; }

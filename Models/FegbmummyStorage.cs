@@ -19,7 +19,6 @@ namespace WINTEX.Models
         [Key]
         public int ShelfId { get; set; }
 
-
         [ForeignKey(nameof(MummyId))]
         [InverseProperty("FegbmummyStorages")]
         public virtual Mummy Mummy { get; set; }

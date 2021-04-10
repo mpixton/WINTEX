@@ -24,7 +24,7 @@ namespace WINTEX.Models
         [Required]
         [StringLength(1)]
         public string Shelf { get; set; }
-
+        
         [Required]
         [StringLength(2)]
         public string SubShelf { get; set; }
