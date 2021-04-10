@@ -1,0 +1,171 @@
+﻿
+@{
+    ViewData["Title"] = "Submit a New Burial"; // -------------FIXME
+}
+
+<br />
+<br />
+<br />
+
+<div class="container p-4">
+    <h1 class="text-center">New Burial</h1>
+
+    <form method="post">
+        <!--add asp-action ---- FIXME ---- -->
+        <!--inputs-->
+        <div class="d-flex flex-fill flex-column align-content-center row p-3">
+            <div class="col-2 col-sm-4"></div>
+            <div class="d-flex flex-fill flex-column p-3 col-8 col-sm-4">
+                <br />
+                <label>Square N</label><br />
+                <select>
+                    <option value="130/140">130/140</option>
+                    <option value="140/150">140/150</option>
+                    <option value="150/160">150/160</option>
+                    <option value="160/170">160/170</option>
+                    <option value="170/180">170/180</option>
+                    <option value="180/190">180/190</option>
+                    <option value="190/200">190/200</option>
+                    <option value="200/210">200/210</option>
+                </select>
+                <br />
+                <label>Square E</label>
+                <select>
+                    <option value="0/10">0/10</option>
+                    <option value="10/20">10/20</option>
+                    <option value="20/30">20/30</option>
+                    <option value="30/40">30/40</option>
+                    <option value="40/50">40/50</option>
+                    <option value="50/60">50/60</option>
+                    <option value="60/70">60/70</option>
+                    <option value="70/80">70/80</option>
+                </select>
+                <br />
+                <label>Area</label>
+                <select>
+                    <option value="NE">NE</option>
+                    <option value="SE">SE</option>
+                    <option value="SW">SW</option>
+                    <option value="NW">NW</option>
+                </select>
+                <br />
+                <label>Burial Number</label>
+                <input min="0" type="number" />
+                <br />
+            </div>
+            <div class="col-2 col-sm-4"></div>
+            <br />
+            <div class="col-2 col-sm-4"></div>
+            <div class="d-flex flex-fill flex-column p-3 col-8 col-sm-4">
+                <label>South to Burial Head (cm)</label>
+                <input min="0" type="number" />
+                <br />
+                <label>South to Burial Feet (cm)</label>
+                <input min="0" type="number" />
+                <br />
+                <label>West to Burial Head (cm)</label>
+                <input min="0" type="number" />
+                <br />
+                <label>West to Burial Feet (cm)</label>
+                <input min="0" type="number" />
+                <br />
+                <label>Length of Remains (cm)</label>
+                <input min="0" type="number" />
+                <br />
+                <label>Depth of Burial (cm)</label>
+                <input min="0" type="number" />
+                <br />
+            </div>
+            <div class="col-2 col-sm-4"></div>
+            <br />
+            <div class="col-2 col-sm-4"></div>
+            <div class="d-flex flex-fill flex-column p-3 col-8 col-sm-4">
+                <label>Photo</label> <!--make required-->
+                <input type="file" class="form-control-file" accept=".jpeg,.jpg,.png,.tiff" />
+                <br />
+                <label>Burial Goods</label>
+                <select>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <br />
+            </div>
+            <div class="col-2 col-sm-4"></div>
+            <br />
+
+            <!--Extra Exhumation Required fields-->
+            <div class="col-2 col-sm-4"></div>
+            <div class="d-flex flex-fill flex-column p-3 col-8 col-sm-4">
+                <label>Shaft Number</label> <!--stored with Square, Area, and shaft number?-->
+                <input min="0" type="number" />
+                <br />
+                <label>Shared Shaft</label>
+                <select>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                    <option value="P">Pending</option> <!--must resolve pending -->
+                </select>
+                <br />
+                <label>Cluster</label>
+                <select>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <br />
+                <label>Preservation Index</label>
+                <select>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                </select>
+                <br />
+                <label>Hair</label>
+                <select>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                    <option value="P">Pending</option> <!--must resolve pending -->
+                </select>
+                <br />
+                <label>Age</label>
+                <select>
+                    <option value="A">Adult</option>
+                    <option value="C">Child</option>
+                    <option value="N/I">Neonate/Infant</option> <!--must resolve pending -->
+                </select>
+                <br />
+                <label>Burial Materials</label>
+                <select>
+                    <option value="Y">Yes</option>
+                    <option value="N">No</option>
+                </select>
+                <br />
+                <label>Excavation Recorder (Your Name)</label>
+                <input type="text" />
+                <br />
+                <label>Date</label>
+                <input type="date" /> <!--store in Month/Day/Year format-->
+                <br />
+                <label>Time</label>
+                <input type="time" /> <!--store in 24 hour format-->
+                <br />
+
+            </div>
+            <div class="col-2 col-sm-4"></div>
+            <br />
+
+            <div class="col-2 col-sm-4"></div>
+            <div class="d-flex flex-fill flex-column p-3 col-8 col-sm-4">
+                <br />
+                <button type="submit" class="btn btn-lg btn-outline-dark">Submit Burial Information</button>
+            </div>
+            <div class="col-2 col-sm-4"></div>
+            <br />
+        </div>
+
+
+
+
+    </form>
+</div>
