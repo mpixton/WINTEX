@@ -61,8 +61,8 @@ namespace WINTEX.Models
 
         public string ExcavationRecorder { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? Date { get; set; }
+        [Column(TypeName = "timestamp with time zone")]
+        public DateTime? DateExcavated { get; set; }
 
         public string YearExcavated { get; set; }
 

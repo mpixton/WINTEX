@@ -12,11 +12,11 @@ namespace WINTEX.DAL
     /// </summary>
     public class GenericRepo<T> : IGenericRepository<T> where T : class
     {
-        internal FagElGamousDbContext _context;
+        internal FEGBExcavationContext _context;
         internal DbSet<T> _dbSet;
         private ILogger<T> _logger;
         
-        public GenericRepo(FagElGamousDbContext context, ILogger<T> logger)
+        public GenericRepo(FEGBExcavationContext context, ILogger<T> logger)
         {
             _context = context;
             _dbSet = context.Set<T>();
