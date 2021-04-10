@@ -46,7 +46,7 @@ namespace WINTEX
             services.AddControllersWithViews();
 
             services.AddDbContext<FagElGamousDbContext>(options => {
-                options.UseSqlServer(Configuration["ConnectionStrings:FagElGamousSqlServer"]);
+                options.UseNpgsql(Configuration["ConnectionStrings:FagElGamousPostGres"]);
                 });
 
             Log.Logger = new LoggerConfiguration()
