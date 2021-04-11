@@ -31,6 +31,7 @@ namespace WINTEX.DAL
         public virtual DbSet<PostExhumationDatum> PostExhumationData { get; set; }
         public virtual DbSet<ShaftLocation> ShaftLocations { get; set; }
         public virtual DbSet<TombLocation> TombLocations { get; set; }
+        public virtual DbSet<HairColorCodes> HairColorCodes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
