@@ -11,7 +11,7 @@ namespace WINTEX.DAL
         /// <summary>
         /// DbContext to be shared by all Repos in this Unit Of Work. Prevents concurrency issues.
         /// </summary>
-        private FagElGamousDbContext _context;
+        private FEGBExcavationContext _context;
         private readonly ILogger _logger;
         private ILoggerFactory _loggerFactory;
 
@@ -19,7 +19,7 @@ namespace WINTEX.DAL
         /// Generic Repo for interacting with all Bowlers.
         /// </summary>
 
-        public UnitOfWork(FagElGamousDbContext context, ILoggerFactory loggerFactory)
+        public UnitOfWork(FEGBExcavationContext context, ILoggerFactory loggerFactory)
         {
 
             _context = context;
