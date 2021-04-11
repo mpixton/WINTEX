@@ -28,20 +28,16 @@ namespace WINTEX.Models.ViewModels
         public decimal? Length { get; set; }
 
         //details
-        // TODO - Create static string class for boolean values.
         [Required]
         public bool? ArtifactFound { get; set; } //Burial Goods, yes or no
         [Required]
         public bool Photo { get; set; }
-        // TODO - Create static string class for preservation index.
         [Required]
         public string PreservationIndex { get; set; }
         [Required]
         public string ClusterNum { get; set; }
-        // TODO - Create static string class for HairColorCode.
         [Required]
         public string HairColorCode { get; set; }
-        // TODO - Create static string class for AgeCodeSingle?
         [Required]
         public string AgeCodeSingle { get; set; }
         [Required]
@@ -68,13 +64,13 @@ namespace WINTEX.Models.ViewModels
                 ExcavationRecorder = m.ExcavationRecorder,
                 HairColorCode = m.HairColorCode,
                 Photo = m.Photo,
-                WestToFeet = m.WestToFeet, 
+                WestToFeet = m.WestToFeet,
                 WestToHead = m.WestToHead,
                 SouthToFeet = m.SouthToFeet,
                 SouthToHead = m.SouthToHead,
                 PreservationIndex = m.PreservationIndex,
                 Length = m.Length
-            }
+            };
         }
     }
 }
