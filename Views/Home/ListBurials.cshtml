@@ -1,0 +1,44 @@
+﻿
+
+@{
+    ViewData["Title"] = "Burials";
+}
+
+@model FEGBExcavationContext
+
+<div class="text-center">
+    <h1>Currently Recorded Burials</h1>
+</div>
+
+<br />
+<br />
+<div class="align-content-center">
+    @foreach (Mummy x in Model.Mummies)
+    {
+    <div class="card-body">
+
+        <label>Length of Remains:</label>
+        <div>@x.Length</div>
+        <br />
+        <label>Age Code:</label>
+        <div>@x.AgeCodeSingle</div>
+        <br />
+        <label>Burial Depth:</label>
+        <div>@x.BurialDepth</div>
+        <br />
+        <label>Burial Number:</label>
+        <div>@x.BurialNum</div>
+        <label>Burial Sex:</label>
+        <div>@x</div>
+        <br />
+        <label>Date:</label>
+        <div>@x.Date</div>
+        <br />
+        <label>Notes:</label>
+        <div>@x.MummyNotes</div>
+        <br />
+
+    </div>
+    }
+    <br />
+</div>

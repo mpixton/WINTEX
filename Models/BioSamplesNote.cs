@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,7 +15,7 @@ namespace WINTEX.Models
         public int BioNoteId { get; set; }
 
         public int BioSampleId { get; set; }
-
+        
         [StringLength(200)]
         public string NoteBody { get; set; }
 

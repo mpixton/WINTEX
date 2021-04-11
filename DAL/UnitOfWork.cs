@@ -1,4 +1,4 @@
-﻿using WINTEX.Models;
+using WINTEX.Models;
 using Microsoft.Extensions.Logging;
 
 namespace WINTEX.DAL
@@ -11,7 +11,9 @@ namespace WINTEX.DAL
         /// <summary>
         /// DbContext to be shared by all Repos in this Unit Of Work. Prevents concurrency issues.
         /// </summary>
-        private FEGBExcavationContext  _context;
+
+        private FEGBExcavationContext _context;
+
         private readonly ILogger _logger;
         private ILoggerFactory _loggerFactory;
 
