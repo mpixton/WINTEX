@@ -52,6 +52,7 @@ namespace WINTEX
             Log.Logger = new LoggerConfiguration()
                                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                                 .MinimumLevel.Override("WINTEX", LogEventLevel.Information)
+                                .Enrich.WithUserName("ANONYMOUS","NULL")
                                 .WriteTo.Console()
                                 .WriteTo.Debug()
                                 .CreateLogger();
