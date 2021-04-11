@@ -27,6 +27,12 @@ namespace WINTEX.Controllers
             return View(new AddMummyViewModel());
         }
 
+        public ActionResult AddMummy(AddMummyViewModel newMummy)
+        {
+            _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
+            return View();
+        }
+
         [HttpGet]
         public ActionResult AddShaftLocation()
         {
@@ -35,16 +41,52 @@ namespace WINTEX.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddShaftLocations(AddLocation newShaft)
+        public ActionResult AddShaftLocation(AddLocation newShaft)
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();
         }
 
+        [HttpGet]
         public ActionResult AddTombLocation()
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View(new AddTomb());
+        }
+
+        [HttpPost]
+        public ActionResult AddTombLocation(AddTomb newTomb)
+        {
+            _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult EditMummy()
+        {
+            _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditMummy(object editMummy)
+        {
+            _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult DeleteMummy()
+        {
+            _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteMummy(object deleteMummy)
+        {
+            _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
+            return View();
         }
     }
 }
