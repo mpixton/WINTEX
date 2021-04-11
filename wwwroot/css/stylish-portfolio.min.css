@@ -421,6 +421,20 @@ a {
         border-color: #aa742d !important
     }
 
+.btn-admin {
+    background-color: #75a8b3 !important;
+    border-color: #343a40 !important;
+    color: #fff !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+    .btn-admin:active,
+    .btn-admin:focus,
+    .btn-admin:hover {
+        background-color: #5b848d !important;
+        border-color: #b5e3e9 !important
+    }
+
 .btn-dark {
     color: #fff !important;
     background-color: #d67751;
