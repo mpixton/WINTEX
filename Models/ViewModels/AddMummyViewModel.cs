@@ -4,7 +4,7 @@ using WINTEX.Enums;
 
 namespace WINTEX.Models.ViewModels
 {
-    public class AddMummy //View Model for mummy information/input of mummy burial excavation field data
+    public class AddMummyViewModel //View Model for mummy information/input of mummy burial excavation field data
     {
         public int ShaftLocationId { get; set; }
 
@@ -29,7 +29,7 @@ namespace WINTEX.Models.ViewModels
 
         //details
         [Required]
-        public YesNo ArtifactFound { get; set; } //Burial Goods, yes or no
+        public bool? ArtifactFound { get; set; } //Burial Goods, yes or no
         [Required]
         public bool Photo { get; set; }
         [Required]
@@ -41,12 +41,36 @@ namespace WINTEX.Models.ViewModels
         [Required]
         public string AgeCodeSingle { get; set; }
         [Required]
-        public YesNo BurialMaterials { get; set; }
+        public string BurialMaterials { get; set; }
         [Required]
         public string ExcavationRecorder { get; set; }
 
         //date/time
         [Required]
         public DateTime? DateTime { get; set; }
+
+        public static implicit operator Mummy(AddMummyViewModel m)
+        {
+            return new Mummy()
+            {
+                ShaftId = m.ShaftLocationId,
+                TombId = m.TombLocationId,
+                BurialNum = m.BurialNum,
+                ArtifactFound = m.ArtifactFound,
+                BurialDepth = m.BurialDepth,
+                BurialMaterials = m.BurialMaterials,
+                ClusterNum = m.ClusterNum,
+                DateExcavated = m.DateTime,
+                ExcavationRecorder = m.ExcavationRecorder,
+                HairColorCode = m.HairColorCode,
+                Photo = m.Photo,
+                WestToFeet = m.WestToFeet,
+                WestToHead = m.WestToHead,
+                SouthToFeet = m.SouthToFeet,
+                SouthToHead = m.SouthToHead,
+                PreservationIndex = m.PreservationIndex,
+                Length = m.Length
+            };
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace WINTEX.DAL
             _context = context;
             _loggerFactory = loggerFactory;
             _logger = _loggerFactory.CreateLogger<UnitOfWork>();
-            _logger.LogInformation("Unit of Work with DbContext {DbContext} created}", _context.ContextId);
+            _logger.LogInformation("Unit of Work with DbContext created}");
         }
 
 
