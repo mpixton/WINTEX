@@ -16,13 +16,10 @@ namespace WINTEX.Infrastructure
         /// </summary>
         /// <param name="pageSize">Number of <typeparamref name="T"/>s to appear on one page.</param>
         /// <param name="currentPage">Index of current page.</param>
-        /// <param name="currentTeam">If provided, current team.</param>
         /// <param name="list">List of <typeparamref name="T"/>s to paginate.</param>
-        public Paginator(int pageSize, int currentPage, string currentTeam, IEnumerable<T> list)
+        public Paginator(int pageSize, IEnumerable<T> list)
         {
             PageSize = pageSize;
-            CurrentPage = currentPage;
-            CurrentTeam = currentTeam;
             ListToPage = list;
             TotalItems = list.Count();
             TotalPages = (int) Math.Ceiling((decimal) TotalItems / PageSize);
@@ -47,16 +44,6 @@ namespace WINTEX.Infrastructure
         /// List of <typeparamref name="T"/>s to paginate.
         /// </summary>
         public IEnumerable<T> ListToPage { get; }
-
-        /// <summary>
-        /// Index of the current page in the <seealso cref="ListToPage"/>.
-        /// </summary>
-        public int CurrentPage { get; }
-        
-        /// <summary>
-        /// If selected, the current team filter.
-        /// </summary>
-        public string CurrentTeam { get;  }
 
         /// <summary>
         /// Performs the pagination based on the arguments passed when constructed.
