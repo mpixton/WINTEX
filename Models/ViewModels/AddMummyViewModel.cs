@@ -4,7 +4,7 @@ using WINTEX.Enums;
 
 namespace WINTEX.Models.ViewModels
 {
-    public class AddMummy //View Model for mummy information/input of mummy burial excavation field data
+    public class AddMummyViewModel //View Model for mummy information/input of mummy burial excavation field data
     {
         public int ShaftLocationId { get; set; }
 
