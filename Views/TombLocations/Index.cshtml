@@ -9,9 +9,12 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <p>
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        {
+            <a asp-action="Create">Create New</a>
+        }
+    </p>
 <table class="table">
     <thead>
         <tr>
@@ -40,12 +43,14 @@
                 @Html.DisplayFor(modelItem => item.Tomb)
             </td>
             <td>
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
                 {
                     <a asp-action="Edit" asp-route-id="@item.TombLocationId">Edit</a>
+                }
+                @if (User.IsInRole("Admin"))
+                {                
                     <a asp-action="Delete" asp-route-id="@item.TombLocationId">Delete</a>
                 }
-                |
                 <a asp-action="Details" asp-route-id="@item.TombLocationId">Details</a>
 
             </td>
