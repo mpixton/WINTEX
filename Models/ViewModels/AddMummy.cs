@@ -4,7 +4,7 @@ using WINTEX.Enums;
 
 namespace WINTEX.Models.ViewModels
 {
-    public class AddMummyViewModel //View Model for mummy information/input of mummy burial excavation field data
+    public class AddMummy //View Model for mummy information/input of mummy burial excavation field data
     {
         public int ShaftLocationId { get; set; }
 
@@ -48,29 +48,5 @@ namespace WINTEX.Models.ViewModels
         //date/time
         [Required]
         public DateTime? DateTime { get; set; }
-
-        public static implicit operator Mummy(AddMummyViewModel m)
-        {
-            return new Mummy()
-            {
-                ShaftId = m.ShaftLocationId,
-                TombId = m.TombLocationId,
-                BurialNum = m.BurialNum,
-                ArtifactFound = m.ArtifactFound,
-                BurialDepth = m.BurialDepth,
-                BurialMaterials = m.BurialMaterials,
-                ClusterNum = m.ClusterNum,
-                DateExcavated = m.DateTime,
-                ExcavationRecorder = m.ExcavationRecorder,
-                HairColorCode = m.HairColorCode,
-                Photo = m.Photo,
-                WestToFeet = m.WestToFeet,
-                WestToHead = m.WestToHead,
-                SouthToFeet = m.SouthToFeet,
-                SouthToHead = m.SouthToHead,
-                PreservationIndex = m.PreservationIndex,
-                Length = m.Length
-            };
-        }
     }
 }

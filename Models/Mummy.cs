@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using WINTEX.Models.ViewModels;
 
 #nullable disable
 
@@ -106,5 +107,29 @@ namespace WINTEX.Models
 
         [InverseProperty(nameof(MummyNote.Mummy))]
         public virtual ICollection<MummyNote> MummyNotes { get; set; }
+
+        public static implicit operator Mummy(AddMummy m)
+        {
+            return new Mummy()
+            {
+                ShaftId = m.ShaftLocationId,
+                TombId = m.TombLocationId,
+                BurialNum = m.BurialNum,
+                ArtifactFound = m.ArtifactFound,
+                BurialDepth = m.BurialDepth,
+                BurialMaterials = m.BurialMaterials,
+                ClusterNum = m.ClusterNum,
+                DateExcavated = m.DateTime,
+                ExcavationRecorder = m.ExcavationRecorder,
+                HairColorCode = m.HairColorCode,
+                Photo = m.Photo,
+                WestToFeet = m.WestToFeet,
+                WestToHead = m.WestToHead,
+                SouthToFeet = m.SouthToFeet,
+                SouthToHead = m.SouthToHead,
+                PreservationIndex = m.PreservationIndex,
+                Length = m.Length
+            };
+        }
     }
 }
