@@ -40,7 +40,6 @@ namespace WINTEX.Controllers
             {
                 return NotFound();
             }
-
             return View(tombLocation);
         }
 
@@ -57,10 +56,11 @@ namespace WINTEX.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Researcher, Admin")]
-        public async Task<IActionResult> Create([Bind("TombLocationId,LookupValue,AreaHillBurial,Tomb")] TombLocation tombLocation)
+        public async Task<IActionResult> Create([Bind("TombLocationId,AreaHillBurial,Tomb")] TombLocation tombLocation)
         {
             if (ModelState.IsValid)
             {
+                tombLocation.LookupValue = $"{tombLocation.AreaHillBurial} {tombLocation.Tomb}";
                 _context.Add(tombLocation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -91,7 +91,7 @@ namespace WINTEX.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("TombLocationId,LookupValue,AreaHillBurial,Tomb")] TombLocation tombLocation)
+        public async Task<IActionResult> Edit(int id, [Bind("TombLocationId,AreaHillBurial,Tomb")] TombLocation tombLocation)
         {
             if (id != tombLocation.TombLocationId)
             {
@@ -102,6 +102,7 @@ namespace WINTEX.Controllers
             {
                 try
                 {
+                    tombLocation.LookupValue = $"{tombLocation.AreaHillBurial} {tombLocation.Tomb}";
                     _context.Update(tombLocation);
                     await _context.SaveChangesAsync();
                 }
