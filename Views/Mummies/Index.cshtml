@@ -182,11 +182,20 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Tomb.TombLocationId)
                 </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.MummyId">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.MummyId">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
-        </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.MummyId">Details</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.MummyId">
+                            <input type="submit" class="btn btn-admin" value="Edit">
+                        </a>
+                       
+                        <a asp-action="Delete" asp-route-id="@item.MummyId">
+                            <input type="submit" class="btn btn-admin" value="Delete">
+                        </a>
+                        
+                     }
+                </td>
             </tr>
             }
         </tbody>

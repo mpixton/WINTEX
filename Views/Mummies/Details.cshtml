@@ -167,7 +167,13 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.MummyId">Edit</a> |
+
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.MummyId">
+            <input type="submit" class="btn btn-admin" value="Edit">
+        </a> 
+    }
     <a asp-action="Index">Back to List</a>
 </div>
 </body>
