@@ -610,7 +610,7 @@
                 </div>
                 @if (User.IsInRole("Admin"))
                 {
-                    <a asp-action="Edit" asp-controller="MummyNotes" asp-route-id="@Model.NoteId">Edit</a>
+                    <a asp-action="Edit" asp-controller="MummyNotes" asp-route-id="@mn.NoteId">Edit</a>
                 }
             }
         </div>
