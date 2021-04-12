@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -47,6 +48,7 @@ namespace WINTEX
         }
 
         // GET: CarbonDatings/Create
+        [Authorize(Roles = "Researcher, Admin")]
         public IActionResult Create()
         {
             ViewData["MummyId"] = new SelectList(_context.Mummies, "MummyId", "MummyId");
@@ -59,6 +61,7 @@ namespace WINTEX
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Researcher, Admin")]
         public async Task<IActionResult> Create([Bind("CarbonDatingId,Racknum,ShaftLocationId,BurialNum,MummyId,AreaHillBurialNum,TubeNum,Description,SizeMm,Foci,C14sample2017,LocationDescription,Questions,Conventional14CageBp,_14ccalendarDate,Calibrated95PerCalendarDateMax,Calibrated95PerCalendarDateMin,Calibrated95PerCalendarDateSpan,Calibrated95perCalendarDateAvg,Category,Notes")] CarbonDating carbonDating)
         {
             if (ModelState.IsValid)
@@ -73,6 +76,7 @@ namespace WINTEX
         }
 
         // GET: CarbonDatings/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -95,6 +99,7 @@ namespace WINTEX
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("CarbonDatingId,Racknum,ShaftLocationId,BurialNum,MummyId,AreaHillBurialNum,TubeNum,Description,SizeMm,Foci,C14sample2017,LocationDescription,Questions,Conventional14CageBp,_14ccalendarDate,Calibrated95PerCalendarDateMax,Calibrated95PerCalendarDateMin,Calibrated95PerCalendarDateSpan,Calibrated95perCalendarDateAvg,Category,Notes")] CarbonDating carbonDating)
         {
             if (id != carbonDating.CarbonDatingId)
@@ -128,6 +133,7 @@ namespace WINTEX
         }
 
         // GET: CarbonDatings/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,6 +156,7 @@ namespace WINTEX
         // POST: CarbonDatings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var carbonDating = await _context.CarbonDatings.FindAsync(id);

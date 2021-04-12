@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +45,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: ShaftLocations/Create
+        [Authorize(Roles = "Researcher, Admin")]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +56,7 @@ namespace WINTEX.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Researcher, Admin")]
         public async Task<IActionResult> Create([Bind("ShaftId,Ylower,Yupper,North,Xlower,Xupper,East,Subplot,Lookup")] ShaftLocation shaftLocation)
         {
             if (ModelState.IsValid)
@@ -66,6 +69,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: ShaftLocations/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +90,7 @@ namespace WINTEX.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("ShaftId,Ylower,Yupper,North,Xlower,Xupper,East,Subplot,Lookup")] ShaftLocation shaftLocation)
         {
             if (id != shaftLocation.ShaftId)
@@ -117,6 +122,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: ShaftLocations/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +143,7 @@ namespace WINTEX.Controllers
         // POST: ShaftLocations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var shaftLocation = await _context.ShaftLocations.FindAsync(id);

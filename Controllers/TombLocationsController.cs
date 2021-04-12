@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +45,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: TombLocations/Create
+        [Authorize(Roles = "Researcher, Admin")]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +56,7 @@ namespace WINTEX.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Researcher, Admin")]
         public async Task<IActionResult> Create([Bind("TombLocationId,LookupValue,AreaHillBurial,Tomb")] TombLocation tombLocation)
         {
             if (ModelState.IsValid)
@@ -66,6 +69,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: TombLocations/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,6 +90,7 @@ namespace WINTEX.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("TombLocationId,LookupValue,AreaHillBurial,Tomb")] TombLocation tombLocation)
         {
             if (id != tombLocation.TombLocationId)
@@ -117,6 +122,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: TombLocations/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,6 +143,7 @@ namespace WINTEX.Controllers
         // POST: TombLocations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var tombLocation = await _context.TombLocations.FindAsync(id);
