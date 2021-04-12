@@ -1,0 +1,45 @@
+﻿@model WINTEX.Models.TombLocation
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>TombLocation</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LookupValue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LookupValue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AreaHillBurial)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AreaHillBurial)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tomb)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tomb)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TombLocationId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

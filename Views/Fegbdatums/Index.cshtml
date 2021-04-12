@@ -1,0 +1,103 @@
+﻿@model IEnumerable<WINTEX.Models.Fegbdatum>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOnSkull)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonthOnSkull)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DayOnSkull)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FieldBook)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FieldBookPageNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostcraniaAtMagazine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Byusample)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkullAtMagazine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Skull2018StudySex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Skull2018StudyAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mummy)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOnSkull)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthOnSkull)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DayOnSkull)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FieldBook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FieldBookPageNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostcraniaAtMagazine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Byusample)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkullAtMagazine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Skull2018StudySex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Skull2018StudyAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mummy.MummyId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MummyId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MummyId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

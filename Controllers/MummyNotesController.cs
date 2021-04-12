@@ -1,0 +1,160 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using WINTEX.DAL;
+using WINTEX.Models;
+
+namespace WINTEX
+{
+    public class MummyNotesController : Controller
+    {
+        private readonly FEGBExcavationContext _context;
+
+        public MummyNotesController(FEGBExcavationContext context)
+        {
+            _context = context;
+        }
+
+        // GET: MummyNotes
+        public async Task<IActionResult> Index()
+        {
+            var fEGBExcavationContext = _context.MummyNotes.Include(m => m.Mummy);
+            return View(await fEGBExcavationContext.ToListAsync());
+        }
+
+        // GET: MummyNotes/Details/5
+        public async Task<IActionResult> Details(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var mummyNote = await _context.MummyNotes
+                .Include(m => m.Mummy)
+                .FirstOrDefaultAsync(m => m.NoteId == id);
+            if (mummyNote == null)
+            {
+                return NotFound();
+            }
+
+            return View(mummyNote);
+        }
+
+        // GET: MummyNotes/Create
+        public IActionResult Create()
+        {
+            ViewData["MummyId"] = new SelectList(_context.Mummies, "MummyId", "MummyId");
+            return View();
+        }
+
+        // POST: MummyNotes/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("NoteId,MummyId,NoteType,NoteBody")] MummyNote mummyNote)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(mummyNote);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["MummyId"] = new SelectList(_context.Mummies, "MummyId", "MummyId", mummyNote.MummyId);
+            return View(mummyNote);
+        }
+
+        // GET: MummyNotes/Edit/5
+        public async Task<IActionResult> Edit(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var mummyNote = await _context.MummyNotes.FindAsync(id);
+            if (mummyNote == null)
+            {
+                return NotFound();
+            }
+            ViewData["MummyId"] = new SelectList(_context.Mummies, "MummyId", "MummyId", mummyNote.MummyId);
+            return View(mummyNote);
+        }
+
+        // POST: MummyNotes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(long id, [Bind("NoteId,MummyId,NoteType,NoteBody")] MummyNote mummyNote)
+        {
+            if (id != mummyNote.NoteId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(mummyNote);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MummyNoteExists(mummyNote.NoteId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["MummyId"] = new SelectList(_context.Mummies, "MummyId", "MummyId", mummyNote.MummyId);
+            return View(mummyNote);
+        }
+
+        // GET: MummyNotes/Delete/5
+        public async Task<IActionResult> Delete(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var mummyNote = await _context.MummyNotes
+                .Include(m => m.Mummy)
+                .FirstOrDefaultAsync(m => m.NoteId == id);
+            if (mummyNote == null)
+            {
+                return NotFound();
+            }
+
+            return View(mummyNote);
+        }
+
+        // POST: MummyNotes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(long id)
+        {
+            var mummyNote = await _context.MummyNotes.FindAsync(id);
+            _context.MummyNotes.Remove(mummyNote);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool MummyNoteExists(long id)
+        {
+            return _context.MummyNotes.Any(e => e.NoteId == id);
+        }
+    }
+}

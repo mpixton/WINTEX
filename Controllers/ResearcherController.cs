@@ -24,10 +24,10 @@ namespace WINTEX.Controllers
         public IActionResult AddMummy()
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
-            return View(new AddMummy());
+            return View(new AddMummyViewModel());
         }
 
-        public IActionResult AddMummy(AddMummy newMummy)
+        public IActionResult AddMummy(AddMummyViewModel newMummy)
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();

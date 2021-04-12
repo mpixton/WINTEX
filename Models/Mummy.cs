@@ -108,7 +108,7 @@ namespace WINTEX.Models
         [InverseProperty(nameof(MummyNote.Mummy))]
         public virtual ICollection<MummyNote> MummyNotes { get; set; }
 
-        public static implicit operator Mummy(AddMummy m)
+        public static implicit operator Mummy(AddMummyViewModel m)
         {
             return new Mummy()
             {
