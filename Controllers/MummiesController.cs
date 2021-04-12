@@ -44,6 +44,9 @@ namespace WINTEX
             var mummy = await _context.Mummies
                 .Include(m => m.Shaft)
                 .Include(m => m.Tomb)
+                .Include(m => m.MummyNotes)
+                .Include(m => m.OsteologicalMummyDatum)
+                .Include(m => m.PostExhumationDatum)
                 .FirstOrDefaultAsync(m => m.MummyId == id);
             if (mummy == null)
             {
