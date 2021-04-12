@@ -23,12 +23,12 @@ namespace WINTEX
         }
 
         // GET: Mummies
-        public async Task<IActionResult> Index(int currPage = 1)
+        public IActionResult Index(int currPage = 1)
         {
-            var fEGBExcavationContext = _context.Mummies.Include(m => m.Shaft).Include(m => m.Tomb);
-            var pageInfo = new Paginator<Mummy>(20, fEGBExcavationContext);
-            ViewBag.CurrentPage = currPage;
-            ViewBag.TotalPages = pageInfo.TotalPages;
+            var list = _context.Mummies.Include(m => m.Shaft).Include(m => m.Tomb);
+            var pageInfo = new Paginator<Mummy>(20, list);
+            ViewData["CurrentPage"] = currPage;
+            ViewData["TotalPages"] = pageInfo.TotalPages;
             return View(pageInfo.GetItems(currPage));
         }
 

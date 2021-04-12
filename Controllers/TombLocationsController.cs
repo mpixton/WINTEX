@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WINTEX.DAL;
+using WINTEX.Infrastructure;
 using WINTEX.Models;
 
 namespace WINTEX.Controllers
@@ -21,9 +22,13 @@ namespace WINTEX.Controllers
         }
 
         // GET: TombLocations
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int currPage = 1)
         {
-            return View(await _context.TombLocations.ToListAsync());
+            var list = _context.TombLocations;
+            var pageInfo = new Paginator<TombLocation>(20, list);
+            ViewData["CurrentPage"] = currPage;
+            ViewData["TotalPages"] = pageInfo.TotalPages;
+            return View(pageInfo.GetItems(currPage));
         }
 
         // GET: TombLocations/Details/5
