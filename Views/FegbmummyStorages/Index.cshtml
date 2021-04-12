@@ -11,7 +11,11 @@
 </head>
 <body>
     <p>
-        <a asp-action="Create">Create New</a>
+
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        {
+            <a asp-action="Create">Create New</a>
+        }
     </p>
     <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
          page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
@@ -40,13 +44,23 @@
                         @Html.DisplayFor(modelItem => item.Shelf.Shelf)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
+                          @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+                          @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                          {
+                              @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                          }
+                          @if (User.IsInRole("Admin"))
+                          {
+
+                              @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                          }
+
+
+                      </td>
                 </tr>
             }
         </tbody>
     </table>
+
 </body>
 </html>

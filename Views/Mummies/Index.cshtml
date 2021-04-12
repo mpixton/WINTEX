@@ -11,11 +11,13 @@
     <title>Index</title>
 </head>
 <body>
-    @*
-        <p>
+  
+    <p>
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        {
             <a asp-action="Create">Create New</a>
-        </p>
-    *@
+        }
+    </p>
     
     <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
          page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
@@ -182,11 +184,22 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Tomb.TombLocationId)
                 </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.MummyId">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.MummyId">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
-        </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.MummyId">Details</a>
+                    @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.MummyId">
+                            <input type="submit" class="btn btn-admin" value="Edit">
+                        </a>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.MummyId">
+                            <input type="submit" class="btn btn-admin" value="Delete">
+                        </a>
+
+                    }
+                </td>
             </tr>
             }
         </tbody>

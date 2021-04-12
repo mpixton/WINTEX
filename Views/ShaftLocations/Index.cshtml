@@ -11,7 +11,10 @@
 </head>
 <body>
     <p>
-        <a asp-action="Create">Create New</a>
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        {
+            <a asp-action="Create">Create New</a>
+        }
     </p>
     <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
          page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
@@ -76,9 +79,15 @@
                         @Html.DisplayFor(modelItem => item.Lookup)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.ShaftId">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.ShaftId">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ShaftId">Delete</a>
+                        <a asp-action="Details" asp-route-id="@item.ShaftId">Details</a>
+                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.ShaftId">Edit</a>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {             
+                            <a asp-action="Delete" asp-route-id="@item.ShaftId">Delete</a>
+                        }
                     </td>
                 </tr>
             }
