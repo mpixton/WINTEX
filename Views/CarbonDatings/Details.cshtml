@@ -138,7 +138,7 @@
     </dl>
 </div>
 <div>
-    @if (User.IsInRole("Admin"))
+    @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
     {
         <a asp-action="Edit" asp-route-id="@Model.CarbonDatingId">Edit</a>
     }

@@ -90,8 +90,8 @@
     </dl>
 </div>
 <div>
-    @if (User.IsInRole("Admin"))
-    {<a asp-action="Edit" asp-route-id="@Model.BioSampleId">Edit</a> }
+    @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+    {<a asp-action="Edit" asp-route-id="@Model.BioSampleId">Edit</a>}
 
     <a asp-action="Index">Back to List</a>
 </div>
