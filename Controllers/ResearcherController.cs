@@ -21,69 +21,69 @@ namespace WINTEX.Controllers
 
         // GET: /AddMummy
         [HttpGet]
-        public ActionResult AddMummy()
+        public IActionResult AddMummy()
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
-            return View(new AddMummyViewModel());
+            return View(new AddMummy());
         }
 
-        public ActionResult AddMummy(AddMummyViewModel newMummy)
+        public IActionResult AddMummy(AddMummy newMummy)
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();
         }
 
         [HttpGet]
-        public ActionResult AddShaftLocation()
+        public IActionResult AddShaftLocation()
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View(new AddLocation());
         }
 
         [HttpPost]
-        public ActionResult AddShaftLocation(AddLocation newShaft)
+        public IActionResult AddShaftLocation(AddLocation newShaft)
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();
         }
 
         [HttpGet]
-        public ActionResult AddTombLocation()
+        public IActionResult AddTombLocation()
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View(new AddTomb());
         }
 
         [HttpPost]
-        public ActionResult AddTombLocation(AddTomb newTomb)
+        public IActionResult AddTombLocation(AddTomb newTomb)
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();
         }
 
         [HttpGet]
-        public ActionResult EditMummy()
+        public IActionResult EditMummy()
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();
         }
 
         [HttpPost]
-        public ActionResult EditMummy(object editMummy)
+        public IActionResult EditMummy(object editMummy)
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();
         }
 
         [HttpGet]
-        public ActionResult DeleteMummy()
+        public IActionResult DeleteMummy()
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();
         }
 
         [HttpPost]
-        public ActionResult DeleteMummy(object deleteMummy)
+        public IActionResult DeleteMummy(object deleteMummy)
         {
             _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();
