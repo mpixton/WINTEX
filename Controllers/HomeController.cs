@@ -53,11 +53,12 @@ namespace WINTEX.Controllers
         {
             _logger.LogInformation("{Protocol} {Method} {Path} : pageNum {pageNum}, itemsPerPage {itemsPerPage}", Request.Protocol, Request.Method, Request.Path, pageNum, itemsPerPage);
             var paginator = new Paginator<Mummy>(itemsPerPage, _unitOfWork.Mummies.GetAll(m => m.PostExhumationDatum, m => m.Shaft));
-            var pageModel = new List<MummyListView>();
+            var mummyListView= new List<MummyListView>();
             foreach(Mummy m in paginator.GetItems(pageNum))
             {
-                pageModel.Add(m);
+                mummyListView.Add(m);
             }
+            var pageModel = new PaginationInfo<MummyListView>(pageNum, paginator.TotalItems, mummyListView);
             return View(pageModel);
         }
 
