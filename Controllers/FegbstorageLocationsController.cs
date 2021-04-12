@@ -22,13 +22,14 @@ namespace WINTEX
         }
 
         // GET: FegbstorageLocations
-        public IActionResult Index(int currPage = 1)
+        public IActionResult Index(int pageNum = 1)
         {
+            int pageSize = 20;
             var list = _context.FegbstorageLocations;
-            var pageInfo = new Paginator<FegbstorageLocation>(20, list);
-            ViewData["CurrentPage"] = currPage;
+            var pageInfo = new Paginator<FegbstorageLocation>(pageSize, list);
+            ViewData["CurrentPage"] = pageNum;
             ViewData["TotalPages"] = pageInfo.TotalPages;
-            return View(pageInfo.GetItems(currPage));
+            return View(pageInfo.GetItems(pageNum));
         }
 
         // GET: FegbstorageLocations/Details/5

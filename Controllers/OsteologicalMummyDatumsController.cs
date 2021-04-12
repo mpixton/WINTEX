@@ -22,13 +22,14 @@ namespace WINTEX
         }
 
         // GET: OsteologicalMummyDatums
-        public IActionResult Index(int currPage = 1)
+        public IActionResult Index(int pageNum = 1)
         {
+            int pageSize = 20;
             var list = _context.OsteologicalMummyData.Include(o => o.Mummy);
-            var pageInfo = new Paginator<OsteologicalMummyDatum>(20, list);
-            ViewData["CurrentPage"] = currPage;
+            var pageInfo = new Paginator<OsteologicalMummyDatum>(pageSize, list);
+            ViewData["CurrentPage"] = pageNum;
             ViewData["TotalPages"] = pageInfo.TotalPages;
-            return View(pageInfo.GetItems(currPage));
+            return View(pageInfo.GetItems(pageNum));
         }
 
         // GET: OsteologicalMummyDatums/Details/5
