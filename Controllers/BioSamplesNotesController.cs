@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WINTEX.DAL;
+using WINTEX.Infrastructure;
 using WINTEX.Models;
 
 namespace WINTEX
@@ -21,10 +22,13 @@ namespace WINTEX
         }
 
         // GET: BioSamplesNotes
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int currPage = 1)
         {
-            var fEGBExcavationContext = _context.BioSamplesNotes.Include(b => b.BioSample);
-            return View(await fEGBExcavationContext.ToListAsync());
+            var list = _context.BioSamplesNotes.Include(b => b.BioSample);
+            var pageInfo = new Paginator<BioSamplesNote>(20, list);
+            ViewData["CurrentPage"] = currPage;
+            ViewData["TotalPages"] = pageInfo.TotalPages;
+            return View(pageInfo.GetItems(currPage));
         }
 
         // GET: BioSamplesNotes/Details/5

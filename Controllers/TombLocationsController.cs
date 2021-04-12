@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WINTEX.DAL;
+using WINTEX.Infrastructure;
 using WINTEX.Models;
 
 namespace WINTEX.Controllers
@@ -21,9 +22,13 @@ namespace WINTEX.Controllers
         }
 
         // GET: TombLocations
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int currPage = 1)
         {
-            return View(await _context.TombLocations.ToListAsync());
+            var list = _context.TombLocations;
+            var pageInfo = new Paginator<TombLocation>(20, list);
+            ViewData["CurrentPage"] = currPage;
+            ViewData["TotalPages"] = pageInfo.TotalPages;
+            return View(pageInfo.GetItems(currPage));
         }
 
         // GET: TombLocations/Details/5
@@ -40,7 +45,6 @@ namespace WINTEX.Controllers
             {
                 return NotFound();
             }
-
             return View(tombLocation);
         }
 
@@ -57,10 +61,11 @@ namespace WINTEX.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Researcher, Admin")]
-        public async Task<IActionResult> Create([Bind("TombLocationId,LookupValue,AreaHillBurial,Tomb")] TombLocation tombLocation)
+        public async Task<IActionResult> Create([Bind("TombLocationId,AreaHillBurial,Tomb")] TombLocation tombLocation)
         {
             if (ModelState.IsValid)
             {
+                tombLocation.LookupValue = $"{tombLocation.AreaHillBurial} {tombLocation.Tomb}";
                 _context.Add(tombLocation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -91,7 +96,7 @@ namespace WINTEX.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("TombLocationId,LookupValue,AreaHillBurial,Tomb")] TombLocation tombLocation)
+        public async Task<IActionResult> Edit(int id, [Bind("TombLocationId,AreaHillBurial,Tomb")] TombLocation tombLocation)
         {
             if (id != tombLocation.TombLocationId)
             {
@@ -102,6 +107,7 @@ namespace WINTEX.Controllers
             {
                 try
                 {
+                    tombLocation.LookupValue = $"{tombLocation.AreaHillBurial} {tombLocation.Tomb}";
                     _context.Update(tombLocation);
                     await _context.SaveChangesAsync();
                 }

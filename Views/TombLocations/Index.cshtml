@@ -15,48 +15,53 @@
             <a asp-action="Create">Create New</a>
         }
     </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.LookupValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AreaHillBurial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tomb)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LookupValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AreaHillBurial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tomb)
-            </td>
-            <td>
-                @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                {
-                    <a asp-action="Edit" asp-route-id="@item.TombLocationId">Edit</a>
-                }
-                @if (User.IsInRole("Admin"))
-                {                
-                    <a asp-action="Delete" asp-route-id="@item.TombLocationId">Delete</a>
-                }
-                <a asp-action="Details" asp-route-id="@item.TombLocationId">Details</a>
+    <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
+         page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-dark" class="btn-group pull-right m-1 p-3"></div>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LookupValue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AreaHillBurial)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tomb)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LookupValue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AreaHillBurial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tomb)
+                    </td>
+                    <td>
+                          @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                          {
+                              <a asp-action="Edit" asp-route-id="@item.TombLocationId">Edit</a>
+                          }
+                          @if (User.IsInRole("Admin"))
+                          {                
+                              <a asp-action="Delete" asp-route-id="@item.TombLocationId">Delete</a>
+                          }
+                          <a asp-action="Details" asp-route-id="@item.TombLocationId">Details</a>
 
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>
