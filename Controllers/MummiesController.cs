@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WINTEX.DAL;
+using WINTEX.Infrastructure;
 using WINTEX.Models;
+using WINTEX.Models.ViewModels;
 
 namespace WINTEX
 {
@@ -22,8 +24,12 @@ namespace WINTEX
         // GET: Mummies
         public async Task<IActionResult> Index()
         {
+
             var fEGBExcavationContext = _context.Mummies.Include(m => m.Shaft).Include(m => m.Tomb);
-            return View(await fEGBExcavationContext.ToListAsync());
+            var pageInfo = new Paginator<Mummy>(20, fEGBExcavationContext);
+            ViewBag.CurrentPage = 1;
+            ViewBag.TotalPages = pageInfo.TotalPages;
+            return View(pageInfo.GetItems(1));
         }
 
         // GET: Mummies/Details/5
