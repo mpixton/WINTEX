@@ -1,4 +1,8 @@
-﻿@model WINTEX.Models.BiologicalSample
+﻿@{
+    ViewData["Title"] = "Biological Samples";
+}
+
+@model WINTEX.Models.BiologicalSample
 
 
 
@@ -11,86 +15,86 @@
 </head>
 <body>
 
-<h4>BiologicalSample</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="BioSampleId" />
-            <div class="form-group">
-                <label asp-for="RackNum" class="control-label"></label>
-                <input asp-for="RackNum" class="form-control" />
-                <span asp-validation-for="RackNum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BagNum" class="control-label"></label>
-                <input asp-for="BagNum" class="form-control" />
-                <span asp-validation-for="BagNum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShaftId" class="control-label"></label>
-                <select asp-for="ShaftId" class="form-control" asp-items="ViewBag.ShaftId"></select>
-                <span asp-validation-for="ShaftId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BurialNum" class="control-label"></label>
-                <input asp-for="BurialNum" class="form-control" />
-                <span asp-validation-for="BurialNum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MummyId" class="control-label"></label>
-                <select asp-for="MummyId" class="form-control" asp-items="ViewBag.MummyId"></select>
-                <span asp-validation-for="MummyId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClusterNum" class="control-label"></label>
-                <input asp-for="ClusterNum" class="form-control" />
-                <span asp-validation-for="ClusterNum" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
-                <input asp-for="Notes" class="form-control" />
-                <span asp-validation-for="Notes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Initials" class="control-label"></label>
-                <input asp-for="Initials" class="form-control" />
-                <span asp-validation-for="Initials" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SampledMonth" class="control-label"></label>
-                <input asp-for="SampledMonth" class="form-control" />
-                <span asp-validation-for="SampledMonth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SampledDay" class="control-label"></label>
-                <input asp-for="SampledDay" class="form-control" />
-                <span asp-validation-for="SampledDay" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SampledYear" class="control-label"></label>
-                <input asp-for="SampledYear" class="form-control" />
-                <span asp-validation-for="SampledYear" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PreviouslySampled" class="control-label"></label>
-                <input asp-for="PreviouslySampled" class="form-control" />
-                <span asp-validation-for="PreviouslySampled" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <h4>BiologicalSample</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="BioSampleId" />
+                <div class="form-group">
+                    <label asp-for="RackNum" class="control-label"></label>
+                    <input asp-for="RackNum" class="form-control" />
+                    <span asp-validation-for="RackNum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BagNum" class="control-label"></label>
+                    <input asp-for="BagNum" class="form-control" />
+                    <span asp-validation-for="BagNum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShaftId" class="control-label"></label>
+                    <select asp-for="ShaftId" class="form-control" asp-items="ViewBag.ShaftId"></select>
+                    <span asp-validation-for="ShaftId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BurialNum" class="control-label"></label>
+                    <input asp-for="BurialNum" class="form-control" />
+                    <span asp-validation-for="BurialNum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MummyId" class="control-label"></label>
+                    <select asp-for="MummyId" class="form-control" asp-items="ViewBag.MummyId"></select>
+                    <span asp-validation-for="MummyId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClusterNum" class="control-label"></label>
+                    <input asp-for="ClusterNum" class="form-control" />
+                    <span asp-validation-for="ClusterNum" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Notes" class="control-label"></label>
+                    <input asp-for="Notes" class="form-control" />
+                    <span asp-validation-for="Notes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Initials" class="control-label"></label>
+                    <input asp-for="Initials" class="form-control" />
+                    <span asp-validation-for="Initials" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SampledMonth" class="control-label"></label>
+                    <input asp-for="SampledMonth" class="form-control" />
+                    <span asp-validation-for="SampledMonth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SampledDay" class="control-label"></label>
+                    <input asp-for="SampledDay" class="form-control" />
+                    <span asp-validation-for="SampledDay" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SampledYear" class="control-label"></label>
+                    <input asp-for="SampledYear" class="form-control" />
+                    <span asp-validation-for="SampledYear" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PreviouslySampled" class="control-label"></label>
+                    <input asp-for="PreviouslySampled" class="form-control" />
+                    <span asp-validation-for="PreviouslySampled" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
 </body>
 </html>
