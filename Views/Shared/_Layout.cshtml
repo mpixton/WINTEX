@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>@ViewData["Title"] - WINTEX</title>
+        <title>@ViewData["Title"] - Fag el-Gamous - BYU Excavations Egypt</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -50,13 +50,10 @@
                 </li>
                 
                 <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="#services">Data Collected</a>
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="NavigationPage">Data Collected</a>
                 </li>
                 <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="#portfolio">Data Insights</a>
-                </li>
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="Index" >Contact</a>
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="DataInsights">Data Insights</a>
                 </li>
                 <li class="sidebar-nav-item">
                     <partial name="_LoginPartial" class="js-scroll-trigger" />
