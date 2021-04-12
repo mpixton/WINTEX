@@ -10,146 +10,151 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Racknum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BurialNum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AreaHillBurialNum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TubeNum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SizeMm)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Foci)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.C14sample2017)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Questions)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Conventional14CageBp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model._14ccalendarDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Calibrated95PerCalendarDateMax)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Calibrated95PerCalendarDateMin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Calibrated95PerCalendarDateSpan)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Calibrated95perCalendarDateAvg)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Mummy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShaftLocation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Racknum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BurialNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AreaHillBurialNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TubeNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SizeMm)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Foci)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.C14sample2017)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Questions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Conventional14CageBp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item._14ccalendarDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Calibrated95PerCalendarDateMax)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Calibrated95PerCalendarDateMin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Calibrated95PerCalendarDateSpan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Calibrated95perCalendarDateAvg)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mummy.MummyId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShaftLocation.ShaftId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CarbonDatingId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CarbonDatingId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CarbonDatingId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
+         page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-dark" class="btn-group pull-right m-1 p-3"></div>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Racknum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BurialNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AreaHillBurialNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TubeNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SizeMm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Foci)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.C14sample2017)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocationDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Questions)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Conventional14CageBp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model._14ccalendarDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Calibrated95PerCalendarDateMax)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Calibrated95PerCalendarDateMin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Calibrated95PerCalendarDateSpan)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Calibrated95perCalendarDateAvg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mummy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShaftLocation)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Racknum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BurialNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AreaHillBurialNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TubeNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SizeMm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Foci)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.C14sample2017)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocationDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Questions)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Conventional14CageBp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item._14ccalendarDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Calibrated95PerCalendarDateMax)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Calibrated95PerCalendarDateMin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Calibrated95PerCalendarDateSpan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Calibrated95perCalendarDateAvg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mummy.MummyId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShaftLocation.ShaftId)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.CarbonDatingId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.CarbonDatingId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.CarbonDatingId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>
