@@ -22,9 +22,11 @@ namespace WINTEX.Models
         public string LookupValue { get; set; }
 
         [StringLength(5)]
+        [Display(Name = "Area Hill Burial")]
         public string AreaHillBurial { get; set; }
 
         [StringLength(5)]
+        [Display(Name = "Tomb")]
         public string Tomb { get; set; }
 
         [InverseProperty(nameof(Mummy.Tomb))]

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WINTEX.DAL;
+using WINTEX.Infrastructure;
 using WINTEX.Models;
 
 namespace WINTEX
@@ -21,9 +22,13 @@ namespace WINTEX
         }
 
         // GET: FegbstorageLocations
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int currPage = 1)
         {
-            return View(await _context.FegbstorageLocations.ToListAsync());
+            var list = _context.FegbstorageLocations;
+            var pageInfo = new Paginator<FegbstorageLocation>(20, list);
+            ViewData["CurrentPage"] = currPage;
+            ViewData["TotalPages"] = pageInfo.TotalPages;
+            return View(pageInfo.GetItems(currPage));
         }
 
         // GET: FegbstorageLocations/Details/5

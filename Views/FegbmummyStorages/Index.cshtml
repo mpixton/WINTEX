@@ -10,38 +10,57 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Mummy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Shelf)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mummy.MummyId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Shelf.Shelf)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        {
+            <a asp-action="Create">Create New</a>
+        }
+    </p>
+    <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
+         page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-dark" class="btn-group pull-right m-1 p-3"></div>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mummy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Shelf)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mummy.MummyId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Shelf.Shelf)
+                    </td>
+                    <td>
+                          @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+                          @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                          {
+                              @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                          }
+                          @if (User.IsInRole("Admin"))
+                          {
+
+                              @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                          }
+
+
+                      </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </body>
 </html>

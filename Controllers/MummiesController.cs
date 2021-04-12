@@ -23,14 +23,13 @@ namespace WINTEX
         }
 
         // GET: Mummies
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int currPage = 1)
         {
-
-            var fEGBExcavationContext = _context.Mummies.Include(m => m.Shaft).Include(m => m.Tomb);
-            var pageInfo = new Paginator<Mummy>(20, fEGBExcavationContext);
-            ViewBag.CurrentPage = 1;
-            ViewBag.TotalPages = pageInfo.TotalPages;
-            return View(pageInfo.GetItems(1));
+            var list = _context.Mummies.Include(m => m.Shaft).Include(m => m.Tomb);
+            var pageInfo = new Paginator<Mummy>(20, list);
+            ViewData["CurrentPage"] = currPage;
+            ViewData["TotalPages"] = pageInfo.TotalPages;
+            return View(pageInfo.GetItems(currPage));
         }
 
         // GET: Mummies/Details/5
@@ -60,8 +59,8 @@ namespace WINTEX
         [Authorize(Roles = "Researcher, Admin")]
         public IActionResult Create()
         {
-            ViewData["ShaftId"] = new SelectList(_context.ShaftLocations, "ShaftId", "ShaftId");
-            ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "TombLocationId");
+            ViewData["ShaftId"] = new SelectList(_context.ShaftLocations.Where(s => s.Yupper != null && s.Xupper != null), "ShaftId", "Lookup");
+            ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "LookupValue");
             return View();
         }
 
@@ -71,7 +70,7 @@ namespace WINTEX
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Researcher, Admin")]
-        public async Task<IActionResult> Create([Bind("MummyId,BurialNum,ShaftId,TombId,BurialDepth,WestToHead,WestToFeet,SouthToHead,SouthToFeet,Length,BurialSituation,Goods,ArtifactsDescription,Photo,PreservationIndex,ClusterNum,HairColorCode,AgeCodeSingle,BurialMaterials,ExcavationRecorder,DateExcavated,YearExcavated,MonthExcavated,DayExcavated,HeadDirection,ArtifactFound")] Mummy mummy)
+        public async Task<IActionResult> Create([Bind("MummyId,BurialNum,ShaftId,TombId,BurialDepth,WestToHead,WestToFeet,SouthToHead,SouthToFeet,Length,BurialSituation,Goods,ArtifactsDescription,Photo,PreservationIndex,ClusterNum,HairColorCode,AgeCodeSingle,BurialMaterials,ExcavationRecorder,DateExcavated,HeadDirection,ArtifactFound")] Mummy mummy)
         {
             if (ModelState.IsValid)
             {
@@ -79,8 +78,8 @@ namespace WINTEX
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ShaftId"] = new SelectList(_context.ShaftLocations, "ShaftId", "ShaftId", mummy.ShaftId);
-            ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "TombLocationId", mummy.TombId);
+            ViewData["ShaftId"] = new SelectList(_context.ShaftLocations.Where(s => s.Yupper != null && s.Xupper != null), "ShaftId", "Lookup", mummy.ShaftId);
+            ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "LookupValue",mummy.TombId);
             return View(mummy);
         }
 
@@ -98,8 +97,8 @@ namespace WINTEX
             {
                 return NotFound();
             }
-            ViewData["ShaftId"] = new SelectList(_context.ShaftLocations, "ShaftId", "ShaftId", mummy.ShaftId);
-            ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "TombLocationId", mummy.TombId);
+            ViewData["ShaftId"] = new SelectList(_context.ShaftLocations.Where(s => s.Yupper != null && s.Xupper != null), "ShaftId", "Lookup", mummy.ShaftId);
+            ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "LookupValue", mummy.TombId);
             return View(mummy);
         }
 
@@ -136,8 +135,8 @@ namespace WINTEX
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ShaftId"] = new SelectList(_context.ShaftLocations, "ShaftId", "ShaftId", mummy.ShaftId);
-            ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "TombLocationId", mummy.TombId);
+            ViewData["ShaftId"] = new SelectList(_context.ShaftLocations.Where(s => s.Yupper != null && s.Xupper != null), "ShaftId", "Lookup", mummy.ShaftId);
+            ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "LookupValue", mummy.TombId);
             return View(mummy);
         }
 

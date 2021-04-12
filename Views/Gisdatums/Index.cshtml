@@ -10,50 +10,65 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MaturityCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WrappingCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gisid)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Mummy)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaturityCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WrappingCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gisid)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mummy.MummyId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MummyId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MummyId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        {
+            <a asp-action="Create">Create New</a>
+        }
+    </p>
+    <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
+         page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-dark" class="btn-group pull-right m-1 p-3"></div>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaturityCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WrappingCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gisid)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mummy)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaturityCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WrappingCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gisid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mummy.MummyId)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.MummyId">Details</a>
+                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.MummyId">Edit</a>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>

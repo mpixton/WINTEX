@@ -171,7 +171,12 @@
             }
         </dl>
         <div>
-            <a asp-controller="Mummies" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Mummy Data</a> |
+            @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.MummyId">
+                    <input type="submit" class="btn btn-admin" value="Edit">
+                </a> 
+            }
             <a asp-controller="Mummies" asp-action="Index">Back to All Mummies</a>
         </div>
         <h4>Post Excavation Data</h4>
@@ -286,7 +291,10 @@
             </dd>
         </dl>
         <div>
-            <a asp-controller="PostExhumationDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Post Excavation Data</a> |
+            @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+            {
+               <a asp-controller="PostExhumationDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Post Excavation Data</a>
+            }
             <a asp-controller="PostExhumationDatum" asp-action="Index">View All Post Excavation Data</a>
         </div>
         <h4>Osteological Data</h4>
@@ -587,7 +595,10 @@
             </dd>
         </dl>
         <div>
-            <a asp-controller="OsteologicalMummyDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Mummy Osteological Data</a> |
+            @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+            {
+               <a asp-controller="OsteologicalMummyDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Mummy Osteological Data</a>
+            }
             <a asp-controller="OsteologicalMummyDatum" asp-action="Index">View All Osteological Data</a>
         </div>
         <h4>Notes</h4>
@@ -597,6 +608,10 @@
                 <div class="row">
                     <p>@mn.NoteBody</p>
                 </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-controller="MummyNotes" asp-route-id="@Model.NoteId">Edit</a>
+                }
             }
         </div>
     </div>

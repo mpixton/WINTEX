@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WINTEX.DAL;
+using WINTEX.Infrastructure;
 using WINTEX.Models;
 
 namespace WINTEX
@@ -21,10 +22,13 @@ namespace WINTEX
         }
 
         // GET: Gisdatums
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int currPage = 1)
         {
-            var fEGBExcavationContext = _context.Gisdata.Include(g => g.Mummy);
-            return View(await fEGBExcavationContext.ToListAsync());
+            var list = _context.Gisdata.Include(g => g.Mummy);
+            var pageInfo = new Paginator<Gisdatum>(20, list);
+            ViewData["CurrentPage"] = currPage;
+            ViewData["TotalPages"] = pageInfo.TotalPages;
+            return View(pageInfo.GetItems(currPage));
         }
 
         // GET: Gisdatums/Details/5

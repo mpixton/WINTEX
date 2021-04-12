@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WINTEX.DAL;
+using WINTEX.Infrastructure;
 using WINTEX.Models;
 
 namespace WINTEX.Controllers
@@ -21,10 +22,13 @@ namespace WINTEX.Controllers
         }
 
         // GET: PostExhumationDatums
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int currPage = 1)
         {
-            var fEGBExcavationContext = _context.PostExhumationData.Include(p => p.Mummy);
-            return View(await fEGBExcavationContext.ToListAsync());
+            var list = _context.PostExhumationData.Include(p => p.Mummy);
+            var pageInfo = new Paginator<PostExhumationDatum>(20, list);
+            ViewData["CurrentPage"] = currPage;
+            ViewData["TotalPages"] = pageInfo.TotalPages;
+            return View(pageInfo.GetItems(currPage));
         }
 
         // GET: PostExhumationDatums/Details/5

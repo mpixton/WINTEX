@@ -25,10 +25,12 @@
             <div class="form-group">
                 <label asp-for="ShaftId" class="control-label"></label>
                 <select asp-for="ShaftId" class ="form-control" asp-items="ViewBag.ShaftId"></select>
+                <a asp-controller="ShaftLocations" asp-action="Create" class="btn btn-outline-primary">Add New Shaft Location</a>
             </div>
             <div class="form-group">
                 <label asp-for="TombId" class="control-label"></label>
                 <select asp-for="TombId" class ="form-control" asp-items="ViewBag.TombId"></select>
+                <a asp-controller="TombLocations" asp-action="Create" class=" btn btn-outline-primary">Add New Tomb Location</a>
             </div>
             <div class="form-group">
                 <label asp-for="BurialDepth" class="control-label"></label>
@@ -114,21 +116,6 @@
                 <label asp-for="DateExcavated" class="control-label"></label>
                 <input asp-for="DateExcavated" class="form-control" />
                 <span asp-validation-for="DateExcavated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="YearExcavated" class="control-label"></label>
-                <input asp-for="YearExcavated" class="form-control" />
-                <span asp-validation-for="YearExcavated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MonthExcavated" class="control-label"></label>
-                <input asp-for="MonthExcavated" class="form-control" />
-                <span asp-validation-for="MonthExcavated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DayExcavated" class="control-label"></label>
-                <input asp-for="DayExcavated" class="form-control" />
-                <span asp-validation-for="DayExcavated" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HeadDirection" class="control-label"></label>
