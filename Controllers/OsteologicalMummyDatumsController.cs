@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace WINTEX
         }
 
         // GET: OsteologicalMummyDatums/Create
+        [Authorize(Roles = "Researcher, Admin")]
         public IActionResult Create()
         {
             ViewData["MummyId"] = new SelectList(_context.Mummies, "MummyId", "MummyId");
@@ -57,6 +59,7 @@ namespace WINTEX
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Researcher, Admin")]
         public async Task<IActionResult> Create([Bind("MummyId,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProstionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpramus,DorsalPitting,InterorbitalBreadth,BurialHairColor,ToothAttrition,ToothEruption,PathologyAnomalies,EphiphysealUnion,SkullTrauma,PostcraniaTrauma,CribraOrbitala,PoroticHyperostosis,MetopicSuture,ButtonOsteoma,TemporalMandibularJointOsteoarthritis,LinearHypoplasiaEnamel,PoroticHyperostosisLocations,OsteologyUnknownComment,ToBeConfirmed")] OsteologicalMummyDatum osteologicalMummyDatum)
         {
             if (ModelState.IsValid)
@@ -70,6 +73,7 @@ namespace WINTEX
         }
 
         // GET: OsteologicalMummyDatums/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +95,7 @@ namespace WINTEX
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("MummyId,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProstionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpramus,DorsalPitting,InterorbitalBreadth,BurialHairColor,ToothAttrition,ToothEruption,PathologyAnomalies,EphiphysealUnion,SkullTrauma,PostcraniaTrauma,CribraOrbitala,PoroticHyperostosis,MetopicSuture,ButtonOsteoma,TemporalMandibularJointOsteoarthritis,LinearHypoplasiaEnamel,PoroticHyperostosisLocations,OsteologyUnknownComment,ToBeConfirmed")] OsteologicalMummyDatum osteologicalMummyDatum)
         {
             if (id != osteologicalMummyDatum.MummyId)
@@ -123,6 +128,7 @@ namespace WINTEX
         }
 
         // GET: OsteologicalMummyDatums/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,6 +150,7 @@ namespace WINTEX
         // POST: OsteologicalMummyDatums/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var osteologicalMummyDatum = await _context.OsteologicalMummyData.FindAsync(id);

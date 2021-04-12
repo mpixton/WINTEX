@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: PostExhumationDatums/Create
+        [Authorize(Roles = "Researcher, Admin")]
         public IActionResult Create()
         {
             ViewData["MummyId"] = new SelectList(_context.Mummies, "MummyId", "MummyId");
@@ -57,6 +59,7 @@ namespace WINTEX.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Researcher, Admin")]
         public async Task<IActionResult> Create([Bind("MummyId,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,BurialSampleTaken,DescriptionOfTaken,SampleNum,Sex,SexBodyCol,GefunctionTotal,PreservationNotes,AgeAtDeath,EstimateLivingStature,BodyAnalysis,SexBurialMethod,FaceBundle")] PostExhumationDatum postExhumationDatum)
         {
             if (ModelState.IsValid)
@@ -70,6 +73,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: PostExhumationDatums/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +95,7 @@ namespace WINTEX.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("MummyId,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,BurialSampleTaken,DescriptionOfTaken,SampleNum,Sex,SexBodyCol,GefunctionTotal,PreservationNotes,AgeAtDeath,EstimateLivingStature,BodyAnalysis,SexBurialMethod,FaceBundle")] PostExhumationDatum postExhumationDatum)
         {
             if (id != postExhumationDatum.MummyId)
@@ -123,6 +128,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: PostExhumationDatums/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,6 +150,7 @@ namespace WINTEX.Controllers
         // POST: PostExhumationDatums/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var postExhumationDatum = await _context.PostExhumationData.FindAsync(id);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace WINTEX
         }
 
         // GET: MummyNotes/Create
+        [Authorize(Roles = "Researcher, Admin")]
         public IActionResult Create()
         {
             ViewData["MummyId"] = new SelectList(_context.Mummies, "MummyId", "MummyId");
@@ -57,6 +59,7 @@ namespace WINTEX
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Researcher, Admin")]
         public async Task<IActionResult> Create([Bind("NoteId,MummyId,NoteType,NoteBody")] MummyNote mummyNote)
         {
             if (ModelState.IsValid)
@@ -70,6 +73,7 @@ namespace WINTEX
         }
 
         // GET: MummyNotes/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
@@ -91,6 +95,7 @@ namespace WINTEX
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(long id, [Bind("NoteId,MummyId,NoteType,NoteBody")] MummyNote mummyNote)
         {
             if (id != mummyNote.NoteId)
@@ -123,6 +128,7 @@ namespace WINTEX
         }
 
         // GET: MummyNotes/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(long? id)
         {
             if (id == null)
@@ -144,6 +150,7 @@ namespace WINTEX
         // POST: MummyNotes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
             var mummyNote = await _context.MummyNotes.FindAsync(id);
