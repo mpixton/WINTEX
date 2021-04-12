@@ -48,6 +48,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: /ListMummies
+
         public IActionResult ListMummies(int pageNum, int itemsPerPage = 20)
         {
             _logger.LogInformation("{Protocol} {Method} {Path} : pageNum {pageNum}, itemsPerPage {itemsPerPage}", Request.Protocol, Request.Method, Request.Path, pageNum, itemsPerPage);
