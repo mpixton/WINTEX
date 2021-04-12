@@ -1,0 +1,123 @@
+﻿@model WINTEX.Models.PostExhumationDatum
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>PostExhumationDatum</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MummyId" />
+            <div class="form-group">
+                <label asp-for="HairTaken" class="control-label"></label>
+                <input asp-for="HairTaken" class="form-control" />
+                <span asp-validation-for="HairTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoftTissueTaken" class="control-label"></label>
+                <input asp-for="SoftTissueTaken" class="form-control" />
+                <span asp-validation-for="SoftTissueTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoneTaken" class="control-label"></label>
+                <input asp-for="BoneTaken" class="form-control" />
+                <span asp-validation-for="BoneTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToothTaken" class="control-label"></label>
+                <input asp-for="ToothTaken" class="form-control" />
+                <span asp-validation-for="ToothTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TextileTaken" class="control-label"></label>
+                <input asp-for="TextileTaken" class="form-control" />
+                <span asp-validation-for="TextileTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BurialSampleTaken" class="control-label"></label>
+                <input asp-for="BurialSampleTaken" class="form-control" />
+                <span asp-validation-for="BurialSampleTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionOfTaken" class="control-label"></label>
+                <input asp-for="DescriptionOfTaken" class="form-control" />
+                <span asp-validation-for="DescriptionOfTaken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SampleNum" class="control-label"></label>
+                <input asp-for="SampleNum" class="form-control" />
+                <span asp-validation-for="SampleNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sex" class="control-label"></label>
+                <input asp-for="Sex" class="form-control" />
+                <span asp-validation-for="Sex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SexBodyCol" class="control-label"></label>
+                <input asp-for="SexBodyCol" class="form-control" />
+                <span asp-validation-for="SexBodyCol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GefunctionTotal" class="control-label"></label>
+                <input asp-for="GefunctionTotal" class="form-control" />
+                <span asp-validation-for="GefunctionTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PreservationNotes" class="control-label"></label>
+                <input asp-for="PreservationNotes" class="form-control" />
+                <span asp-validation-for="PreservationNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgeAtDeath" class="control-label"></label>
+                <input asp-for="AgeAtDeath" class="form-control" />
+                <span asp-validation-for="AgeAtDeath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstimateLivingStature" class="control-label"></label>
+                <input asp-for="EstimateLivingStature" class="form-control" />
+                <span asp-validation-for="EstimateLivingStature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BodyAnalysis" class="control-label"></label>
+                <input asp-for="BodyAnalysis" class="form-control" />
+                <span asp-validation-for="BodyAnalysis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SexBurialMethod" class="control-label"></label>
+                <input asp-for="SexBurialMethod" class="form-control" />
+                <span asp-validation-for="SexBurialMethod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FaceBundle" class="control-label"></label>
+                <input asp-for="FaceBundle" class="form-control" />
+                <span asp-validation-for="FaceBundle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
