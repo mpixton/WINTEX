@@ -10,9 +10,12 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <p>
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        {
+            <a asp-action="Create">Create New</a>
+        }
+    </p>
 <table class="table">
     <thead>
         <tr>
@@ -35,10 +38,14 @@
                 @Html.DisplayFor(modelItem => item.Shelf.Shelf)
             </td>
             <td>
-                @if (User.IsInRole())
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+                @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
                 {
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                }
+                @if (User.IsInRole("Admin"))
+                {
+
                     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                 }
 
