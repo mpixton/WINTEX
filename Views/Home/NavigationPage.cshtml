@@ -3,16 +3,164 @@
 *@
 @{
 }
-<a asp-controller="BiologicalSamples" asp-action="Index">Biological Samples</a><br />
-<a asp-controller="BioSamplesNotes" asp-action="Index">Biological Samples Notes</a><br />
-<a asp-controller="CarbonDatings" asp-action="Index">Carbon Datings</a><br />
-<a asp-controller="Fegbdatums" asp-action="Index">Fegbdatums</a><br />
-<a asp-controller="FegbmummyStorages" asp-action="Index">FegbmummyStorages</a><br />
-<a asp-controller="FegbstorageLocations" asp-action="Index">FegbstorageLocations</a><br />
-<a asp-controller="Gisdatums" asp-action="Index">Gisdatums</a><br />
-<a asp-controller="Mummies" asp-action="Index">Mummies</a><br />
-<a asp-controller="MummyNotes" asp-action="Index">MummyNotes</a><br />
-<a asp-controller="OsteologicalMummyDatums" asp-action="Index">OsteologicalMummyDatums</a><br />
-<a asp-controller="PostExhumationDatums" asp-action="Index">PostExhumationDatums</a><br />
-<a asp-controller="ShaftLocations" asp-action="Index">ShaftLocations</a><br />
-<a asp-controller="TombLocations" asp-action="Index">TombLocations</a>
+<div class="container">
+    <div class="content-section-heading">
+        <h2 class="mb-5">Data Collected</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="BiologicalSamples" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/biosamples.png" />
+                </span>
+           
+            <h4 class="mb-0">
+                <strong>Biological Samples</strong>
+            </h4>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="BioSamplesNotes" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/bionotes.png" />
+                </span>
+           
+            <h4 class="mb-0">
+                <strong>Biological Sample Notes</strong>
+            </h4>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="CarbonDatings" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/carbondating1.png" />
+                </span>
+           
+            <h4 class="mb-0">
+                <strong>Carbon Dating</strong>
+            </h4>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="Gisdatums" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                   <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/gisdatums.png" />
+                </span>
+            
+            <h4 class="mb-0">
+                <strong>GIS Data</strong>
+            </h4>
+            </a>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="Mummies" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/mummy.png" />
+                </span>
+            
+            <h4 class="mb-0">
+                <strong>Mummies</strong>
+            </h4>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="MummyNotes" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/mummynotes.png" />
+                </span>
+
+                <h4 class="mb-0">
+                    <strong>Mummy Notes</strong>
+                </h4>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="OsteologicalMummyDatums" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/osteology.png" />
+                </span>
+            
+            <h4 class="mb-0">
+                <strong>Osteological Data</strong>
+            </h4>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="PostExhumationDatums" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/exhumation.png" />
+                </span>
+            
+            <h4 class="mb-0">
+                <strong>Post Exhumation Data</strong>
+            </h4>
+            </a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="ShaftLocations" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/shaftlocation.png" />
+                </span>
+
+                <h4 class="mb-0">
+                    <strong>Shaft Locations</strong>
+                </h4>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="TombLocations" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/tomblocation.png" />
+                </span>
+
+                <h4 class="mb-0">
+                    <strong>Tomb Locations</strong>
+                </h4>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <a asp-controller="Fegbdatums" asp-action="Index" style="text-decoration:none;">
+                <span class="service-icon rounded-circle mx-auto mb-3">
+                    <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/Fegbdatums.png" />
+                </span>
+
+                <h4 class="mb-0">
+                    <strong>Fag El Gamous Datums</strong>
+                </h4>
+            </a>
+        </div>
+        <br />
+        <div class="row">
+            <div class="row-cols-lg-6 col-md-6 mb-5 mb-lg-0">
+                <a asp-controller="FegbmummyStorages" asp-action="Index" style="text-decoration:none;">
+                    <span class="service-icon rounded-circle mx-auto mb-3">
+                        <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/mummy.png" />
+                    </span>
+
+                    <h4 class="mb-0">
+                        <strong>Fag El Gamous Mummy Storage</strong>
+                    </h4>
+                </a>
+            </div>
+            <div class="row-cols-lg-3 col-md-6 mb-5 mb-lg-0">
+                <a asp-controller="FegbstorageLocations" asp-action="Index" style="text-decoration:none;">
+                    <span class="service-icon rounded-circle mx-auto mb-3">
+                        <img style="padding-bottom:15%;height:80%;width:auto;" src="~/img/fegbstorage.png" />
+                    </span>
+
+                    <h4 class="mb-0">
+                        <strong>Fag El Gamous Storage Locations</strong>
+                    </h4>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+   
+    
