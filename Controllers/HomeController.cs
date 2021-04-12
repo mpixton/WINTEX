@@ -31,6 +31,12 @@ namespace WINTEX.Controllers
             return View();
         }
 
+        public IActionResult NavigationPage()
+        {
+            return View();
+        }
+        
+
 
         public IActionResult DataInsights()
         {

@@ -23,13 +23,15 @@ namespace WINTEX
         }
 
         // GET: Mummies
-        public IActionResult Index(int currPage = 1)
+        public IActionResult Index(int pageNum = 1)
         {
+            int pageSize = 20;
             var list = _context.Mummies.Include(m => m.Shaft).Include(m => m.Tomb);
-            var pageInfo = new Paginator<Mummy>(20, list);
-            ViewData["CurrentPage"] = currPage;
-            ViewData["TotalPages"] = pageInfo.TotalPages;
-            return View(pageInfo.GetItems(currPage));
+            
+            var pageInfo = new Paginator<Mummy>(pageSize, list);
+            ViewBag.CurrentPage = pageNum;
+            ViewBag.TotalPages = pageInfo.TotalPages;
+            return View(pageInfo.GetItems(pageNum));
         }
 
         // GET: Mummies/Details/5
@@ -43,6 +45,9 @@ namespace WINTEX
             var mummy = await _context.Mummies
                 .Include(m => m.Shaft)
                 .Include(m => m.Tomb)
+                .Include(m => m.MummyNotes)
+                .Include(m => m.OsteologicalMummyDatum)
+                .Include(m => m.PostExhumationDatum)
                 .FirstOrDefaultAsync(m => m.MummyId == id);
             if (mummy == null)
             {
