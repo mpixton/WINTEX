@@ -29,7 +29,8 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @if (User.IsInRole("Admin"))
+    {@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })}
     <a asp-action="Index">Back to List</a>
 </div>
 </body>
