@@ -15,7 +15,6 @@ namespace WINTEX.Infrastructure
         /// Initializes all properties and creates a new Paginator.
         /// </summary>
         /// <param name="pageSize">Number of <typeparamref name="T"/>s to appear on one page.</param>
-        /// <param name="currentPage">Index of current page.</param>
         /// <param name="list">List of <typeparamref name="T"/>s to paginate.</param>
         public Paginator(int pageSize, IEnumerable<T> list)
         {

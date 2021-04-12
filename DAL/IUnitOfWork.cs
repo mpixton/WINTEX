@@ -10,20 +10,20 @@ namespace WINTEX.DAL
         /// <summary>
         /// Generic Repo for Bowlers.
         /// </summary>
-        public GenericRepo<BiologicalSample> BiologicalSamples { get; set; }
-        public GenericRepo<BioSamplesNote> BioSampleNotes { get; set; }
-        public GenericRepo<CarbonDating> CarbonDating { get; set; }
-        public GenericRepo<Fegbdatum> FEGBData { get; set; }
-        public GenericRepo<FegbmummyStorage> FEGBMummyStorage { get; set; }
-        public GenericRepo<FegbstorageLocation> FEGBStorageLocations { get; set; }
-        public GenericRepo<Gisdatum> GISData { get; set; }
-        public GenericRepo<Mummy> Mummies { get; set; }
-        public GenericRepo<MummyNote> MummyNotes { get; set; }
-        public GenericRepo<OsteologicalMummyDatum> MummyBoneData { get; set; }
-        public GenericRepo<PostExhumationDatum> PostExhumationData { get; set; }
-        public GenericRepo<ShaftLocation> ShaftLocations { get; set; }
-        public GenericRepo<TombLocation> TombLocations { get; set; }
-        public GenericRepo<HairColorCodes> HairColorCodes { get; set; }
+        public GenericRepo<BiologicalSample> BiologicalSamples { get; }
+        public GenericRepo<BioSamplesNote> BioSampleNotes { get; }
+        public GenericRepo<CarbonDating> CarbonDating { get; }
+        public GenericRepo<Fegbdatum> FEGBData { get; }
+        public GenericRepo<FegbmummyStorage> FEGBMummyStorage { get; }
+        public GenericRepo<FegbstorageLocation> FEGBStorageLocations { get; }
+        public GenericRepo<Gisdatum> GISData { get; }
+        public GenericRepo<Mummy> Mummies { get; }
+        public GenericRepo<MummyNote> MummyNotes { get; }
+        public GenericRepo<OsteologicalMummyDatum> MummyBoneData { get; }
+        public GenericRepo<PostExhumationDatum> PostExhumationData { get; }
+        public GenericRepo<ShaftLocation> ShaftLocations { get; }
+        public GenericRepo<TombLocation> TombLocations { get; }
+        public GenericRepo<HairColorCodes> HairColorCodes { get; }
 
 
         /// <summary>
