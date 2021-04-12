@@ -31,20 +31,23 @@ namespace WINTEX.Controllers
             return View();
         }
 
-        
 
+        public IActionResult DataInsights()
+        {
+            return View();
+        }
 
         // GET: /ListMummies
 
-       /*
+        /*
 
-        [HttpGet]
-        public IActionResult BurialDetails(int mummyId)
-        {
-            _logger.LogInformation("{Protocol} {Method} {Path} : mummyId {mummyId}", Request.Protocol, Request.Method, Request.Path, mummyId);
-            return View();
-        }
-       */
+         [HttpGet]
+         public IActionResult BurialDetails(int mummyId)
+         {
+             _logger.LogInformation("{Protocol} {Method} {Path} : mummyId {mummyId}", Request.Protocol, Request.Method, Request.Path, mummyId);
+             return View();
+         }
+        */
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

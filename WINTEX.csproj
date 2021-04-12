@@ -11,7 +11,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
@@ -28,5 +27,40 @@
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="Migrations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Gisdatums\Delete.cshtml" />
+    <Content Remove="Views\Gisdatums\Details.cshtml" />
+    <Content Remove="Views\Gisdatums\Index.cshtml" />
+    <Content Remove="Views\Mummies\Delete.cshtml" />
+    <Content Remove="Views\Mummies\Create.cshtml" />
+    <Content Remove="Views\Mummies\Details.cshtml" />
+    <Content Remove="Views\Mummies\Edit.cshtml" />
+    <Content Remove="Views\MummyNotes\Index.cshtml" />
+    <Content Remove="Views\Mummies\Index.cshtml" />
+    <Content Remove="Views\MummyNotes\Create.cshtml" />
+    <Content Remove="Views\MummyNotes\Edit.cshtml" />
+    <Content Remove="Views\MummyNotes\Details.cshtml" />
+    <Content Remove="Views\MummyNotes\Delete.cshtml" />
+    <Content Remove="Views\OsteologicalMummyDatums\Details.cshtml" />
+    <Content Remove="Views\OsteologicalMummyDatums\Delete.cshtml" />
+    <Content Remove="Views\OsteologicalMummyDatums\Create.cshtml" />
+    <Content Remove="Views\OsteologicalMummyDatums\Edit.cshtml" />
+    <Content Remove="Views\OsteologicalMummyDatums\Index.cshtml" />
+    <Content Remove="Views\PostExhumationDatums\Create.cshtml" />
+    <Content Remove="Views\PostExhumationDatums\Details.cshtml" />
+    <Content Remove="Views\PostExhumationDatums\Delete.cshtml" />
+    <Content Remove="Views\PostExhumationDatums\Edit.cshtml" />
+    <Content Remove="Views\PostExhumationDatums\Index.cshtml" />
+    <Content Remove="Views\ShaftLocations\Details.cshtml" />
+    <Content Remove="Views\ShaftLocations\Edit.cshtml" />
+    <Content Remove="Views\ShaftLocations\Delete.cshtml" />
+    <Content Remove="Views\ShaftLocations\Create.cshtml" />
+    <Content Remove="Views\TombLocations\Delete.cshtml" />
+    <Content Remove="Views\TombLocations\Create.cshtml" />
+    <Content Remove="Views\TombLocations\Details.cshtml" />
+    <Content Remove="Views\ShaftLocations\Index.cshtml" />
+    <Content Remove="Views\TombLocations\Index.cshtml" />
+    <Content Remove="Views\TombLocations\Edit.cshtml" />
   </ItemGroup>
 </Project>
