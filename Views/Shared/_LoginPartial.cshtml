@@ -35,7 +35,7 @@
         <!--Logout-->
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                <button type="submit" class="nav-link btn btn-link">Logout</button>
             </form>
         </li>
     }
@@ -43,7 +43,7 @@
     {
         <!--Login-->
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login"><i class="icon-login"></i> Login</a>
         </li>
     }
 </ul>
