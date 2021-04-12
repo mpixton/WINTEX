@@ -1,0 +1,75 @@
+﻿@model WINTEX.Models.ShaftLocation
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>ShaftLocation</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ylower)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ylower)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Yupper)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Yupper)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.North)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.North)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Xlower)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Xlower)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Xupper)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Xupper)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.East)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.East)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Subplot)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subplot)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lookup)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lookup)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ShaftId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>
