@@ -21,21 +21,27 @@ namespace WINTEX.Models
         public int ShaftId { get; set; }
 
         [Column("YLower")]
+        [Display(Name = "North/South Lower Bound")]
         public int? Ylower { get; set; }
 
         [Column("YUpper")]
+        [Display(Name = "North/South Upper Bound")]
         public int? Yupper { get; set; }
 
         [MaxLength(1)]
+        [Display(Name = "North or South?")]
         public char? North { get; set; }
 
         [Column("XLower")]
+        [Display(Name = "East/West Lower Bound")]
         public int? Xlower { get; set; }
 
         [Column("XUpper")]
+        [Display(Name = "East/West Upper Bound")]
         public int? Xupper { get; set; }
 
         [MaxLength(1)]
+        [Display(Name = "East or West?")]
         public char? East { get; set; }
 
         [StringLength(8)]

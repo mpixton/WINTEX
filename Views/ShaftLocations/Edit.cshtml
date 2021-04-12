@@ -29,8 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="North" class="control-label"></label>
-                <input asp-for="North" class="form-control" />
-                <span asp-validation-for="North" class="text-danger"></span>
+                <select asp-for="North" asp-items="ViewBag.NorthSouth" class="form-control"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Xlower" class="control-label"></label>
@@ -44,18 +43,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="East" class="control-label"></label>
-                <input asp-for="East" class="form-control" />
-                <span asp-validation-for="East" class="text-danger"></span>
+                <select asp-for="East" asp-items="ViewBag.EastWest" class="form-control"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Subplot" class="control-label"></label>
-                <input asp-for="Subplot" class="form-control" />
-                <span asp-validation-for="Subplot" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Lookup" class="control-label"></label>
-                <input asp-for="Lookup" class="form-control" />
-                <span asp-validation-for="Lookup" class="text-danger"></span>
+                <select asp-for="Subplot" asp-items="ViewBag.Subplots" class="form-control"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

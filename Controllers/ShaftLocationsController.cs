@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WINTEX.DAL;
+using WINTEX.Enums;
 using WINTEX.Models;
 
 namespace WINTEX.Controllers
@@ -48,6 +49,10 @@ namespace WINTEX.Controllers
         [Authorize(Roles = "Researcher, Admin")]
         public IActionResult Create()
         {
+            //ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "LookupValue", mummy.TombId);
+            ViewBag.NorthSouth = new SelectList(CardinalDirections.NorthSouth());
+            ViewBag.EastWest = new SelectList(CardinalDirections.EastWest());
+            ViewBag.Subplots = new SelectList(CardinalDirections.SubPlots());
             return View();
         }
 
@@ -57,14 +62,18 @@ namespace WINTEX.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Researcher, Admin")]
-        public async Task<IActionResult> Create([Bind("ShaftId,Ylower,Yupper,North,Xlower,Xupper,East,Subplot,Lookup")] ShaftLocation shaftLocation)
+        public async Task<IActionResult> Create([Bind("ShaftId,Ylower,Yupper,North,Xlower,Xupper,East,Subplot")] ShaftLocation shaftLocation)
         {
             if (ModelState.IsValid)
             {
+                shaftLocation.Lookup = $"{shaftLocation.Xlower}/{shaftLocation.Xupper} {shaftLocation.North} {shaftLocation.Ylower}/{shaftLocation.Yupper} {shaftLocation.East} {shaftLocation.Subplot}";
                 _context.Add(shaftLocation);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.NorthSouth = new SelectList(CardinalDirections.NorthSouth(), shaftLocation.North);
+            ViewBag.EastWest = new SelectList(CardinalDirections.EastWest(), shaftLocation.East);
+            ViewBag.Subplots = new SelectList(CardinalDirections.SubPlots(), shaftLocation.Subplot);
             return View(shaftLocation);
         }
 
@@ -82,6 +91,9 @@ namespace WINTEX.Controllers
             {
                 return NotFound();
             }
+            ViewBag.NorthSouth = new SelectList(CardinalDirections.NorthSouth(), shaftLocation.North);
+            ViewBag.EastWest = new SelectList(CardinalDirections.EastWest(), shaftLocation.East);
+            ViewBag.Subplots = new SelectList(CardinalDirections.SubPlots(), shaftLocation.Subplot);
             return View(shaftLocation);
         }
 
@@ -91,7 +103,7 @@ namespace WINTEX.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("ShaftId,Ylower,Yupper,North,Xlower,Xupper,East,Subplot,Lookup")] ShaftLocation shaftLocation)
+        public async Task<IActionResult> Edit(int id, [Bind("ShaftId,Ylower,Yupper,North,Xlower,Xupper,East,Subplot")] ShaftLocation shaftLocation)
         {
             if (id != shaftLocation.ShaftId)
             {
@@ -102,6 +114,7 @@ namespace WINTEX.Controllers
             {
                 try
                 {
+                    shaftLocation.Lookup = $"{shaftLocation.Xlower}/{shaftLocation.Xupper} {shaftLocation.North} {shaftLocation.Ylower}/{shaftLocation.Yupper} {shaftLocation.East} {shaftLocation.Subplot}";
                     _context.Update(shaftLocation);
                     await _context.SaveChangesAsync();
                 }
@@ -118,6 +131,9 @@ namespace WINTEX.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.NorthSouth = new SelectList(CardinalDirections.NorthSouth(), shaftLocation.North);
+            ViewBag.EastWest = new SelectList(CardinalDirections.EastWest(), shaftLocation.East);
+            ViewBag.Subplots = new SelectList(CardinalDirections.SubPlots(), shaftLocation.Subplot);
             return View(shaftLocation);
         }
 
@@ -136,7 +152,6 @@ namespace WINTEX.Controllers
             {
                 return NotFound();
             }
-
             return View(shaftLocation);
         }
 
