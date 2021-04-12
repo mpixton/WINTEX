@@ -35,11 +35,21 @@ namespace WINTEX.Controllers
 
         public IActionResult ListMummies(int pageNum, int itemsPerPage = 20)
         {
-            _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
-            _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
-            var mummyList = _unitOfWork.Mummies.GetAll(m => m.PostExhumationDatum, m => m.Shaft).ToList().Cast<MummyListView>();
-            var pageModel = new Paginator<MummyListView>(itemsPerPage, mummyList);
-            return View(pageModel.GetItems(pageNum));
+            _logger.LogInformation("{Protocol} {Method} {Path} : pageNum {pageNum}, itemsPerPage {itemsPerPage}", Request.Protocol, Request.Method, Request.Path, pageNum, itemsPerPage);
+            var paginator = new Paginator<Mummy>(itemsPerPage, _unitOfWork.Mummies.GetAll(m => m.PostExhumationDatum, m => m.Shaft));
+            var pageModel = new List<MummyListView>();
+            foreach(Mummy m in paginator.GetItems(pageNum))
+            {
+                pageModel.Add(m);
+            }
+            return View(pageModel);
+        }
+
+        [HttpGet]
+        public IActionResult MummyDetails(int mummyId)
+        {
+            _logger.LogInformation("{Protocol} {Method} {Path} : mummyId {mummyId}", Request.Protocol, Request.Method, Request.Path, mummyId);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
