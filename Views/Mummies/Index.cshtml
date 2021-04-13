@@ -1,4 +1,7 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Burials";
+}
+
 @model IEnumerable<Mummy>
 
 
@@ -11,7 +14,7 @@
     <title>Index</title>
 </head>
 <body>
-  
+
     <p>
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
         {
@@ -109,99 +112,99 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BurialNum)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BurialDepth)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WestToHead)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WestToFeet)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SouthToHead)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SouthToFeet)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Length)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BurialSituation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Goods)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ArtifactsDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Photo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PreservationIndex)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClusterNum)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HairColorCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AgeCodeSingle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BurialMaterials)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExcavationRecorder)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateExcavated)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.YearExcavated)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MonthExcavated)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DayExcavated)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HeadDirection)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ArtifactFound)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Shaft.ShaftId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tomb.TombLocationId)
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.MummyId">Details</a>
-                    @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.MummyId">
-                            <input type="submit" class="btn btn-admin" value="Edit">
-                        </a>
-                    }
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Delete" asp-route-id="@item.MummyId">
-                            <input type="submit" class="btn btn-admin" value="Delete">
-                        </a>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BurialNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BurialDepth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WestToHead)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WestToFeet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SouthToHead)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SouthToFeet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Length)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BurialSituation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Goods)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArtifactsDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Photo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PreservationIndex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClusterNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HairColorCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AgeCodeSingle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BurialMaterials)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExcavationRecorder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateExcavated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YearExcavated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MonthExcavated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DayExcavated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HeadDirection)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArtifactFound)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Shaft.ShaftId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tomb.TombLocationId)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.MummyId">Details</a>
+                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.MummyId">
+                                <input type="submit" class="btn btn-admin" value="Edit">
+                            </a>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.MummyId">
+                                <input type="submit" class="btn btn-admin" value="Delete">
+                            </a>
 
-                    }
-                </td>
-            </tr>
+                        }
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

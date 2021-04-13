@@ -1,4 +1,8 @@
-﻿@model WINTEX.Models.Mummy
+﻿@{
+    ViewData["Title"] = "Burials";
+}
+
+@model WINTEX.Models.Mummy
 
 
 <!DOCTYPE html>
@@ -175,7 +179,7 @@
             {
                 <a asp-action="Edit" asp-route-id="@Model.MummyId">
                     <input type="submit" class="btn btn-admin" value="Edit">
-                </a> 
+                </a>
             }
             <a asp-controller="Mummies" asp-action="Index">Back to All Mummies</a>
         </div>
@@ -293,7 +297,7 @@
         <div>
             @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
             {
-               <a asp-controller="PostExhumationDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Post Excavation Data</a>
+                <a asp-controller="PostExhumationDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Post Excavation Data</a>
             }
             <a asp-controller="PostExhumationDatum" asp-action="Index">View All Post Excavation Data</a>
         </div>
@@ -597,7 +601,7 @@
         <div>
             @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
             {
-               <a asp-controller="OsteologicalMummyDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Mummy Osteological Data</a>
+                <a asp-controller="OsteologicalMummyDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Mummy Osteological Data</a>
             }
             <a asp-controller="OsteologicalMummyDatum" asp-action="Index">View All Osteological Data</a>
         </div>
