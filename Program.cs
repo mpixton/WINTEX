@@ -10,6 +10,7 @@ using WINTEX.Models.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Serilog;
 
 namespace WINTEX
 {
@@ -41,6 +42,7 @@ namespace WINTEX
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

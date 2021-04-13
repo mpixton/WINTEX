@@ -47,6 +47,7 @@ namespace WINTEX
 
             services.AddDbContext<FEGBExcavationContext>(options => {
                 options.UseNpgsql(Configuration["ConnectionStrings:FagElGamousPostGres"]);
+                options.EnableSensitiveDataLogging();
                 });
 
             Log.Logger = new LoggerConfiguration()
@@ -55,9 +56,13 @@ namespace WINTEX
                                 .Enrich.WithUserName("ANONYMOUS","NULL")
                                 .WriteTo.Console()
                                 .WriteTo.Debug()
+                                .WriteTo.File("Log/log-.log", rollingInterval: RollingInterval.Day)
                                 .CreateLogger();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +81,15 @@ namespace WINTEX
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSerilogRequestLogging(options =>
+            {
+                // Attach additional properties to the request completion event
+                options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
+                {
+                    diagnosticContext.Set("User", httpContext.User.Identity.Name);
+                };
+            });
 
             app.UseRouting();
 

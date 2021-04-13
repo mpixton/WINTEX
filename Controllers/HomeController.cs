@@ -27,7 +27,6 @@ namespace WINTEX.Controllers
 
         public IActionResult Index()
         {
-            _logger.LogInformation("{Protocol} {Method} {Path}", Request.Protocol, Request.Method, Request.Path);
             return View();
         }
 
