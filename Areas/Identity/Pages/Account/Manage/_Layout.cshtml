@@ -7,23 +7,32 @@
     {
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
+
+    ViewData["Title"] = "Manage your account";
 }
 
-<h2>Manage your account</h2>
-
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
+<div class="d-flex justify-content-center mb-5">
+    <div class="card cardLogin rounded-3" style="width: 1050px; margin-top: 85px; box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div class="card-header d-flex justify-content-center px-2 py-2" style="background-color: #d67751; color: #fff">
+            <h1>@ViewData["Title"]</h1>
         </div>
-        <div class="col-md-9">
-            @RenderBody()
+        <div class="d-flex justify-content-center pt-3">
+            <h4>Change your account settings</h4>
+        </div>
+        <hr />
+        <div class="row d-flex justify-content-space-between pb-5 pt-2 px-5">
+            <div class="row">
+                <div class="col-md-3">
+                    <partial name="_ManageNav" />
+                </div>
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
+            @section Scripts {
+                @RenderSection("Scripts", required: false)
+            }
