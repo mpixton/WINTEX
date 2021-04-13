@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Serilog;
 using WINTEX.DAL;
+using WINTEX.Enums;
 using WINTEX.Infrastructure;
 using WINTEX.Models;
 using WINTEX.Models.ViewModels;
@@ -130,6 +131,13 @@ namespace WINTEX
         {
             ViewData["ShaftId"] = new SelectList(_context.ShaftLocations.Where(s => s.Yupper != null && s.Xupper != null), "ShaftId", "Lookup");
             ViewData["TombId"] = new SelectList(_context.TombLocations, "TombLocationId", "LookupValue");
+            ViewBag.Goods = new SelectList(YesNo.GetValues());
+            ViewBag.AgeCodeSingle = new SelectList(AgeCodes.GetValues());
+            ViewBag.BurialMaterials = new SelectList(YesNo.GetValues());
+            ViewBag.ArtifactFound = new SelectList(YesNo.GetValues());
+            ViewBag.HairColorCode = new SelectList(_context.HairColorCodes.ToList(), "HairColorCode", "HairColorDescription");
+            ViewData["PresIndex"] = new SelectList(_context.Mummies.Select(m => m.PreservationIndex).Distinct(), ViewBag.PresIndex);
+            ViewData["HeadDirection"] = new SelectList(_context.Mummies.Select(m => m.HeadDirection).Distinct(), ViewBag.HeadDirection);
             return View();
         }
 
