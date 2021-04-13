@@ -41,7 +41,7 @@
     <div class="row">
         <form asp-controller="Mummies" asp-action="FilterMummies" method="post">
             <label>Burial Depth (Greater Than or Equal To):</label>
-            <input name="burial-depth" type="number" value="ViewBag.FilterBurialDepth" min="0" max="ViewBag.MaxDepth" />
+            <input name="burial-depth" type="number" value="@(ViewBag.FilterBurialDepth != null ? Convert.ToInt16(ViewBag.FilterBurialDepth) : null )" min="0" max="ViewBag.MaxDepth" />
             <label>Hair Color Code:</label>
             <select name="hair-color" asp-items="ViewBag.HairColorCode">
                 <option value="all">All</option>
