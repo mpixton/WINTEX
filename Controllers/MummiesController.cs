@@ -35,9 +35,10 @@ namespace WINTEX
         // GET: Mummies
         public IActionResult Index(int pageNum = 1)
         {
-            ViewData["PresIndex"] = new SelectList(_context.Mummies.Select(m => m.PreservationIndex).Distinct(), ViewBag.PresIndex);
-            ViewData["HairColorCode"] = new SelectList(_context.HairColorCodes.ToList(), "HairColorCode", "HairColorDescription", ViewBag.HairColorCode);
-            ViewData["HeadDirection"] = new SelectList(_context.Mummies.Select(m => m.HeadDirection).Distinct(), ViewBag.HeadDirection);
+            ViewData["PresIndex"] = new SelectList(_context.Mummies.Select(m => m.PreservationIndex).Distinct(), ViewBag.PresIndex ?? TempData["PresIndexFilter"] ?? "all");
+            ViewData["HairColorCode"] = new SelectList(_context.HairColorCodes.ToList(), "HairColorCode", "HairColorDescription", ViewBag.HairColorCode ?? TempData["HairColorFilter"] ?? "all");
+            ViewData["HeadDirection"] = new SelectList(_context.Mummies.Select(m => m.HeadDirection).Distinct(), ViewBag.HeadDirection ?? TempData["HeadFilter"] ?? "all");
+            ViewData["FilterBurialDepth"] = ViewBag.FilterBurialDepth ?? TempData["DepthFilter"] ?? null;
             ViewData["MaxDepth"] = _context.Mummies.Max(m => m.BurialDepth);
             IQueryable<Mummy> list = _context.Mummies.Include(m => m.Shaft).Include(m => m.Tomb);
             if (TempData.ContainsKey("Filters") && (string)TempData["Filters"] == "true")
@@ -86,6 +87,10 @@ namespace WINTEX
             {
                 TempData["Filters"] = "true";
             }
+            TempData["PresIndexFilter"] = (string)pairs["pres-index"];
+            TempData["HeadFilter"] = (string)pairs["head"];
+            TempData["HairColorFilter"] = (string)pairs["hair-color"];
+            TempData["DepthFilter"] = (string)pairs["burial-depth"];
             return RedirectToAction("Index");
         }
 
