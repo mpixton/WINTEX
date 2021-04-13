@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WINTEX.Models.Fegbdatum>
+﻿@{
+    ViewData["Title"] = "Datums";
+}
+
+@model IEnumerable<WINTEX.Models.Fegbdatum>
 
 
 
@@ -12,7 +16,7 @@
 <body>
     <p>
 
-         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
         {
             <a asp-action="Create">Create New</a>
         }

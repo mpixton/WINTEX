@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WINTEX.Models.CarbonDating>
+﻿@{
+    ViewData["Title"] = "Carbon Dating";
+}
+
+@model IEnumerable<WINTEX.Models.CarbonDating>
 
 
 
@@ -152,17 +156,17 @@
                         @Html.DisplayFor(modelItem => item.ShaftLocation.ShaftId)
                     </td>
                     <td>
-                          <a asp-action="Details" asp-route-id="@item.CarbonDatingId">Details</a>
-                          @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                          {
-                              <a asp-action="Edit" asp-route-id="@item.CarbonDatingId">Edit</a>
-                          }
-                          @if (User.IsInRole("Admin"))
-                          {
+                        <a asp-action="Details" asp-route-id="@item.CarbonDatingId">Details</a>
+                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.CarbonDatingId">Edit</a>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
 
-                              <a asp-action="Delete" asp-route-id="@item.CarbonDatingId">Delete</a>
-                          }
-                      </td>
+                            <a asp-action="Delete" asp-route-id="@item.CarbonDatingId">Delete</a>
+                        }
+                    </td>
                 </tr>
             }
         </tbody>
