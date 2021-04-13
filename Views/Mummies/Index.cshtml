@@ -19,30 +19,29 @@
         }
     </p>
 
-    <div class="flex-wrap">
-
+    <div class="d-flex justify-content-start">
         <div class="row">
-            <div class="col-12">
+            <div class="col-11">
                 <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
                      page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
-                     page-class-selected="btn-dark" class="btn-group pull-right m-1 p-3"></div>
+                     page-class-selected="btn-dark" class="btn-group p-2"></div>
             </div>
         </div>
-      </div>
-
-        @*
-            <div class="row">
-                <div class="col-4 col-md-3 col-lg-2">
-                    <div class="btn container-fluid btn-dark">Page @ViewBag.CurrentPage</div>
-                </div>
+    </div>
+    <br />
+    @*
+        <div class="row">
+            <div class="col-4 col-md-3 col-lg-2">
+                <div class="btn container-fluid btn-dark">Page @ViewBag.CurrentPage</div>
             </div>
-        *@
-        <br />
+        </div>
+    *@
+
 
     <div class="row">
         <form asp-controller="Mummies" asp-action="FilterMummies" method="post">
             <label>Burial Depth (Greater Than or Equal To):</label>
-            <input name="burial-depth" type="number" value="ViewBag.FilterBurialDepth" min="0" max="ViewBag.MaxDepth" />
+            <input name="burial-depth" type="number" value="@(ViewBag.FilterBurialDepth != null ? Convert.ToInt16(ViewBag.FilterBurialDepth) : null )" min="0" max="ViewBag.MaxDepth" />
             <label>Hair Color Code:</label>
             <select name="hair-color" asp-items="ViewBag.HairColorCode">
                 <option value="all">All</option>
@@ -57,11 +56,11 @@
             </select>
             <button type="submit" class="btn btn-primary">Filter</button>
         </form>
-        <form asp-controller="Mummies"  asp-action="ClearFilters" method="post">
+        <form asp-controller="Mummies" asp-action="ClearFilters" method="post">
             <button type="submit">Clear Filters</button>
         </form>
-      </div>
- 
+    </div>
+
     <br />
 
     <table class="table">
@@ -103,70 +102,70 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                @if (item.Shaft != null)
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Shaft.Lookup)
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tomb.LookupValue)
-                    </td>
-                }
-                <td>
-                    @Html.DisplayFor(modelItem => item.BurialNum)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BurialDepth) cm
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Length)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PreservationIndex)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HairColorCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BurialMaterials)
-                </td>
-                @if (item.DateExcavated != null)
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateExcavated)
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DayExcavated) @Html.DisplayFor(modelItem => item.MonthExcavated) @Html.DisplayFor(modelItem => item.YearExcavated)
-                    </td>
-                }
-                <td>
-                    @Html.DisplayFor(modelItem => item.HeadDirection)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ArtifactFound)
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.MummyId">Details</a>
-                    @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                <tr>
+                    @if (item.Shaft != null)
                     {
-                        <a asp-action="Edit" asp-route-id="@item.MummyId">
-                            <input type="submit" class="btn btn-admin" value="Edit">
-                        </a>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Shaft.Lookup)
+                        </td>
                     }
-                    @if (User.IsInRole("Admin"))
+                    else
                     {
-                        <a asp-action="Delete" asp-route-id="@item.MummyId">
-                            <input type="submit" class="btn btn-admin" value="Delete">
-                        </a>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tomb.LookupValue)
+                        </td>
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BurialNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BurialDepth) cm
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Length)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PreservationIndex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HairColorCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BurialMaterials)
+                    </td>
+                    @if (item.DateExcavated != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateExcavated)
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DayExcavated) @Html.DisplayFor(modelItem => item.MonthExcavated) @Html.DisplayFor(modelItem => item.YearExcavated)
+                        </td>
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HeadDirection)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArtifactFound)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.MummyId">Details</a>
+                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.MummyId">
+                                <input type="submit" class="btn btn-admin" value="Edit">
+                            </a>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.MummyId">
+                                <input type="submit" class="btn btn-admin" value="Delete">
+                            </a>
 
-                     }
+                        }
                     </td>
                 </tr>
             }

@@ -29,9 +29,6 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="Views\Gisdatums\Delete.cshtml" />
-    <Content Remove="Views\Gisdatums\Details.cshtml" />
-    <Content Remove="Views\Gisdatums\Index.cshtml" />
     <Content Remove="wwwroot\img\LogoTransparent.png" />
   </ItemGroup>
   <ItemGroup>
