@@ -11,7 +11,7 @@ using WINTEX.Models.ViewModels;
 
 namespace WINTEX.Infrastructure
 {
-    //target div element, using html attribute "page-info-"
+    //target div element, using html attribute "num-pages"
     [HtmlTargetElement("div", Attributes = "num-pages")]
     public class PaginationTagHelper : TagHelper
     {

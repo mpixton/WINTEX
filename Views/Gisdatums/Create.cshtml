@@ -1,4 +1,8 @@
-﻿@model WINTEX.Models.Gisdatum
+﻿@{
+    ViewData["Title"] = "Datums";
+}
+
+@model WINTEX.Models.Gisdatum
 
 
 <!DOCTYPE html>
@@ -10,44 +14,44 @@
 </head>
 <body>
 
-<h4>Gisdatum</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="MummyId" class="control-label"></label>
-                <select asp-for="MummyId" class ="form-control" asp-items="ViewBag.MummyId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="MaturityCode" class="control-label"></label>
-                <input asp-for="MaturityCode" class="form-control" />
-                <span asp-validation-for="MaturityCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="WrappingCode" class="control-label"></label>
-                <input asp-for="WrappingCode" class="form-control" />
-                <span asp-validation-for="WrappingCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gisid" class="control-label"></label>
-                <input asp-for="Gisid" class="form-control" />
-                <span asp-validation-for="Gisid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <h4>Gisdatum</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="MummyId" class="control-label"></label>
+                    <select asp-for="MummyId" class="form-control" asp-items="ViewBag.MummyId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MaturityCode" class="control-label"></label>
+                    <input asp-for="MaturityCode" class="form-control" />
+                    <span asp-validation-for="MaturityCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="WrappingCode" class="control-label"></label>
+                    <input asp-for="WrappingCode" class="form-control" />
+                    <span asp-validation-for="WrappingCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gisid" class="control-label"></label>
+                    <input asp-for="Gisid" class="form-control" />
+                    <span asp-validation-for="Gisid" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
 </body>
 </html>

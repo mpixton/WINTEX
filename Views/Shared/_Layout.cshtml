@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>@ViewData["Title"] - WINTEX</title>
+        <title>@ViewData["Title"] - Fag el-Gamous - BYU Excavations Egypt</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -43,28 +43,25 @@
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a class="js-scroll-trigger" href="#page-top">Layout for rest of site</a>
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="Index">Fag el-Gamous</a>
                 </li>
                 <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="#page-top">Home</a>
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                
+                <li class="sidebar-nav-item">
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="NavigationPage">Data Collected</a>
                 </li>
                 <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="#about">About</a>
-                </li>
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="#services">Services</a>
-                </li>
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
-                </li>
-                <li class="sidebar-nav-item">
-                    <a class="js-scroll-trigger" href="#contact">Contact</a>
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="DataInsights">Data Insights</a>
                 </li>
                 <li class="sidebar-nav-item">
                     <partial name="_LoginPartial" class="js-scroll-trigger" />
                 </li>
             </ul>
-
+            <div class="d-flex justify-content-center">
+                <img src="~/img/LogoTransparent.png" class="" style="max-width: 200px; position:absolute; bottom:0; margin-bottom: 40px" />
+            </div>
         </nav>
         <div class="text-center container p-3">
             @RenderBody()

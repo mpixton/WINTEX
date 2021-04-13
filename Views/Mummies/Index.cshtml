@@ -1,6 +1,8 @@
-﻿@model IEnumerable<Mummy>
+@model IEnumerable<Mummy>
 @{ 
+  ViewData["Title"] = "Burials";
 }
+
 <!DOCTYPE html>
 
 <html>
@@ -9,7 +11,7 @@
     <title>Index</title>
 </head>
 <body>
-  
+
     <p>
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
         {
@@ -146,9 +148,9 @@
                             <input type="submit" class="btn btn-admin" value="Delete">
                         </a>
 
-                    }
-                </td>
-            </tr>
+                     }
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

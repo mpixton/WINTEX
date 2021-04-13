@@ -23,13 +23,14 @@ namespace WINTEX.Controllers
         }
 
         // GET: ShaftLocations
-        public IActionResult Index(int currPage = 1)
+        public IActionResult Index(int pageNum = 1)
         {
+            int pageSize = 20;
             var list = _context.ShaftLocations;
-            var pageInfo = new Paginator<ShaftLocation>(20, list);
-            ViewData["CurrentPage"] = currPage;
+            var pageInfo = new Paginator<ShaftLocation>(pageSize, list);
+            ViewData["CurrentPage"] = pageNum;
             ViewData["TotalPages"] = pageInfo.TotalPages;
-            return View(pageInfo.GetItems(currPage));
+            return View(pageInfo.GetItems(pageNum));
         }
 
         // GET: ShaftLocations/Details/5

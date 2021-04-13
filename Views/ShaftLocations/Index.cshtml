@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WINTEX.Models.ShaftLocation>
+﻿@{
+    ViewData["Title"] = "Shaft Locations";
+}
+
+@model IEnumerable<WINTEX.Models.ShaftLocation>
 
 
 
@@ -85,7 +89,7 @@
                             <a asp-action="Edit" asp-route-id="@item.ShaftId">Edit</a>
                         }
                         @if (User.IsInRole("Admin"))
-                        {             
+                        {
                             <a asp-action="Delete" asp-route-id="@item.ShaftId">Delete</a>
                         }
                     </td>

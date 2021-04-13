@@ -22,13 +22,15 @@ namespace WINTEX
         }
 
         // GET: BiologicalSamples
-        public IActionResult Index(int currPage = 1)
+        public IActionResult Index(int pageNum = 1)
         {
+            int pageSize = 20;
             var list = _context.BiologicalSamples.Include(b => b.Mummy).Include(b => b.Shaft);
-            var pageInfo = new Paginator<BiologicalSample>(20, list);
-            ViewData["CurrentPage"] = currPage;
+            
+            var pageInfo = new Paginator<BiologicalSample>(pageSize, list);
+            ViewData["CurrentPage"] = pageNum;
             ViewData["TotalPages"] = pageInfo.TotalPages;
-            return View(pageInfo.GetItems(currPage));
+            return View(pageInfo.GetItems(pageNum));
         }
 
         // GET: BiologicalSamples/Details/5

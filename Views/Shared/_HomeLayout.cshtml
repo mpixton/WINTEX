@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>@ViewData["Title"] - WINTEX</title>
+        <title>@ViewData["Title"] - Fag el-Gamous - BYU Excavations Egypt</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a class="js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="Index">Fag el-Gamous</a>
                 </li>
                 <li class="sidebar-nav-item">
                     <a class="js-scroll-trigger" href="#page-top">Home</a>
@@ -68,7 +68,9 @@
                     <partial name="_LoginPartial" class="js-scroll-trigger" />
                 </li>
             </ul>
-
+            <div class="d-flex justify-content-center">
+                <img src="~/img/LogoTransparent.png" class="" style="max-width: 200px; position:absolute; bottom:0; margin-bottom: 40px" />
+            </div>
         </nav>
 
         @RenderBody()
@@ -78,17 +80,17 @@
             <div class="container">
                 <ul class="list-inline mb-5">
                     <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/search/photos?q=fag%20el-gamous">
+                        <a class="social-link rounded-circle text-white mr-3" target="_blank" href="https://www.facebook.com/search/photos?q=fag%20el-gamous">
                             <i class="icon-social-facebook"></i>
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/search?q=fag%20el-gamous&src=typed_query">
+                        <a class="social-link rounded-circle text-white mr-3" target="_blank" href="https://twitter.com/search?q=fag%20el-gamous&src=typed_query">
                             <i class="icon-social-twitter"></i>
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="social-link rounded-circle text-white" href="https://www.google.com/search?q=fag+el-gamous&rlz=1C5CHFA_enUS759US759&oq=fag+el-gamous&aqs=chrome.0.69i59l3j69i60j69i61l2.9271j0j7&sourceid=chrome&ie=UTF-8">
+                        <a class="social-link rounded-circle text-white" target="_blank" href="https://www.google.com/search?q=fag+el-gamous&rlz=1C5CHFA_enUS759US759&oq=fag+el-gamous&aqs=chrome.0.69i59l3j69i60j69i61l2.9271j0j7&sourceid=chrome&ie=UTF-8">
                             <i class="icon-social-google"></i>
                         </a>
                     </li>

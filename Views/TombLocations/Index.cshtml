@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WINTEX.Models.TombLocation>
+﻿@{
+    ViewData["Title"] = "Shaft Locations";
+}
+
+@model IEnumerable<WINTEX.Models.TombLocation>
 
 
 <!DOCTYPE html>
@@ -48,15 +52,15 @@
                         @Html.DisplayFor(modelItem => item.Tomb)
                     </td>
                     <td>
-                          @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                          {
-                              <a asp-action="Edit" asp-route-id="@item.TombLocationId">Edit</a>
-                          }
-                          @if (User.IsInRole("Admin"))
-                          {                
-                              <a asp-action="Delete" asp-route-id="@item.TombLocationId">Delete</a>
-                          }
-                          <a asp-action="Details" asp-route-id="@item.TombLocationId">Details</a>
+                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.TombLocationId">Edit</a>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.TombLocationId">Delete</a>
+                        }
+                        <a asp-action="Details" asp-route-id="@item.TombLocationId">Details</a>
 
                     </td>
                 </tr>

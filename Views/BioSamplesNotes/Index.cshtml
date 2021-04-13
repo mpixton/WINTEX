@@ -1,4 +1,9 @@
-﻿@model IEnumerable<WINTEX.Models.BioSamplesNote>
+﻿@{
+    ViewData["Title"] = "Biological Sample Notes";
+}
+
+
+@model IEnumerable<WINTEX.Models.BioSamplesNote>
 
 
 
@@ -43,7 +48,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.BioSample.BioSampleId)
                     </td>
-                     <td>
+                    <td>
                         <a asp-action="Details" asp-route-id="@item.BioNoteId">Details</a>
                         @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
                         {

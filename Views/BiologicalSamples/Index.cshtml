@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WINTEX.Models.BiologicalSample>
+﻿@{
+    ViewData["Title"] = "Biological Samples";
+}
+
+@model IEnumerable<WINTEX.Models.BiologicalSample>
 
 
 
@@ -105,15 +109,15 @@
                         @Html.DisplayFor(modelItem => item.Shaft.ShaftId)
                     </td>
                     <td>
-                          <a asp-action="Details" asp-route-id="@item.BioSampleId">Details</a>
-                          @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                          {
-                              <a asp-action="Edit" asp-route-id="@item.BioSampleId">Edit</a>
-                          }
-                          @if (User.IsInRole("Admin"))
-                          {
-                              <a asp-action="Delete" asp-route-id="@item.BioSampleId">Delete</a>
-                          }
+                        <a asp-action="Details" asp-route-id="@item.BioSampleId">Details</a>
+                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.BioSampleId">Edit</a>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.BioSampleId">Delete</a>
+                        }
 
                     </td>
                 </tr>

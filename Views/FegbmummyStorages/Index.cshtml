@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WINTEX.Models.FegbmummyStorage>
+﻿@{
+    ViewData["Title"] = "Burial Storage";
+}
+
+@model IEnumerable<WINTEX.Models.FegbmummyStorage>
 
 
 
@@ -44,19 +48,19 @@
                         @Html.DisplayFor(modelItem => item.Shelf.Shelf)
                     </td>
                     <td>
-                          @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
-                          @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                          {
-                              @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
-                          }
-                          @if (User.IsInRole("Admin"))
-                          {
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
 
-                              @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                          }
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        }
 
 
-                      </td>
+                    </td>
                 </tr>
             }
         </tbody>

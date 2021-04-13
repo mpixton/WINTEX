@@ -33,7 +33,7 @@ namespace WINTEX
         }
 
         // GET: Mummies
-        public IActionResult Index(int currPage = 1)
+        public IActionResult Index(int pageNum = 1)
         {
             ViewData["PresIndex"] = new SelectList(_context.Mummies.Select(m => m.PreservationIndex).Distinct(), ViewBag.PresIndex);
             ViewData["HairColorCode"] = new SelectList(_context.HairColorCodes.ToList(), "HairColorCode", "HairColorDescription", ViewBag.HairColorCode);
@@ -61,7 +61,8 @@ namespace WINTEX
                 }
                 ViewData["FilterBurialDepth"] = TempData["burial-depth"];
             }
-            var pageInfo = new Paginator<Mummy>(20, list);
+            int pageSize = 20;
+            var pageInfo = new Paginator<Mummy>(pageSize, list);
             ViewData["CurrentPage"] = currPage;
             ViewData["TotalPages"] = pageInfo.TotalPages;
             return View(pageInfo.GetItems(currPage));
