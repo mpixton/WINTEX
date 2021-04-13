@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,7 +45,11 @@ namespace WINTEX
             ///Up to Here
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddRazorPages();
-            services.AddControllersWithViews();
+
+            // globally auto validate UNSAFE method request's antiforgery token
+            services.AddControllersWithViews(options => 
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
+
 
             services.AddDbContext<FEGBExcavationContext>(options => {
                 options.UseNpgsql(Configuration["ConnectionStrings:FagElGamousPostGres"]);
