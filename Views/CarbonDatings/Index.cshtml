@@ -18,7 +18,7 @@
 
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
         {
-            <a asp-action="Create">Create New</a>
+            <a class="btn btn-admin" asp-action="Create">Create New</a>
         }
     </p>
     <div class="d-flex justify-content-start">
@@ -162,17 +162,23 @@
                         @Html.DisplayFor(modelItem => item.ShaftLocation.ShaftId)
                     </td>
                     <td>
-                        <a asp-action="Details" asp-route-id="@item.CarbonDatingId">Details</a>
+                        <div class="p-1">
+                            <a class="btn btn-admin" asp-action="Details" asp-route-id="@item.CarbonDatingId">Details</a>
+                        </div>
                         @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
                         {
-                            <a asp-action="Edit" asp-route-id="@item.CarbonDatingId">Edit</a>
+                            <div class="p-1">
+                                <a class="btn btn-admin" asp-action="Edit" asp-route-id="@item.CarbonDatingId">Edit</a>
+                            </div>
                         }
                         @if (User.IsInRole("Admin"))
                         {
-
-                            <a asp-action="Delete" asp-route-id="@item.CarbonDatingId">Delete</a>
+                            <div class="p-1">
+                                <a class="btn btn-admin" asp-action="Delete" asp-route-id="@item.CarbonDatingId">Delete</a>
+                            </div>
                         }
                     </td>
+
                 </tr>
             }
         </tbody>

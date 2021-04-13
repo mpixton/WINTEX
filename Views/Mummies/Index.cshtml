@@ -152,20 +152,27 @@
                         @Html.DisplayFor(modelItem => item.ArtifactFound)
                     </td>
                     <td>
-                        <a asp-action="Details" asp-route-id="@item.MummyId">Details</a>
+                        <div class="p-1">
+                            <a asp-action="Details" class="btn btn-admin" asp-route-id="@item.MummyId">Details</a>
+                        </div>
                         @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
                         {
-                            <a asp-action="Edit" asp-route-id="@item.MummyId">
-                                <input type="submit" class="btn btn-admin" value="Edit">
-                            </a>
+                            <div class="p-1">
+                                <a asp-action="Edit" asp-route-id="@item.MummyId">
+                                    <input type="submit" class="btn btn-admin" value="Edit">
+                                </a>
+                            </div>
                         }
                         @if (User.IsInRole("Admin"))
                         {
-                            <a asp-action="Delete" asp-route-id="@item.MummyId">
-                                <input type="submit" class="btn btn-admin" value="Delete">
-                            </a>
+                            <div class="p-1">
+                                <a asp-action="Delete" asp-route-id="@item.MummyId">
+                                    <input type="submit" class="btn btn-admin" value="Delete">
+                                </a>
+                            </div>
 
                         }
+
                     </td>
                 </tr>
             }

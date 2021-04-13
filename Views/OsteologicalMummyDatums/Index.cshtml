@@ -16,7 +16,7 @@
     <p>
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
         {
-            <a asp-action="Create">Create New</a>
+            <a class="btn btn-admin" asp-action="Create">Create New</a>
         }
     </p>
     <div class="d-flex justify-content-start">
@@ -185,168 +185,174 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FemurHead)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HumerusHead)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Osteophytosis)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PubicSymphysis)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FemurLength)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HumerusLength)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TibiaLength)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Robust)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SupraorbitalRidges)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrbitEdge)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ParietalBossing)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Gonian)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NuchalCrest)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ZygomaticCrest)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CranialSuture)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MaximumCranialLength)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MaximumCranialBreadth)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BasionBregmaHeight)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BasionNasion)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BasionProstionLength)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BizygomaticDiameter)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NasionProsthion)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MaximumNasalBreadth)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BasilarSuture)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VentralArc)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SubpubicAngle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SciaticNotch)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PubicBone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PreaurSulcus)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MedialIpramus)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DorsalPitting)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.InterorbitalBreadth)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BurialHairColor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ToothAttrition)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ToothEruption)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PathologyAnomalies)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EphiphysealUnion)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SkullTrauma)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PostcraniaTrauma)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CribraOrbitala)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PoroticHyperostosis)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MetopicSuture)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ButtonOsteoma)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TemporalMandibularJointOsteoarthritis)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LinearHypoplasiaEnamel)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PoroticHyperostosisLocations)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OsteologyUnknownComment)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ToBeConfirmed)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Mummy.MummyId)
-                    </td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.MummyId">Details</a>
-                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                        {
-                            <a asp-action="Edit" asp-route-id="@item.MummyId">Edit</a>
-                        }
-                        @if (User.IsInRole("Admin"))
-                        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FemurHead)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HumerusHead)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Osteophytosis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PubicSymphysis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FemurLength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HumerusLength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TibiaLength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Robust)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupraorbitalRidges)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrbitEdge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParietalBossing)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gonian)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NuchalCrest)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZygomaticCrest)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CranialSuture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaximumCranialLength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaximumCranialBreadth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasionBregmaHeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasionNasion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasionProstionLength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BizygomaticDiameter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NasionProsthion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaximumNasalBreadth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BasilarSuture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VentralArc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubpubicAngle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SciaticNotch)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PubicBone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreaurSulcus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedialIpramus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DorsalPitting)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InterorbitalBreadth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BurialHairColor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToothAttrition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToothEruption)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PathologyAnomalies)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EphiphysealUnion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkullTrauma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostcraniaTrauma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CribraOrbitala)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PoroticHyperostosis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MetopicSuture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ButtonOsteoma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TemporalMandibularJointOsteoarthritis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LinearHypoplasiaEnamel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PoroticHyperostosisLocations)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OsteologyUnknownComment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToBeConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mummy.MummyId)
+                </td>
+                <td>
+                    <div class="p-1">
+                        <a class="btn btn-admin" asp-action="Details" asp-route-id="@item.MummyId">Details</a>
+                    </div>
+                    @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                    {
+                        <div class="p-1">
+                            <a class="btn btn-admin" asp-action="Edit" asp-route-id="@item.MummyId">Edit</a>
+                        </div>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="p-1">
+                            <a class="btn btn-admin" asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
+                        </div>
+                    }
 
-                            <a asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
-                        }
+                </td>
 
-                    </td>
-                </tr>
+            </tr>
             }
         </tbody>
     </table>

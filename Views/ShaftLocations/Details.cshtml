@@ -71,9 +71,16 @@
     <div>
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
         {
-            <a asp-action="Edit" asp-route-id="@Model.ShaftId">Edit</a>
+
+        <div class="p-1">
+            <a class="btn btn-admin" asp-action="Edit" asp-route-id="@Model.ShaftId">Edit</a>
+
+        </div>
         }
-        <a asp-action="Index">Back to List</a>
+    <div class="p-1">
+        <a class="btn btn-admin" asp-action="Index">Back to List</a>
+
+    </div>
     </div>
 </body>
 </html>
