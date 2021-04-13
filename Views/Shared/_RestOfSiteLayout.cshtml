@@ -45,26 +45,28 @@
         <i class="fas fa-bars"></i>
     </a>
     <nav id="sidebar-wrapper" style="z-index:3">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a class="js-scroll-trigger" asp-controller="Home" asp-action="Index">Fag el-Gamous</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <partial name="_LoginPartial" class="js-scroll-trigger" />
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" asp-controller="Home" asp-action="Index">Home</a>
-            </li>
+        <div style="z-index:2">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="Index">Fag el-Gamous</a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <partial name="_LoginPartial" class="js-scroll-trigger" />
+                </li>
+                <li class="sidebar-nav-item">
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
 
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" asp-controller="Home" asp-action="NavigationPage">Data Collected</a>
-            </li>
-            <li class="sidebar-nav-item">
-                <a class="js-scroll-trigger" asp-controller="Home" asp-action="DataInsights">Data Insights</a>
-            </li>
-        </ul>
-        <div class="d-flex justify-content-center">
-            <img src="~/img/LogoTransparent.png" class="" style="max-width: 200px; position:absolute; bottom:0; margin-bottom: 40px" />
+                <li class="sidebar-nav-item">
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="NavigationPage">Data Collected</a>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a class="js-scroll-trigger" asp-controller="Home" asp-action="DataInsights">Data Insights</a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex justify-content-center" style="z-index: -1">
+            <img src="~/img/LogoTransparent.png" class="" style=" z-index: -1;max-width: 200px; position:absolute; bottom:0; margin-bottom: 40px" />
         </div>
     </nav>
 
