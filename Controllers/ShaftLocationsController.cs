@@ -87,7 +87,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: ShaftLocations/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -111,7 +111,7 @@ namespace WINTEX.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int id, [Bind("ShaftId,Ylower,Yupper,North,Xlower,Xupper,East,Subplot")] ShaftLocation shaftLocation)
         {
             if (id != shaftLocation.ShaftId)

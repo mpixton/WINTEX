@@ -81,7 +81,7 @@ namespace WINTEX
         }
 
         // GET: OsteologicalMummyDatums/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -103,7 +103,7 @@ namespace WINTEX
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int id, [Bind("MummyId,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProstionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpramus,DorsalPitting,InterorbitalBreadth,BurialHairColor,ToothAttrition,ToothEruption,PathologyAnomalies,EphiphysealUnion,SkullTrauma,PostcraniaTrauma,CribraOrbitala,PoroticHyperostosis,MetopicSuture,ButtonOsteoma,TemporalMandibularJointOsteoarthritis,LinearHypoplasiaEnamel,PoroticHyperostosisLocations,OsteologyUnknownComment,ToBeConfirmed")] OsteologicalMummyDatum osteologicalMummyDatum)
         {
             if (id != osteologicalMummyDatum.MummyId)

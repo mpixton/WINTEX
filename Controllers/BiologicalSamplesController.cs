@@ -85,7 +85,7 @@ namespace WINTEX
         }
 
         // GET: BiologicalSamples/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -108,7 +108,7 @@ namespace WINTEX
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int id, [Bind("BioSampleId,RackNum,BagNum,ShaftId,BurialNum,MummyId,ClusterNum,Notes,Initials,SampledMonth,SampledDay,SampledYear,PreviouslySampled")] BiologicalSample biologicalSample)
         {
             if (id != biologicalSample.BioSampleId)

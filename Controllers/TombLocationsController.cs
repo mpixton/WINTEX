@@ -78,7 +78,7 @@ namespace WINTEX.Controllers
         }
 
         // GET: TombLocations/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -99,7 +99,7 @@ namespace WINTEX.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int id, [Bind("TombLocationId,AreaHillBurial,Tomb")] TombLocation tombLocation)
         {
             if (id != tombLocation.TombLocationId)

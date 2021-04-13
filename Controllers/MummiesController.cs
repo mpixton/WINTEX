@@ -161,7 +161,7 @@ namespace WINTEX
         }
 
         // GET: Mummies/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -184,7 +184,7 @@ namespace WINTEX
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Researcher")]
         public async Task<IActionResult> Edit(int id, [Bind("MummyId,BurialNum,ShaftId,TombId,BurialDepth,WestToHead,WestToFeet,SouthToHead,SouthToFeet,Length,BurialSituation,Goods,ArtifactsDescription,Photo,PreservationIndex,ClusterNum,HairColorCode,AgeCodeSingle,BurialMaterials,ExcavationRecorder,DateExcavated,YearExcavated,MonthExcavated,DayExcavated,HeadDirection,ArtifactFound")] Mummy mummy)
         {
             if (id != mummy.MummyId)
