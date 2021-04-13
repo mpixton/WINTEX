@@ -44,6 +44,9 @@ namespace WINTEX.Infrastructure
         /// </summary>
         public IEnumerable<T> ListToPage { get; }
 
+        //Efficient Pagination?
+        
+
         /// <summary>
         /// Performs the pagination based on the arguments passed when constructed.
         /// </summary>
@@ -53,6 +56,7 @@ namespace WINTEX.Infrastructure
         {
             return ListToPage.Skip((pageNum - 1) * PageSize)
                    .Take(PageSize);
+
         }
     }
 }

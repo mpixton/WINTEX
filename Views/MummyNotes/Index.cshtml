@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WINTEX.Models.MummyNote>
+﻿@{
+    ViewData["Title"] = "Burial Notes";
+}
+
+@model IEnumerable<WINTEX.Models.MummyNote>
 
 
 <!DOCTYPE html>
@@ -54,7 +58,7 @@
                             <a asp-action="Edit" asp-route-id="@item.NoteId">Edit</a>
                         }
                         @if (User.IsInRole("Admin"))
-                        {                    
+                        {
                             <a asp-action="Delete" asp-route-id="@item.NoteId">Delete</a>
                         }
 

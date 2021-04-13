@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
-    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
     <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
@@ -32,36 +32,38 @@
     <Content Remove="Views\Gisdatums\Delete.cshtml" />
     <Content Remove="Views\Gisdatums\Details.cshtml" />
     <Content Remove="Views\Gisdatums\Index.cshtml" />
-    <Content Remove="Views\Mummies\Delete.cshtml" />
-    <Content Remove="Views\Mummies\Create.cshtml" />
-    <Content Remove="Views\Mummies\Details.cshtml" />
-    <Content Remove="Views\Mummies\Edit.cshtml" />
-    <Content Remove="Views\MummyNotes\Index.cshtml" />
-    <Content Remove="Views\Mummies\Index.cshtml" />
-    <Content Remove="Views\MummyNotes\Create.cshtml" />
-    <Content Remove="Views\MummyNotes\Edit.cshtml" />
-    <Content Remove="Views\MummyNotes\Details.cshtml" />
-    <Content Remove="Views\MummyNotes\Delete.cshtml" />
-    <Content Remove="Views\OsteologicalMummyDatums\Details.cshtml" />
-    <Content Remove="Views\OsteologicalMummyDatums\Delete.cshtml" />
-    <Content Remove="Views\OsteologicalMummyDatums\Create.cshtml" />
-    <Content Remove="Views\OsteologicalMummyDatums\Edit.cshtml" />
-    <Content Remove="Views\OsteologicalMummyDatums\Index.cshtml" />
-    <Content Remove="Views\PostExhumationDatums\Create.cshtml" />
-    <Content Remove="Views\PostExhumationDatums\Details.cshtml" />
-    <Content Remove="Views\PostExhumationDatums\Delete.cshtml" />
-    <Content Remove="Views\PostExhumationDatums\Edit.cshtml" />
-    <Content Remove="Views\PostExhumationDatums\Index.cshtml" />
-    <Content Remove="Views\ShaftLocations\Details.cshtml" />
-    <Content Remove="Views\ShaftLocations\Edit.cshtml" />
-    <Content Remove="Views\ShaftLocations\Delete.cshtml" />
-    <Content Remove="Views\ShaftLocations\Create.cshtml" />
-    <Content Remove="Views\TombLocations\Delete.cshtml" />
-    <Content Remove="Views\TombLocations\Create.cshtml" />
-    <Content Remove="Views\TombLocations\Details.cshtml" />
-    <Content Remove="Views\ShaftLocations\Index.cshtml" />
-    <Content Remove="Views\TombLocations\Index.cshtml" />
-    <Content Remove="Views\TombLocations\Edit.cshtml" />
     <Content Remove="wwwroot\img\LogoTransparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Mummies\Create.cshtml" />
+    <None Include="Views\Mummies\Delete.cshtml" />
+    <None Include="Views\Mummies\Details.cshtml" />
+    <None Include="Views\Mummies\Edit.cshtml" />
+    <None Include="Views\Mummies\Index.cshtml" />
+    <None Include="Views\MummyNotes\Create.cshtml" />
+    <None Include="Views\MummyNotes\Delete.cshtml" />
+    <None Include="Views\MummyNotes\Details.cshtml" />
+    <None Include="Views\MummyNotes\Edit.cshtml" />
+    <None Include="Views\MummyNotes\Index.cshtml" />
+    <None Include="Views\OsteologicalMummyDatums\Create.cshtml" />
+    <None Include="Views\OsteologicalMummyDatums\Delete.cshtml" />
+    <None Include="Views\OsteologicalMummyDatums\Details.cshtml" />
+    <None Include="Views\OsteologicalMummyDatums\Edit.cshtml" />
+    <None Include="Views\OsteologicalMummyDatums\Index.cshtml" />
+    <None Include="Views\PostExhumationDatums\Create.cshtml" />
+    <None Include="Views\PostExhumationDatums\Delete.cshtml" />
+    <None Include="Views\PostExhumationDatums\Details.cshtml" />
+    <None Include="Views\PostExhumationDatums\Edit.cshtml" />
+    <None Include="Views\PostExhumationDatums\Index.cshtml" />
+    <None Include="Views\ShaftLocations\Create.cshtml" />
+    <None Include="Views\ShaftLocations\Delete.cshtml" />
+    <None Include="Views\ShaftLocations\Details.cshtml" />
+    <None Include="Views\ShaftLocations\Edit.cshtml" />
+    <None Include="Views\ShaftLocations\Index.cshtml" />
+    <None Include="Views\TombLocations\Create.cshtml" />
+    <None Include="Views\TombLocations\Delete.cshtml" />
+    <None Include="Views\TombLocations\Details.cshtml" />
+    <None Include="Views\TombLocations\Edit.cshtml" />
+    <None Include="Views\TombLocations\Index.cshtml" />
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
+using Serilog.Formatting.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,11 +54,15 @@ namespace WINTEX
                                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                                 .MinimumLevel.Override("WINTEX", LogEventLevel.Information)
                                 .Enrich.WithUserName("ANONYMOUS","NULL")
-                                .WriteTo.Console()
+                                .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message} by {User}{NewLine}{Exception}")
                                 .WriteTo.Debug()
+                                .WriteTo.File(new JsonFormatter(), "Log/log-.log", rollingInterval: RollingInterval.Day)
                                 .CreateLogger();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +81,15 @@ namespace WINTEX
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSerilogRequestLogging(options =>
+            {
+                // Attach additional properties to the request completion event
+                options.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
+                {
+                    diagnosticContext.Set("User", httpContext.User.Identity.Name);
+                };
+            });
 
             app.UseRouting();
 

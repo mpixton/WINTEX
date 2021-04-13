@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,14 @@ namespace WINTEX.Controllers
 {
     public class UserRolesController : Controller
     {
+        private readonly IDiagnosticContext diagnosticContext;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserRolesController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UserRolesController(IDiagnosticContext diagnosticContext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
+            this.diagnosticContext = diagnosticContext;
             _userManager = userManager;
         }
 
