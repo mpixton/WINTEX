@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Datums";
+    Layout = "~/Views/Shared/_RestOfSiteLayout.cshtml";
 }
 
 @model IEnumerable<WINTEX.Models.Fegbdatum>
@@ -14,122 +15,125 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
-
-        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
-        {
-            <a class="btn btn-admin" asp-action="Create">Create New</a>
-        }
-    </p>
-    <div class="d-flex justify-content-start">
-        <div class="row">
-            <div class="col-11">
-                <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
-                     page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
-                     page-class-selected="btn-dark" class="btn-group p-2"></div>
+    <div class="d-flex justify-content-center mt-2" style="z-index: 2; position: relative">
+        <div class="card rounded-3 d-flex mt-2 py-3 px-3 mx-5" style="max-width: 100%; box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgb(0, 0, 0); border-style: solid; border-width: 7px; border-color: #75a8b3; z-index: 3;">
+            <div class="d-flex justify-content-start align-items-center">
+                <div class="d-flex justify-content-start" style="width: 20%">
+                    <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
+                         page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
+                         page-class-selected="btn-dark" class="btn-group p-2"></div>
+                </div>
+                <div class="d-flex justify-content-center" style="width: 60%">
+                    <h4>Description needed here</h4>
+                </div>
+                @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+                {
+                    <div class="d-flex justify-content-end" style="width: 20%">
+                        <a class="btn btn-admin" asp-action="Create">Create New</a>
+                    </div>
+                }
             </div>
+            <br />
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.YearOnSkull)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MonthOnSkull)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DayOnSkull)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FieldBook)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FieldBookPageNum)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PostcraniaAtMagazine)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Byusample)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SkullAtMagazine)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Skull2018StudySex)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Skull2018StudyAge)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mummy)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.YearOnSkull)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MonthOnSkull)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DayOnSkull)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FieldBook)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FieldBookPageNum)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PostcraniaAtMagazine)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Byusample)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SkullAtMagazine)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Skull2018StudySex)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Skull2018StudyAge)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mummy.MummyId)
+                            </td>
+                            <td>
+                                <div class="p-1">
+                                    <a class="btn btn-admin" asp-action="Details" asp-route-id="@item.MummyId">Details</a>
+                                </div>
+                                @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                                {
+                                    <div class="p-1">
+                                        <a class="btn btn-admin" asp-action="Edit" asp-route-id="@item.MummyId">Edit</a>
+                                    </div>
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="p-1">
+                                        <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
+                                    </div>
+                                }
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
-    <br />
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.YearOnSkull)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MonthOnSkull)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DayOnSkull)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FieldBook)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FieldBookPageNum)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PostcraniaAtMagazine)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Byusample)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SkullAtMagazine)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Skull2018StudySex)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Skull2018StudyAge)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Mummy)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.YearOnSkull)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MonthOnSkull)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DayOnSkull)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FieldBook)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FieldBookPageNum)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostcraniaAtMagazine)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Byusample)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SkullAtMagazine)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Skull2018StudySex)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Skull2018StudyAge)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Mummy.MummyId)
-                </td>
-                <td>
-                    <div class="p-1">
-                        <a class="btn btn-admin" asp-action="Details" asp-route-id="@item.MummyId">Details</a>
-                    </div>
-                    @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                    {
-                        <div class="p-1">
-                            <a class="btn btn-admin" asp-action="Edit" asp-route-id="@item.MummyId">Edit</a>
-                        </div>
-                    }
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <div class="p-1">
-                            <a class="btn btn-admin" asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
-                        </div>
-                    }
-
-                </td>
-
-            </tr>
-            }
-        </tbody>
-    </table>
-
 </body>
 </html>
