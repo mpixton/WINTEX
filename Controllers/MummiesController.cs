@@ -67,7 +67,6 @@ namespace WINTEX
             ViewBag.TotalPages = pageInfo.TotalPages;
             ViewBag.HasPreviousPage = !(pageNum > 1) ? "disabled" : "";
             ViewBag.HasNextPage = !(pageNum < pageInfo.TotalPages) ? "disabled" : "";
-                 
             return View(pageInfo.GetItems(pageNum));
         }
 
