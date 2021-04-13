@@ -12,6 +12,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -23,7 +24,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="BurialNum" class="control-label"></label>
-                    <input asp-for="BurialNum" class="form-control" />
+                    <input asp-for="BurialNum" min="0" type="number" class="form-control" />
                     <span asp-validation-for="BurialNum" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -38,34 +39,78 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="BurialDepth" class="control-label"></label>
-                    <input asp-for="BurialDepth" class="form-control" />
+                    <input asp-for="BurialDepth" min="0" type="number" class="form-control" />
                     <span asp-validation-for="BurialDepth" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="WestToHead" class="control-label"></label>
-                    <input asp-for="WestToHead" class="form-control" />
+                    <input asp-for="WestToHead" min="0" type="number" class="form-control" />
                     <span asp-validation-for="WestToHead" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="WestToFeet" class="control-label"></label>
-                    <input asp-for="WestToFeet" class="form-control" />
+                    <input asp-for="WestToFeet" min="0" type="number" class="form-control" />
                     <span asp-validation-for="WestToFeet" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="SouthToHead" class="control-label"></label>
-                    <input asp-for="SouthToHead" class="form-control" />
+                    <input asp-for="SouthToHead" min="0" type="number" class="form-control" />
                     <span asp-validation-for="SouthToHead" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="SouthToFeet" class="control-label"></label>
-                    <input asp-for="SouthToFeet" class="form-control" />
+                    <input asp-for="SouthToFeet" min="0" type="number" class="form-control" />
                     <span asp-validation-for="SouthToFeet" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Length" class="control-label"></label>
-                    <input asp-for="Length" class="form-control" />
+                    <input asp-for="Length" min="0" type="number" value="" class="form-control" /> <!--Update Length with suggested length-->
                     <span asp-validation-for="Length" class="text-danger"></span>
                 </div>
+                <script>
+                    function calculateMummyLength(westHead, westFeet, southHead, southFeet) {
+                        // calculation
+                        let wH = westHead;
+                        let wF = westFeet;
+                        let sH = southHead;
+                        let sF = southFeet;
+                        let a = wH - wF;
+                        let b = sH - sF;
+                        let cSquared = (a * a) + (b * b);
+                        let c = Math.sqrt(cSquared);
+                        c = Math.round(c, 0);
+                        return (c);
+                    }
+
+                    $('[name="SouthToFeet"]').on('change keyup', function () {
+                        var WestToHead = $('[name="WestToHead"]').val();
+                        var WestToFeet = $('[name="WestToFeet"]').val();
+                        var SouthToHead = $('[name="SouthToHead"]').val();
+                        var SouthToFeet = $('[name="SouthToFeet"]').val();
+                        $('[name="Length"]').attr("placeholder", "(" + calculateMummyLength(WestToHead, WestToFeet, SouthToHead, SouthToFeet) + ")");
+                    })
+                    $('[name="SouthToHead"]').on('change keyup', function () {
+                        var WestToHead = $('[name="WestToHead"]').val();
+                        var WestToFeet = $('[name="WestToFeet"]').val();
+                        var SouthToHead = $('[name="SouthToHead"]').val();
+                        var SouthToFeet = $('[name="SouthToFeet"]').val();
+                        $('[name="Length"]').attr("placeholder", "(" + calculateMummyLength(WestToHead, WestToFeet, SouthToHead, SouthToFeet) + ")");
+                    })
+                    $('[name="WestToHead"]').on('change keyup', function () {
+                        var WestToHead = $('[name="WestToHead"]').val();
+                        var WestToFeet = $('[name="WestToFeet"]').val();
+                        var SouthToHead = $('[name="SouthToHead"]').val();
+                        var SouthToFeet = $('[name="SouthToFeet"]').val();
+                        $('[name="Length"]').attr("placeholder", "(" + calculateMummyLength(WestToHead, WestToFeet, SouthToHead, SouthToFeet) + ")");
+                    })
+                    $('[name="WestToFeet"]').on('change keyup', function () {
+                        var WestToHead = $('[name="WestToHead"]').val();
+                        var WestToFeet = $('[name="WestToFeet"]').val();
+                        var SouthToHead = $('[name="SouthToHead"]').val();
+                        var SouthToFeet = $('[name="SouthToFeet"]').val();
+                        $('[name="Length"]').attr("placeholder", "(" + calculateMummyLength(WestToHead, WestToFeet, SouthToHead, SouthToFeet) + ")");
+                    })
+                </script>
                 <div class="form-group">
                     <label asp-for="BurialSituation" class="control-label"></label>
                     <input asp-for="BurialSituation" class="form-control" />
@@ -73,7 +118,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Goods" class="control-label"></label>
-                    <input asp-for="Goods" class="form-control" />
+                    <select asp-for="Goods" class="form-control" asp-items="ViewBag.Goods"></select>
                     <span asp-validation-for="Goods" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -83,12 +128,21 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Photo" class="control-label"></label>
-                    <input asp-for="Photo" class="form-control" />
+                    <select asp-for="Photo" class="form-control">
+                        <option></option>
+                        <option value="y">Yes</option>
+                    </select>
                     <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="PreservationIndex" class="control-label"></label>
-                    <input asp-for="PreservationIndex" class="form-control" />
+                    <select asp-for="PreservationIndex" class="form-control">
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                        <option value="IV">IV</option>
+                        <option value="V">V</option>
+                    </select>
                     <span asp-validation-for="PreservationIndex" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -98,22 +152,23 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="HairColorCode" class="control-label"></label>
-                    <input asp-for="HairColorCode" class="form-control" />
+                    <select asp-for="HairColorCode" class="form-control" asp-items="ViewBag.HairColorCode">
+                    </select>
                     <span asp-validation-for="HairColorCode" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="AgeCodeSingle" class="control-label"></label>
-                    <input asp-for="AgeCodeSingle" class="form-control" />
+                    <select asp-for="AgeCodeSingle" class="form-control" asp-items="ViewBag.AgeCodeSingle"></select>
                     <span asp-validation-for="AgeCodeSingle" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="BurialMaterials" class="control-label"></label>
-                    <input asp-for="BurialMaterials" class="form-control" />
+                    <select asp-for="BurialMaterials" class="form-control" asp-items="ViewBag.BurialMaterials"></select>
                     <span asp-validation-for="BurialMaterials" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="ExcavationRecorder" class="control-label"></label>
-                    <input asp-for="ExcavationRecorder" class="form-control" />
+                    <input asp-for="ExcavationRecorder" class="form-control" placeholder="Please Enter Your Name" />
                     <span asp-validation-for="ExcavationRecorder" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -123,12 +178,14 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="HeadDirection" class="control-label"></label>
-                    <input asp-for="HeadDirection" class="form-control" />
+                    <select asp-for="HeadDirection" class="form-control" asp-items="ViewBag.HeadDirection">
+                    </select>
                     <span asp-validation-for="HeadDirection" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="ArtifactFound" class="control-label"></label>
-                    <input asp-for="ArtifactFound" class="form-control" />
+                    <select asp-for="ArtifactFound" class="form-control" asp-items="ViewBag.ArtifactFound">
+                    </select>
                     <span asp-validation-for="ArtifactFound" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -145,5 +202,7 @@
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
+
+    
 </body>
 </html>
