@@ -34,8 +34,14 @@
     </div>
     <div>
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
-        {@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })}
-        <a asp-action="Index">Back to List</a>
+        {
+            <div class="p-1">
+                @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })
+            </div>
+        }
+        <div class="p-1">
+            <a class="btn btn-admin" asp-action="Index">Back to List</a>
+        </div>
     </div>
 </body>
 </html>

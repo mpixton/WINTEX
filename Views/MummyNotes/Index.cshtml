@@ -16,7 +16,7 @@
     <p>
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
         {
-            <a asp-action="Create">Create New</a>
+            <a class="btn btn-admin" asp-action="Create">Create New</a>
         }
     </p>
     <div class="d-flex justify-content-start">
@@ -47,29 +47,36 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NoteType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NoteBody)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Mummy.MummyId)
-                    </td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.NoteId">Details</a>
-                        @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                        {
-                            <a asp-action="Edit" asp-route-id="@item.NoteId">Edit</a>
-                        }
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <a asp-action="Delete" asp-route-id="@item.NoteId">Delete</a>
-                        }
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoteType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoteBody)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mummy.MummyId)
+                </td>
+                <td>
+                    <div class="p-1">
+                        <a class="btn btn-admin" asp-action="Details" asp-route-id="@item.NoteId">Details</a>
+                    </div>
+                    @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                    {
+                        <div class="p-1">
+                            <a class="btn btn-admin" asp-action="Edit" asp-route-id="@item.NoteId">Edit</a>
+                        </div>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="p-1">
+                            <a class="btn btn-admin" asp-action="Delete" asp-route-id="@item.NoteId">Delete</a>
+                        </div>
+                    }
 
-                    </td>
-                </tr>
+                </td>
+
+            </tr>
             }
         </tbody>
     </table>

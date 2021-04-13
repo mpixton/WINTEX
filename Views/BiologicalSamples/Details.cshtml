@@ -95,9 +95,14 @@
     </div>
     <div>
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
-        {<a asp-action="Edit" asp-route-id="@Model.BioSampleId">Edit</a>}
-
-        <a asp-action="Index">Back to List</a>
+        {
+            <div class="p-1">
+                <a class="btn btn-admin" asp-action="Edit" asp-route-id="@Model.BioSampleId">Edit</a>
+            </div>
+        }
+        <div class="p-1"></div>
+            <a class="btn btn-admin" asp-action="Index">Back to List</a>
+        </div>
     </div>
 </body>
 </html>

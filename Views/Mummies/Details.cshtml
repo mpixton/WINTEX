@@ -177,12 +177,17 @@
         <div>
             @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
             {
-                <a asp-action="Edit" asp-route-id="@Model.MummyId">
-                    <input type="submit" class="btn btn-admin" value="Edit">
-                </a>
+                <div class="p-1">
+                    <a  asp-action="Edit" asp-route-id="@Model.MummyId">
+                        <input type="submit" class="btn btn-admin" value="Edit">
+                    </a>
+                </div>
             }
-            <a asp-controller="Mummies" asp-action="Index">Back to All Mummies</a>
+            <div class="p-1">
+                <a class="btn btn-admin" asp-controller="Mummies" asp-action="Index">Back to All Mummies</a>
+            </div>
         </div>
+        <br /><br />
         <h4>Post Excavation Data</h4>
         <dl class="row">
             <dt class="col-sm-2">
@@ -297,10 +302,15 @@
         <div>
             @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
             {
-                <a asp-controller="PostExhumationDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Post Excavation Data</a>
+                <div class="p-1">
+                    <a class="btn btn-admin" asp-controller="PostExhumationDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Post Excavation Data</a>
+                </div>
             }
-            <a asp-controller="PostExhumationDatum" asp-action="Index">View All Post Excavation Data</a>
+            <div class="p-1">
+                <a class="btn btn-admin" asp-controller="PostExhumationDatum" asp-action="Index">View All Post Excavation Data</a>
+            </div>
         </div>
+        <br /><br />
         <h4>Osteological Data</h4>
         <dl class="row">
             <dt class="col-sm-2">
@@ -601,10 +611,15 @@
         <div>
             @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
             {
-                <a asp-controller="OsteologicalMummyDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Mummy Osteological Data</a>
+                <div class="p-1">
+                    <a class="btn btn-admin" asp-controller="OsteologicalMummyDatum" asp-action="Edit" asp-route-id="@Model.MummyId">Edit Mummy Osteological Data</a>
+                </div>
             }
-            <a asp-controller="OsteologicalMummyDatum" asp-action="Index">View All Osteological Data</a>
+            <div class="p-1">
+                <a class="btn btn-admin" asp-controller="OsteologicalMummyDatum" asp-action="Index">View All Osteological Data</a>
+            </div>
         </div>
+        <br /><br />
         <h4>Notes</h4>
         <div class="col-12">
             @foreach (MummyNote mn in Model.MummyNotes)
@@ -614,10 +629,13 @@
                 </div>
                 @if (User.IsInRole("Admin"))
                 {
-                    <a asp-action="Edit" asp-controller="MummyNotes" asp-route-id="@mn.NoteId">Edit</a>
+                    <div class="p-1">
+                        <a class="btn btn-admin" asp-action="Edit" asp-controller="MummyNotes" asp-route-id="@mn.NoteId">Edit</a>
+                    </div>
                 }
             }
         </div>
+        <br /><br />
     </div>
 </body>
 </html>
