@@ -47,7 +47,6 @@ namespace WINTEX
 
             services.AddDbContext<FEGBExcavationContext>(options => {
                 options.UseNpgsql(Configuration["ConnectionStrings:FagElGamousPostGres"]);
-                options.EnableSensitiveDataLogging();
                 });
 
             Log.Logger = new LoggerConfiguration()
