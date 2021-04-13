@@ -33,8 +33,8 @@ namespace WINTEX
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            ///Adds DB context for ApplicationDb/UserDb and configures identity authentication resources
-            ///From Here
+            // Adds DB context for ApplicationDb/UserDb and configures identity authentication resources
+            // From Here
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("AuthenicationSqlServer")));
@@ -42,19 +42,19 @@ namespace WINTEX
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultUI()
                     .AddDefaultTokenProviders();
-            ///Up to Here
-            services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddRazorPages();
+            // Up to Here
 
-            // globally auto validate UNSAFE method request's antiforgery token
+            services.AddDatabaseDeveloperPageExceptionFilter();
+            // Takes advantage of scaffolded identity
+            services.AddRazorPages();
+            // Globally auto validate UNSAFE method request's antiforgery token
             services.AddControllersWithViews(options => 
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
-
-
+            // Application db server
             services.AddDbContext<FEGBExcavationContext>(options => {
                 options.UseNpgsql(Configuration["ConnectionStrings:FagElGamousPostGres"]);
                 });
-
+            // Creates the logger and defines the sinks
             Log.Logger = new LoggerConfiguration()
                                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                                 .MinimumLevel.Override("WINTEX", LogEventLevel.Information)
@@ -63,9 +63,9 @@ namespace WINTEX
                                 .WriteTo.Debug()
                                 .WriteTo.File(new JsonFormatter(), "Log/log-.log", rollingInterval: RollingInterval.Day)
                                 .CreateLogger();
-
+            // Adds UnitOfWork to DI
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+            // Allows controllers to use tempdata
             services.AddDistributedMemoryCache();
             services.AddSession();
         }
@@ -81,12 +81,11 @@ namespace WINTEX
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            // Attaches the request user to every HTTP request made to the server
             app.UseSerilogRequestLogging(options =>
             {
                 // Attach additional properties to the request completion event
