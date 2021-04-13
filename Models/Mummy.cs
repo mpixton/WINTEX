@@ -23,13 +23,14 @@ namespace WINTEX.Models
 
         [Key]
         public int MummyId { get; set; }
-
+        [Display(Name = "Burial Number")]
         public string BurialNum { get; set; }
 
         public int? ShaftId { get; set; }
 
         public int? TombId { get; set; }
-
+        [Display(Name = "Burial Depth")]
+        [DisplayFormat(DataFormatString = "{0:N0}")]
         public decimal? BurialDepth { get; set; }
 
         public decimal? WestToHead { get; set; }
@@ -49,20 +50,21 @@ namespace WINTEX.Models
         public string ArtifactsDescription { get; set; }
 
         public bool? Photo { get; set; }
-
+        [Display(Name = "Preservation Index")]
         public string PreservationIndex { get; set; }
 
         public string ClusterNum { get; set; }
-
+        [Display(Name = "Hair Color Code")]
         public string HairColorCode { get; set; }
 
         public string AgeCodeSingle { get; set; }
-
+        [Display(Name = "Burials Materials")]
         public string BurialMaterials { get; set; }
 
         public string ExcavationRecorder { get; set; }
 
         [Column(TypeName = "timestamp with time zone")]
+        [Display(Name = "Date Excavated")]
         public DateTime? DateExcavated { get; set; }
 
         public string YearExcavated { get; set; }
@@ -70,9 +72,9 @@ namespace WINTEX.Models
         public string MonthExcavated { get; set; }
 
         public string DayExcavated { get; set; }
-
+        [Display(Name = "Head Direction")]
         public string HeadDirection { get; set; }
-
+        [Display(Name = "Artifact(s) Found?")]
         public bool? ArtifactFound { get; set; }
 
 
