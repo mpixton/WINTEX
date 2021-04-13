@@ -39,5 +39,17 @@ namespace WINTEX.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> DeleteRole(string Name)
+        {
+            if (Name != null)
+            {
+                IdentityRole role = await _roleManager.FindByNameAsync(Name);
+                await _roleManager.DeleteAsync(role);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -22,14 +22,31 @@
                     <tr>
                         <th>Id</th>
                         <th>Role</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var role in Model)
                     {
-                        <tr>
-                            <td>@role.Id</td>
-                            <td>@role.Name</td>
+                    <tr>
+                        <td>@role.Id</td>
+                        <td>@role.Name</td>
+                        <td>
+                            @if (role.Name != "Admin" && role.Name != "Researcher")
+                            {
+
+                                <form method="post" asp-action="DeleteRole" asp-controller="RoleManager">
+                                    <input  type="hidden" name="Name" value="@role.Name" />
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-admin">Delete</button>
+                                    </span>
+
+                                </form>
+
+
+
+                            }
+                        </td>
                         </tr>
                     }
                 </tbody>
