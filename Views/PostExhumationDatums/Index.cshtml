@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Exhumation Datums";
+    Layout = "~/Views/Shared/_RestOfSiteLayout.cshtml";
 }
 
 @model IEnumerable<WINTEX.Models.PostExhumationDatum>
@@ -14,162 +15,167 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
-        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
-        {
-            <a class="btn btn-admin" asp-action="Create">Create New</a>
-        }
-    </p>
-    <div class="d-flex justify-content-start">
-        <div class="row">
-            <div class="col-11">
-                <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
-                     page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
-                     page-class-selected="btn-dark" class="btn-group p-2"></div>
+    <div class="d-flex justify-content-center mt-2" style="z-index: 2; position: relative">
+        <div class="card rounded-3 d-flex mt-2 py-3 px-3 mx-5" style="max-width: 100%; min-width:50%; box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgb(0, 0, 0); border-style: solid; border-width: 7px; border-color: #75a8b3; z-index: 3; overflow-x: scroll;">
+            <div class="d-flex justify-content-start align-items-center">
+                <div class="d-flex justify-content-start" style="width: 20%">
+                    <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage"
+                         page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
+                         page-class-selected="btn-dark" class="btn-group p-2"></div>
+                </div>
+                <div class="d-flex justify-content-center" style="width: 60%">
+                    <h4>Description needed here</h4>
+                </div>
+                @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+                {
+                    <div class="d-flex justify-content-end" style="width: 20%">
+                        <a class="btn btn-admin" asp-action="Create">Create New</a>
+                    </div>
+                }
             </div>
+            <br />
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HairTaken)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SoftTissueTaken)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BoneTaken)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ToothTaken)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TextileTaken)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BurialSampleTaken)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DescriptionOfTaken)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SampleNum)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Sex)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SexBodyCol)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GefunctionTotal)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PreservationNotes)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AgeAtDeath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EstimateLivingStature)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BodyAnalysis)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SexBurialMethod)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FaceBundle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Mummy)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HairTaken)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SoftTissueTaken)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BoneTaken)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ToothTaken)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TextileTaken)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BurialSampleTaken)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DescriptionOfTaken)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SampleNum)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Sex)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SexBodyCol)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GefunctionTotal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PreservationNotes)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AgeAtDeath)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EstimateLivingStature)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BodyAnalysis)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SexBurialMethod)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FaceBundle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mummy.MummyId)
+                            </td>
+                            <td>
+                                <div class="p-1">
+                                    <a class="btn btn-admin" asp-action="Details" asp-route-id="@item.MummyId">Details</a>
+                                </div>
+                                @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
+                                {
+                                    <div class="p-1">
+                                        <a class="btn btn-admin" asp-action="Edit" asp-route-id="@item.MummyId">Edit</a>
+                                    </div>
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="p-1">
+                                        <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
+                                    </div>
+                                }
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
-    <br />
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.HairTaken)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SoftTissueTaken)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BoneTaken)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ToothTaken)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.TextileTaken)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BurialSampleTaken)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DescriptionOfTaken)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SampleNum)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Sex)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SexBodyCol)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.GefunctionTotal)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PreservationNotes)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AgeAtDeath)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EstimateLivingStature)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BodyAnalysis)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SexBurialMethod)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FaceBundle)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Mummy)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HairTaken)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SoftTissueTaken)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BoneTaken)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ToothTaken)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TextileTaken)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BurialSampleTaken)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DescriptionOfTaken)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SampleNum)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sex)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SexBodyCol)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GefunctionTotal)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PreservationNotes)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AgeAtDeath)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EstimateLivingStature)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BodyAnalysis)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SexBurialMethod)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FaceBundle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Mummy.MummyId)
-                </td>
-                <td>
-                    <div class="p-1">
-                        <a class="btn btn-admin" asp-action="Details" asp-route-id="@item.MummyId">Details</a>
-                    </div>
-                    @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                    {
-                        <div class="p-1">
-                            <a class="btn btn-admin" asp-action="Edit" asp-route-id="@item.MummyId">Edit</a>
-                        </div>
-                    }
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <div class="p-1">
-                            <a class="btn btn-admin" asp-action="Delete" asp-route-id="@item.MummyId">Delete</a>
-                        </div>
-                    }
-                </td>
-
-
-            </tr>
-            }
-        </tbody>
-    </table>
 </body>
 </html>
