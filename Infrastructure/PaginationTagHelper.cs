@@ -34,6 +34,7 @@ namespace WINTEX.Infrastructure
         
         public int NumPages {get;set;}
         public int CurrentPage { get; set; }
+        public string PageAction { get; set; } = "Index";
         public bool PageClassesEnabled { get; set; } = false;
         public string PageClass { get; set; }
         public string PageClassNormal { get; set; }
@@ -58,9 +59,9 @@ namespace WINTEX.Infrastructure
                     if (i == CurrentPage - 4)
                     {
                         TagBuilder endTag = new TagBuilder("a");
-                        KeyValuePairs["currPage"] = 1;
+                        KeyValuePairs["pageNum"] = 1;
                         //assign href content with routing information
-                        endTag.Attributes["href"] = urlHelp.Action("PaginateAndFilter", KeyValuePairs);
+                        endTag.Attributes["href"] = urlHelp.Action(PageAction, KeyValuePairs);
                         //endTag.Attributes["asp-route-pageNum"] = "@(ViewBag.CurrentPage - 1)";
                         //if we are using page classes, then assign the tag a class appropriately
                         if (PageClassesEnabled)
@@ -78,9 +79,9 @@ namespace WINTEX.Infrastructure
                     if (i == CurrentPage - 4)
                     {
                             TagBuilder endTag = new TagBuilder("a");
-                            KeyValuePairs["currPage"] = CurrentPage - 1;
+                            KeyValuePairs["pageNum"] = CurrentPage - 1;
                             //assign href content with routing information
-                            endTag.Attributes["href"] = urlHelp.Action("PaginateAndFilter", KeyValuePairs);
+                            endTag.Attributes["href"] = urlHelp.Action(PageAction, KeyValuePairs);
                             //endTag.Attributes["asp-route-pageNum"] = "@(ViewBag.CurrentPage - 1)";
                             //if we are using page classes, then assign the tag a class appropriately
                             if (PageClassesEnabled)
@@ -95,9 +96,9 @@ namespace WINTEX.Infrastructure
                             finishedTag.InnerHtml.AppendHtml(endTag);
                     }
                     TagBuilder individualTag = new TagBuilder("a");
-                    KeyValuePairs["currPage"] = i;
+                    KeyValuePairs["pageNum"] = i;
                     //assign href content with routing information
-                    individualTag.Attributes["href"] = urlHelp.Action("PaginateAndFilter", KeyValuePairs);
+                    individualTag.Attributes["href"] = urlHelp.Action(PageAction, KeyValuePairs);
                     //if we are using page classes, then assign the tag a class appropriately
                     if (PageClassesEnabled)
                     {
@@ -117,9 +118,9 @@ namespace WINTEX.Infrastructure
                         if ((CurrentPage + 4) < NumPages)
                         {
                             TagBuilder endTag = new TagBuilder("a");
-                            KeyValuePairs["currPage"] = CurrentPage + 1;
+                            KeyValuePairs["pageNum"] = CurrentPage + 1;
                             //assign href content with routing information
-                            endTag.Attributes["href"] = urlHelp.Action("PaginateAndFilter", KeyValuePairs);
+                            endTag.Attributes["href"] = urlHelp.Action(PageAction, KeyValuePairs);
                             //endTag.Attributes["asp-route-pageNum"] = "@(ViewBag.CurrentPage - 1)";
                             //if we are using page classes, then assign the tag a class appropriately
                             if (PageClassesEnabled)
@@ -140,9 +141,9 @@ namespace WINTEX.Infrastructure
                         if ((CurrentPage + 4) < NumPages)
                         {
                             TagBuilder endTag = new TagBuilder("a");
-                            KeyValuePairs["currPage"] = NumPages;
+                            KeyValuePairs["pageNum"] = NumPages;
                             //assign href content with routing information
-                            endTag.Attributes["href"] = urlHelp.Action("PaginateAndFilter", KeyValuePairs);
+                            endTag.Attributes["href"] = urlHelp.Action(PageAction, KeyValuePairs);
                             //endTag.Attributes["asp-route-pageNum"] = "@(ViewBag.CurrentPage - 1)";
                             //if we are using page classes, then assign the tag a class appropriately
                             if (PageClassesEnabled)

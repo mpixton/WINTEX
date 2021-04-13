@@ -30,12 +30,12 @@
                 <div class="form-group">
                     <label asp-for="ShaftId" class="control-label"></label>
                     <select asp-for="ShaftId" class="form-control" asp-items="ViewBag.ShaftId"></select>
-                    <a asp-controller="ShaftLocations" asp-action="Create" class="btn btn-outline-primary">Add New Shaft Location</a>
+                    <a asp-controller="ShaftLocations" asp-action="Create" class="btn btn-secondary">Add New Shaft Location</a>
                 </div>
                 <div class="form-group">
                     <label asp-for="TombId" class="control-label"></label>
                     <select asp-for="TombId" class="form-control" asp-items="ViewBag.TombId"></select>
-                    <a asp-controller="TombLocations" asp-action="Create" class=" btn btn-outline-primary">Add New Tomb Location</a>
+                    <a asp-controller="TombLocations" asp-action="Create" class=" btn btn-secondary">Add New Tomb Location</a>
                 </div>
                 <div class="form-group">
                     <label asp-for="BurialDepth" class="control-label"></label>
@@ -130,7 +130,7 @@
                     <label asp-for="Photo" class="control-label"></label>
                     <select asp-for="Photo" class="form-control">
                         <option></option>
-                        <option value="y">Yes</option>
+                        <option value=true>Yes</option>
                     </select>
                     <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
@@ -196,7 +196,7 @@
     </div>
 
     <div>
-        <a asp-action="Index">Back to List</a>
+        <a class="btn btn-admin" asp-action="Index">Back to List</a>
     </div>
 
     @section Scripts {
