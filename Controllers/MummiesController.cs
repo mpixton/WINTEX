@@ -63,9 +63,9 @@ namespace WINTEX
             }
             int pageSize = 20;
             var pageInfo = new Paginator<Mummy>(pageSize, list);
-            ViewData["CurrentPage"] = currPage;
+            ViewData["CurrentPage"] = pageNum;
             ViewData["TotalPages"] = pageInfo.TotalPages;
-            return View(pageInfo.GetItems(currPage));
+            return View(pageInfo.GetItems(pageNum));
         }
 
         [HttpPost]
