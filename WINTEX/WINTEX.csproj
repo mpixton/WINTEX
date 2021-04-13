@@ -1293,7 +1293,6 @@
     <None Include="bin\Debug\net5.0\WINTEX.Views.dll" />
     <None Include="bin\Debug\net5.0\WINTEX.Views.pdb" />
     <None Include="WINTEX.csproj" />
-    <None Include="WINTEX.sln" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="obj\Debug\net5.0\Razor\Views\BiologicalSamples\Create.cshtml.g.cs" />
