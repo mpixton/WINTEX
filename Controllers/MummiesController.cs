@@ -63,9 +63,12 @@ namespace WINTEX
             }
             int pageSize = 20;
             var pageInfo = new Paginator<Mummy>(pageSize, list);
-            ViewData["CurrentPage"] = currPage;
-            ViewData["TotalPages"] = pageInfo.TotalPages;
-            return View(pageInfo.GetItems(currPage));
+            ViewBag.CurrentPage = pageNum;
+            ViewBag.TotalPages = pageInfo.TotalPages;
+            ViewBag.HasPreviousPage = !(pageNum > 1) ? "disabled" : "";
+            ViewBag.HasNextPage = !(pageNum < pageInfo.TotalPages) ? "disabled" : "";
+                 
+            return View(pageInfo.GetItems(pageNum));
         }
 
         [HttpPost]
