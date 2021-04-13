@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using WINTEX.DAL;
 using WINTEX.Enums;
 using WINTEX.Infrastructure;
@@ -15,10 +16,12 @@ namespace WINTEX.Controllers
 {
     public class ShaftLocationsController : Controller
     {
+        private readonly IDiagnosticContext diagnosticContext;
         private readonly FEGBExcavationContext _context;
 
-        public ShaftLocationsController(FEGBExcavationContext context)
+        public ShaftLocationsController(IDiagnosticContext diagnosticContext, FEGBExcavationContext context)
         {
+            this.diagnosticContext = diagnosticContext;
             _context = context;
         }
 
