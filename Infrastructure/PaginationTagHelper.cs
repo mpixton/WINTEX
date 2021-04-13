@@ -47,25 +47,120 @@ namespace WINTEX.Infrastructure
 
             //build a div tag
             TagBuilder finishedTag = new TagBuilder("div");
+            
 
             //build a tag for each page there is
             for (int i = 1; i <= NumPages; i++)
             {
-                TagBuilder individualTag = new TagBuilder("a");
-                KeyValuePairs["pageNum"] = i;
-                //assign href content with routing information
-                individualTag.Attributes["href"] = urlHelp.Action("Index", KeyValuePairs);
-                //if we are using page classes, then assign the tag a class appropriately
-                if (PageClassesEnabled)
+                if (i >= (CurrentPage - 4) && i <= (CurrentPage + 4))
                 {
-                    individualTag.AddCssClass(PageClass);
-                    //if iterating over the current page, assign the PageClassSelected styling. Otherwise, use PageClassNormal styling
-                    individualTag.AddCssClass(i == CurrentPage ? PageClassSelected : PageClassNormal);
+                    //pagination take to beginning
+                    if (i == CurrentPage - 4)
+                    {
+                        TagBuilder endTag = new TagBuilder("a");
+                        KeyValuePairs["pageNum"] = 1;
+                        //assign href content with routing information
+                        endTag.Attributes["href"] = urlHelp.Action("Index", KeyValuePairs);
+                        //endTag.Attributes["asp-route-pageNum"] = "@(ViewBag.CurrentPage - 1)";
+                        //if we are using page classes, then assign the tag a class appropriately
+                        if (PageClassesEnabled)
+                        {
+                            endTag.AddCssClass(PageClass);
+                            //if iterating over the current page, assign the PageClassSelected styling. Otherwise, use PageClassNormal styling
+                            endTag.AddCssClass(PageClassNormal);
+                        }
+                        //append page number to tag innerhtml
+                        endTag.InnerHtml.AppendHtml("<<");
+                        //append tag to outer div tag innerhtml
+                        finishedTag.InnerHtml.AppendHtml(endTag);
+                    }
+                    //pagination previous button ------------------
+                    if (i == CurrentPage - 4)
+                    {
+                            TagBuilder endTag = new TagBuilder("a");
+                            KeyValuePairs["pageNum"] = CurrentPage - 1;
+                            //assign href content with routing information
+                            endTag.Attributes["href"] = urlHelp.Action("Index", KeyValuePairs);
+                            //endTag.Attributes["asp-route-pageNum"] = "@(ViewBag.CurrentPage - 1)";
+                            //if we are using page classes, then assign the tag a class appropriately
+                            if (PageClassesEnabled)
+                            {
+                                endTag.AddCssClass(PageClass);
+                                //if iterating over the current page, assign the PageClassSelected styling. Otherwise, use PageClassNormal styling
+                                endTag.AddCssClass(PageClassNormal);
+                            }
+                            //append page number to tag innerhtml
+                            endTag.InnerHtml.AppendHtml("<");
+                            //append tag to outer div tag innerhtml
+                            finishedTag.InnerHtml.AppendHtml(endTag);
+                    }
+                    TagBuilder individualTag = new TagBuilder("a");
+                    KeyValuePairs["pageNum"] = i;
+                    //assign href content with routing information
+                    individualTag.Attributes["href"] = urlHelp.Action("Index", KeyValuePairs);
+                    //if we are using page classes, then assign the tag a class appropriately
+                    if (PageClassesEnabled)
+                    {
+                        individualTag.AddCssClass(PageClass);
+                        //if iterating over the current page, assign the PageClassSelected styling. Otherwise, use PageClassNormal styling
+                        individualTag.AddCssClass(i == CurrentPage ? PageClassSelected : PageClassNormal);
+                    }
+                    //append page number to tag innerhtml
+                    individualTag.InnerHtml.AppendHtml(i.ToString());
+
+                    //append tag to outer div tag innerhtml
+                    finishedTag.InnerHtml.AppendHtml(individualTag);
+
+                    //pagination forward button ---------------
+                    if (i == CurrentPage + 4)
+                    {
+                        if ((CurrentPage + 4) < NumPages)
+                        {
+                            TagBuilder endTag = new TagBuilder("a");
+                            KeyValuePairs["pageNum"] = CurrentPage + 1;
+                            //assign href content with routing information
+                            endTag.Attributes["href"] = urlHelp.Action("Index", KeyValuePairs);
+                            //endTag.Attributes["asp-route-pageNum"] = "@(ViewBag.CurrentPage - 1)";
+                            //if we are using page classes, then assign the tag a class appropriately
+                            if (PageClassesEnabled)
+                            {
+                                endTag.AddCssClass(PageClass);
+                                //if iterating over the current page, assign the PageClassSelected styling. Otherwise, use PageClassNormal styling
+                                endTag.AddCssClass(PageClassNormal);
+                            }
+                            //append page number to tag innerhtml
+                            endTag.InnerHtml.AppendHtml(">");
+                            //append tag to outer div tag innerhtml
+                            finishedTag.InnerHtml.AppendHtml(endTag);
+                        }
+                    }
+                    //pagination to the end button --------------
+                    if (i == CurrentPage + 4)
+                    {
+                        if ((CurrentPage + 4) < NumPages)
+                        {
+                            TagBuilder endTag = new TagBuilder("a");
+                            KeyValuePairs["pageNum"] = NumPages;
+                            //assign href content with routing information
+                            endTag.Attributes["href"] = urlHelp.Action("Index", KeyValuePairs);
+                            //endTag.Attributes["asp-route-pageNum"] = "@(ViewBag.CurrentPage - 1)";
+                            //if we are using page classes, then assign the tag a class appropriately
+                            if (PageClassesEnabled)
+                            {
+                                endTag.AddCssClass(PageClass);
+                                //if iterating over the current page, assign the PageClassSelected styling. Otherwise, use PageClassNormal styling
+                                endTag.AddCssClass(PageClassNormal);
+                            }
+                            //append page number to tag innerhtml
+                            endTag.InnerHtml.AppendHtml(">>");
+                            //append tag to outer div tag innerhtml
+                            finishedTag.InnerHtml.AppendHtml(endTag);
+                        }
+                    }
+
+
                 }
-                //append page number to tag innerhtml
-                individualTag.InnerHtml.AppendHtml(i.ToString());
-                //append tag to outer div tag innerhtml
-                finishedTag.InnerHtml.AppendHtml(individualTag);
+                
             }
             //append div's innerhtml to the page content
             output.Content.AppendHtml(finishedTag.InnerHtml);
