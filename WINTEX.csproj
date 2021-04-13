@@ -62,7 +62,6 @@
     <Content Remove="Views\ShaftLocations\Index.cshtml" />
     <Content Remove="Views\TombLocations\Index.cshtml" />
     <Content Remove="Views\TombLocations\Edit.cshtml" />
-    <Content Remove="Views\Home\DataInsights.cshtml" />
     <Content Remove="wwwroot\img\LogoTransparent.png" />
   </ItemGroup>
 </Project>
