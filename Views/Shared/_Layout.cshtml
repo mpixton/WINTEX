@@ -58,15 +58,12 @@
                 <li class="sidebar-nav-item">
                     <partial name="_LoginPartial" class="js-scroll-trigger" />
                 </li>
-                <li>
-                    <div class="d-flex justify-content-center">
-                        <img src="~/img/LogoTransparent.png" class="p-2" style="max-width: 200px;" />
-                    </div>
-                </li>
             </ul>
-
+            <div class="d-flex justify-content-center">
+                <img src="~/img/LogoTransparent.png" class="" style="max-width: 200px; position:absolute; bottom:0; margin-bottom: 40px" />
+            </div>
         </nav>
-        <div class="text-center container-fluid  p-3">
+        <div class="text-center container p-3">
             @RenderBody()
         </div>
         <!-- Footer -->
