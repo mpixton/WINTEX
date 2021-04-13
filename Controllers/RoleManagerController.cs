@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,11 @@ namespace WINTEX.Controllers
     ///it allows for new roles to be made
     public class RoleManagerController : Controller
     {
+        private readonly IDiagnosticContext diagnosticContext;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public RoleManagerController(RoleManager<IdentityRole> roleManager)
+        public RoleManagerController(IDiagnosticContext diagnosticContext, RoleManager<IdentityRole> roleManager)
         {
+            this.diagnosticContext = diagnosticContext;
             _roleManager = roleManager;
         }
 

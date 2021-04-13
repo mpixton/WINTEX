@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using WINTEX.DAL;
 using WINTEX.Infrastructure;
 using WINTEX.Models;
@@ -14,10 +15,12 @@ namespace WINTEX.Controllers
 {
     public class PostExhumationDatumsController : Controller
     {
+        private readonly IDiagnosticContext diagnosticContext;
         private readonly FEGBExcavationContext _context;
 
-        public PostExhumationDatumsController(FEGBExcavationContext context)
+        public PostExhumationDatumsController(IDiagnosticContext diagnosticContext, FEGBExcavationContext context)
         {
+            this.diagnosticContext = diagnosticContext;
             _context = context;
         }
 
