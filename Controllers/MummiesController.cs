@@ -48,18 +48,22 @@ namespace WINTEX
                 if (TempData["hair-color"] != null && (string)TempData["hair-color"] != "all")
                 {
                     list = list.Where(m => m.HairColorCode == (string)TempData["hair-color"]);
+                    ViewData["HairFilter"] = (string)TempData["hair-color"];
                 }
                 if ((string)TempData["pres-index"] != null && (string)TempData["pres-index"] != "all")
                 {
                     list = list.Where(m => m.PreservationIndex == (string)TempData["pres-index"]);
+                    ViewData["PresFilter"] = (string)TempData["pres-index"];
                 }
                 if ((string)TempData["head"] != null && (string)TempData["head"] != "all")
                 {
                     list = list.Where(m => m.HeadDirection == (string)TempData["head"]);
+                    ViewData["HeadFilter"] = (string)TempData["head"];
                 }
-                if ((string)TempData["burial-depth"] != null && (string)TempData["burial-depth"] != "all")
+                if (TempData["burial-depth"] != null)
                 {
-                    list = list.Where(m => m.BurialDepth >= Convert.ToDecimal(TempData["burial-depth"]));
+                    list = list.Where(m => m.BurialDepth >= Convert.ToInt16(TempData["burial-depth"]));
+                    ViewData["DepthFilter"] = Convert.ToInt16(TempData["burial-depth"]);
                 }
                 ViewData["FilterBurialDepth"] = TempData["burial-depth"];
             }
@@ -100,6 +104,25 @@ namespace WINTEX
         {
             TempData.Clear();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult PaginateAndFilter(int currPage, string headDirection, string presIndex, string hairColor, int? burialDepth)
+        {
+            _logger.LogInformation("{currPage} {headDirection} {presIndex} {hairColor} {burialDepth}", 
+                currPage, headDirection, presIndex, hairColor, burialDepth);
+            TempData["pres-index"] = presIndex;
+            TempData["head"] = headDirection;
+            TempData["hair-color"] = hairColor;
+            TempData["burial-depth"] = burialDepth;
+            TempData["PresIndexFilter"] = presIndex;
+            TempData["HeadFilter"] = headDirection;
+            TempData["HairColorFilter"] = hairColor;
+            TempData["DepthFilter"] = burialDepth;
+            if (headDirection != null || presIndex != null || hairColor != null || burialDepth != null)
+            {
+                TempData["Filters"] = "true";
+            }
+            return RedirectToAction("Index", new { pageNum = currPage});
         }
 
         // GET: Mummies/Details/5
