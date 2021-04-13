@@ -106,10 +106,10 @@ namespace WINTEX
             return RedirectToAction("Index");
         }
 
-        public IActionResult PaginateAndFilter(int currPage, string headDirection, string presIndex, string hairColor, int? burialDepth)
+        public IActionResult PaginateAndFilter(int pageNum, string headDirection, string presIndex, string hairColor, int? burialDepth)
         {
             _logger.LogInformation("{currPage} {headDirection} {presIndex} {hairColor} {burialDepth}", 
-                currPage, headDirection, presIndex, hairColor, burialDepth);
+                pageNum, headDirection, presIndex, hairColor, burialDepth);
             TempData["pres-index"] = presIndex;
             TempData["head"] = headDirection;
             TempData["hair-color"] = hairColor;
@@ -122,7 +122,7 @@ namespace WINTEX
             {
                 TempData["Filters"] = "true";
             }
-            return RedirectToAction("Index", new { pageNum = currPage});
+            return RedirectToAction("Index", new { pageNum = pageNum});
         }
 
         // GET: Mummies/Details/5
