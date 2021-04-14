@@ -1,5 +1,7 @@
-﻿@{
-    ViewData["Title"] = "GIS Data";
+@{
+
+    ViewData["Title"] = "GIS Datums";
+
     Layout = "~/Views/Shared/_RestOfSiteLayout.cshtml";
 }
 
@@ -12,7 +14,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>GIS Data</title>
+    <title>GIS Datums</title>
 </head>
 <body>
     <div class="d-flex justify-content-center mt-2" style="z-index: 2; position: relative">
@@ -94,6 +96,17 @@
                     }
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                <div class="d-flex">
+                    <a asp-action="Index" asp-route-pageNum="@(ViewBag.CurrentPage - 1)"
+                       class="btn container-fluid btn-outline-dark @ViewBag.HasPreviousPage">Previous Page</a>
+                </div>
+                <br />
+                <div class="d-flex">
+                    <a asp-action="Index" asp-route-pageNum="@(ViewBag.CurrentPage + 1)"
+                       class="btn container-fluid btn-outline-dark @ViewBag.HasNextPage">Next Page</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

@@ -85,6 +85,17 @@
                     }
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                <div class="d-flex">
+                    <a asp-action="Index" asp-route-pageNum="@(ViewBag.CurrentPage - 1)"
+                       class="btn container-fluid btn-outline-dark @ViewBag.HasPreviousPage">Previous Page</a>
+                </div>
+                <br />
+                <div class="d-flex">
+                    <a asp-action="Index" asp-route-pageNum="@(ViewBag.CurrentPage + 1)"
+                       class="btn container-fluid btn-outline-dark @ViewBag.HasNextPage">Next Page</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

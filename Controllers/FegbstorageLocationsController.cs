@@ -32,6 +32,8 @@ namespace WINTEX
             var pageInfo = new Paginator<FegbstorageLocation>(pageSize, list);
             ViewData["CurrentPage"] = pageNum;
             ViewData["TotalPages"] = pageInfo.TotalPages;
+            ViewBag.HasPreviousPage = !(pageNum > 1) ? "disabled" : "";
+            ViewBag.HasNextPage = !(pageNum < pageInfo.TotalPages) ? "disabled" : "";
             return View(pageInfo.GetItems(pageNum));
         }
 
