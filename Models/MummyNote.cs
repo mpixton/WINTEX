@@ -12,14 +12,18 @@ namespace WINTEX.Models
     public partial class MummyNote
     {
         [Key]
+        [Display(Name = "Note Id")]
         public long NoteId { get; set; }
 
+        [Display(Name = "Mummy Id")]
         public int MummyId { get; set; }
 
         [StringLength(15)]
+        [Display(Name = "Note Type")]
         public string NoteType { get; set; }
 
         [StringLength(500)]
+        [Display(Name = "Note")]
         public string NoteBody { get; set; }
 
         [ForeignKey(nameof(MummyId))]

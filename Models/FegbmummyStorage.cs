@@ -14,9 +14,11 @@ namespace WINTEX.Models
     public partial class FegbmummyStorage
     {
         [Key]
+        [Display(Name = "Mummy Id")]
         public int MummyId { get; set; }
 
         [Key]
+        [Display(Name = "Shelf Id")]
         public int ShelfId { get; set; }
 
         [ForeignKey(nameof(MummyId))]
@@ -25,6 +27,7 @@ namespace WINTEX.Models
 
         [ForeignKey(nameof(ShelfId))]
         [InverseProperty(nameof(FegbstorageLocation.FegbmummyStorages))]
+        [Display(Name = "Shelf")]
         public virtual FegbstorageLocation Shelf { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace WINTEX.Models
         }
 
         [Key]
+        [Display(Name = "")]
         public int ShaftId { get; set; }
 
         [Column("YLower")]
@@ -48,12 +49,15 @@ namespace WINTEX.Models
         public string Subplot { get; set; }
 
         [StringLength(22)]
+        [Display(Name = "Shaft Location Lookup")]
         public string Lookup { get; set; }
 
         [InverseProperty(nameof(BiologicalSample.Shaft))]
+        [Display(Name = "Biological Samples")]
         public virtual ICollection<BiologicalSample> BiologicalSamples { get; set; }
 
         [InverseProperty(nameof(CarbonDating.ShaftLocation))]
+        [Display(Name = "Carbon Dating Samples")]
         public virtual ICollection<CarbonDating> CarbonDatings { get; set; }
 
         [InverseProperty(nameof(Mummy.Shaft))]

@@ -18,20 +18,27 @@ namespace WINTEX.Models
         }
 
         [Key]
+        [Display(Name = "Biological Sample Id")]
         public int BioSampleId { get; set; }
 
         [StringLength(2)]
+        [Display(Name = "Rack Number")]
         public string RackNum { get; set; }
 
+        [Display(Name = "Bag Number")]
         public int? BagNum { get; set; }
-
+        
+        [Display(Name = "Shaft Id")]
         public int? ShaftId { get; set; }
 
         [StringLength(15)]
+        [Display(Name = "Burial Number")]
         public string BurialNum { get; set; }
 
+        [Display(Name = "Mummy Id")]
         public int? MummyId { get; set; }
 
+        [Display(Name = "Cluster Number")]
         public int? ClusterNum { get; set; }
 
         [StringLength(150)]
@@ -41,12 +48,16 @@ namespace WINTEX.Models
         public string Initials { get; set; }
 
         [StringLength(3)]
+        [Display(Name = "Sampled Month")]
         public string SampledMonth { get; set; }
 
+        [Display(Name = "Sampled Day")]
         public int? SampledDay { get; set; }
 
+        [Display(Name = "Sampled Year")]
         public int? SampledYear { get; set; }
 
+        [Display(Name = "Previously Sampled")]
         public bool? PreviouslySampled { get; set; }
 
         [ForeignKey(nameof(MummyId))]
@@ -55,9 +66,11 @@ namespace WINTEX.Models
 
         [ForeignKey(nameof(ShaftId))]
         [InverseProperty(nameof(ShaftLocation.BiologicalSamples))]
+        [Display(Name = "Shaft Location")]
         public virtual ShaftLocation Shaft { get; set; }
 
         [InverseProperty(nameof(BioSamplesNote.BioSample))]
+        [Display(Name = "Notes")]
         public virtual ICollection<BioSamplesNote> BioSamplesNotes { get; set; }
     }
 }

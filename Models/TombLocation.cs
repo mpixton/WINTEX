@@ -16,9 +16,11 @@ namespace WINTEX.Models
         }
 
         [Key]
+        [Display(Name = "Tomb Location Id")]
         public int TombLocationId { get; set; }
 
         [StringLength(10)]
+        [Display(Name = "Tomb Location Lookup")]
         public string LookupValue { get; set; }
 
         [StringLength(5)]

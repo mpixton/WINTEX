@@ -17,19 +17,24 @@ namespace WINTEX.Models
         }
 
         [Key]
+        [Display(Name = "Shelf Id")]
         public int ShelfId { get; set; }
 
+        [Display(Name = "Rack")]
         public int Rack { get; set; }
 
         [Required]
         [StringLength(1)]
+        [Display(Name = "Shelf")]
         public string Shelf { get; set; }
         
         [Required]
         [StringLength(2)]
+        [Display(Name = "Sub Shelf")]
         public string SubShelf { get; set; }
 
         [InverseProperty(nameof(FegbmummyStorage.Shelf))]
+        [Display(Name = "Mummies")]
         public virtual ICollection<FegbmummyStorage> FegbmummyStorages { get; set; }
     }
 }

@@ -9,8 +9,10 @@ namespace WINTEX.Models
     public class HairColorCodes
     {
         [Key]
+        [Display(Name = "Hair Color Code")]
         public string HairColorCode { get; set; }
 
+        [Display(Name = "Description")]
         public string HairColorDescription { get; set; }
     }
 }

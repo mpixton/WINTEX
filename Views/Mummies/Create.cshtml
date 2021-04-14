@@ -22,7 +22,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="BurialNum" class="control-label"></label>
-                    <input asp-for="BurialNum" min="0" type="number" class="form-control" />
+                    <input asp-for="BurialNum" min="0" type="number" class="form-control" required/>
                     <span asp-validation-for="BurialNum" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -37,32 +37,32 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="BurialDepth" class="control-label"></label>
-                    <input asp-for="BurialDepth" min="0" type="number" class="form-control" />
+                    <input asp-for="BurialDepth" min="0" type="number" class="form-control" required />
                     <span asp-validation-for="BurialDepth" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="WestToHead" class="control-label"></label>
-                    <input asp-for="WestToHead" min="0" type="number" class="form-control" />
+                    <input asp-for="WestToHead" min="0" type="number" class="form-control" required />
                     <span asp-validation-for="WestToHead" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="WestToFeet" class="control-label"></label>
-                    <input asp-for="WestToFeet" min="0" type="number" class="form-control" />
+                    <input asp-for="WestToFeet" min="0" type="number" class="form-control" required />
                     <span asp-validation-for="WestToFeet" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="SouthToHead" class="control-label"></label>
-                    <input asp-for="SouthToHead" min="0" type="number" class="form-control" />
+                    <input asp-for="SouthToHead" min="0" type="number" class="form-control" required />
                     <span asp-validation-for="SouthToHead" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="SouthToFeet" class="control-label"></label>
-                    <input asp-for="SouthToFeet" min="0" type="number" class="form-control" />
+                    <input asp-for="SouthToFeet" min="0" type="number" class="form-control" required />
                     <span asp-validation-for="SouthToFeet" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Length" class="control-label"></label>
-                    <input asp-for="Length" min="0" type="number" value="" class="form-control" /> <!--Update Length with suggested length-->
+                    <input asp-for="Length" min="0" type="number" value="" class="form-control" required /> <!--Update Length with suggested length-->
                     <span asp-validation-for="Length" class="text-danger"></span>
                 </div>
                 <script>
@@ -111,7 +111,7 @@
                 </script>
                 <div class="form-group">
                     <label asp-for="BurialSituation" class="control-label"></label>
-                    <input asp-for="BurialSituation" class="form-control" />
+                    <input asp-for="BurialSituation" class="form-control" required />
                     <span asp-validation-for="BurialSituation" class="text-danger"></span>
                 </div>
                 
@@ -119,7 +119,7 @@
             <div class="d-flex flex-column ml-2 mr-5 my-2">
                 <div class="form-group">
                     <label asp-for="Goods" class="control-label"></label>
-                    <select asp-for="Goods" class="form-control" asp-items="ViewBag.Goods"></select>
+                    <select asp-for="Goods" class="form-control" asp-items="ViewBag.Goods" required></select>
                     <span asp-validation-for="Goods" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -129,15 +129,16 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Photo" class="control-label"></label>
-                    <select asp-for="Photo" class="form-control">
-                        <option></option>
+                    <select asp-for="Photo" class="form-control" required>
+                        <option disabled value=""></option>
                         <option value=true>Yes</option>
                     </select>
                     <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="PreservationIndex" class="control-label"></label>
-                    <select asp-for="PreservationIndex" class="form-control">
+                    <select asp-for="PreservationIndex" class="form-control" required>
+                        <option disabled value=""></option>
                         <option value="I">I</option>
                         <option value="II">II</option>
                         <option value="III">III</option>
@@ -148,44 +149,44 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="ClusterNum" class="control-label"></label>
-                    <input asp-for="ClusterNum" class="form-control" />
+                    <input asp-for="ClusterNum" class="form-control" required />
                     <span asp-validation-for="ClusterNum" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="HairColorCode" class="control-label"></label>
-                    <select asp-for="HairColorCode" class="form-control" asp-items="ViewBag.HairColorCode">
+                    <select asp-for="HairColorCode" class="form-control" asp-items="ViewBag.HairColorCode" required>
                     </select>
                     <span asp-validation-for="HairColorCode" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="AgeCodeSingle" class="control-label"></label>
-                    <select asp-for="AgeCodeSingle" class="form-control" asp-items="ViewBag.AgeCodeSingle"></select>
+                    <select asp-for="AgeCodeSingle" class="form-control" asp-items="ViewBag.AgeCodeSingle" required></select>
                     <span asp-validation-for="AgeCodeSingle" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="BurialMaterials" class="control-label"></label>
-                    <select asp-for="BurialMaterials" class="form-control" asp-items="ViewBag.BurialMaterials"></select>
+                    <select asp-for="BurialMaterials" class="form-control" asp-items="ViewBag.BurialMaterials" required></select>
                     <span asp-validation-for="BurialMaterials" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="ExcavationRecorder" class="control-label"></label>
-                    <input asp-for="ExcavationRecorder" class="form-control" placeholder="Please Enter Your Name" />
+                    <input asp-for="ExcavationRecorder" class="form-control" placeholder="Please Enter Your Name" required />
                     <span asp-validation-for="ExcavationRecorder" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="DateExcavated" class="control-label"></label>
-                    <input asp-for="DateExcavated" class="form-control" />
+                    <input asp-for="DateExcavated" class="form-control" required />
                     <span asp-validation-for="DateExcavated" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="HeadDirection" class="control-label"></label>
-                    <select asp-for="HeadDirection" class="form-control" asp-items="ViewBag.HeadDirection">
+                    <select asp-for="HeadDirection" class="form-control" asp-items="ViewBag.HeadDirection" required>
                     </select>
                     <span asp-validation-for="HeadDirection" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="ArtifactFound" class="control-label"></label>
-                    <select asp-for="ArtifactFound" class="form-control" asp-items="ViewBag.ArtifactFound">
+                    <select asp-for="ArtifactFound" class="form-control" asp-items="ViewBag.ArtifactFound" required>
                     </select>
                     <span asp-validation-for="ArtifactFound" class="text-danger"></span>
                 </div>
