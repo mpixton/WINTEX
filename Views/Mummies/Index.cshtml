@@ -14,6 +14,11 @@
 <body>
     <div class="d-flex justify-content-center mt-2" style="z-index: 2; position: relative">
         <div class="card rounded-3 d-flex mt-2 py-3 px-3 mx-5" style="max-width: 100%; box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgb(0, 0, 0); border-style: solid; border-width: 7px; border-color: #75a8b3; z-index: 3; overflow-x: scroll;">
+            <div class="d-flex justify-content-center align-items-center flex-wrap">
+                <div class=" justify-content-center text-center">
+                    <h4 >Individual Mummy Information</h4>
+                </div>
+            </div>
             <div class="d-flex justify-content-start align-items-center flex-wrap">
                 <div class="d-flex justify-content-start" style="width: 20%">
                     <div num-pages="@ViewBag.TotalPages" current-page="@ViewBag.CurrentPage" page-url-headDirection="@ViewBag.HeadFilter"
@@ -21,12 +26,10 @@
                          page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
                          page-class-selected="btn-dark" class="btn-group p-2"></div>
                 </div>
-                <div class="d-flex justify-content-center" style="width: 60%">
-                    <h4>Individual Mummy Info</h4>
-                </div>
+
                 @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
                 {
-                    <div class="d-flex justify-content-end" style="width: 20%">
+                    <div class="d-flex justify-content-end" style="width: 80%">
                         <a class="btn btn-admin" asp-action="Create">Create New</a>
                     </div>
                 }
@@ -41,46 +44,46 @@
 
             </br>
 
-        <div class="d-flex justify-content-around align-items-center">
-            <form asp-controller="Mummies" asp-action="FilterMummies" method="post" style="width: 92%">
-                <div class="d-flex justify-content-around align-items-center flex-wrap" style="width: 100%">
-                    <div class="d-flex justify-content-center" >
-                        <label class="control-label">Burial Depth (Greater Than or Equal To):&nbsp;</label>
-                        <input class="form-control" style="width: 75px"name="burial-depth" type="number" value="@(ViewBag.FilterBurialDepth != null ? Convert.ToInt16(ViewBag.FilterBurialDepth) : null )" min="0" max="ViewBag.MaxDepth" />
-                    </div>
+            <div class="d-flex justify-content-around align-items-center">
+                <form asp-controller="Mummies" asp-action="FilterMummies" method="post" style="width: 92%">
+                    <div class="d-flex justify-content-around align-items-center flex-wrap" style="width: 100%">
+                        <div class="d-flex justify-content-center">
+                            <label class="control-label">Burial Depth (Greater Than or Equal To):&nbsp;</label>
+                            <input class="form-control" style="width: 75px" name="burial-depth" type="number" value="@(ViewBag.FilterBurialDepth != null ? Convert.ToInt16(ViewBag.FilterBurialDepth) : null )" min="0" max="ViewBag.MaxDepth" />
+                        </div>
 
-                    <div class="d-flex justify-content-center" >
-                        <label class="control-label">Hair Color Code:&nbsp;</label>
-                        <select class="form-control" name="hair-color" asp-items="ViewBag.HairColorCode">
-                            <option value="all">All</option>
-                        </select>
-                    </div>
+                        <div class="d-flex justify-content-center">
+                            <label class="control-label">Hair Color Code:&nbsp;</label>
+                            <select class="form-control" name="hair-color" asp-items="ViewBag.HairColorCode">
+                                <option value="all">All</option>
+                            </select>
+                        </div>
 
-                    <div class="d-flex justify-content-center">
-                        <label class="control-label">Preservation Index:&nbsp;</label>
-                        <select class="form-control" name="pres-index" asp-items="ViewBag.PresIndex">
-                            <option value="all">All</option>
-                        </select>
-                    </div>
+                        <div class="d-flex justify-content-center">
+                            <label class="control-label">Preservation Index:&nbsp;</label>
+                            <select class="form-control" name="pres-index" asp-items="ViewBag.PresIndex">
+                                <option value="all">All</option>
+                            </select>
+                        </div>
 
-                    <div class="d-flex justify-content-center">
-                        <label class="control-label">Head Direction:&nbsp;</label>
-                        <select class="form-control" name="head" asp-items="ViewBag.HeadDirection">
-                            <option value="all">All</option>
-                        </select>
-                    </div>
+                        <div class="d-flex justify-content-center">
+                            <label class="control-label">Head Direction:&nbsp;</label>
+                            <select class="form-control" name="head" asp-items="ViewBag.HeadDirection">
+                                <option value="all">All</option>
+                            </select>
+                        </div>
 
-                    <div class="d-flex justify-content-end" >
-                        <button type="submit" class="btn btn-primary">Filter</button>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Filter</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-            <div class="d-flex justify-content-end">
-                <form asp-controller="Mummies" asp-action="ClearFilters" method="post">
-                    <button class="btn btn-primary" type="submit">Clear Filters</button>
                 </form>
+                <div class="d-flex justify-content-end">
+                    <form asp-controller="Mummies" asp-action="ClearFilters" method="post">
+                        <button class="btn btn-primary" type="submit">Clear Filters</button>
+                    </form>
+                </div>
             </div>
-        </div>
 
             <br />
             <table class="table table-striped table-hover">
