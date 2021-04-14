@@ -45,27 +45,27 @@
             <form asp-controller="Mummies" asp-action="FilterMummies" method="post" style="width: 92%">
                 <div class="d-flex justify-content-around align-items-center flex-wrap" style="width: 100%">
                     <div class="d-flex justify-content-center" >
-                        <label>Burial Depth (Greater Than or Equal To):&nbsp;</label>
-                        <input style="width: 75px"name="burial-depth" type="number" value="@(ViewBag.FilterBurialDepth != null ? Convert.ToInt16(ViewBag.FilterBurialDepth) : null )" min="0" max="ViewBag.MaxDepth" />
+                        <label class="control-label">Burial Depth (Greater Than or Equal To):&nbsp;</label>
+                        <input class="form-control" style="width: 75px"name="burial-depth" type="number" value="@(ViewBag.FilterBurialDepth != null ? Convert.ToInt16(ViewBag.FilterBurialDepth) : null )" min="0" max="ViewBag.MaxDepth" />
                     </div>
 
                     <div class="d-flex justify-content-center" >
-                        <label>Hair Color Code:&nbsp;</label>
-                        <select name="hair-color" asp-items="ViewBag.HairColorCode">
+                        <label class="control-label">Hair Color Code:&nbsp;</label>
+                        <select class="form-control" name="hair-color" asp-items="ViewBag.HairColorCode">
                             <option value="all">All</option>
                         </select>
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <label>Preservation Index:&nbsp;</label>
-                        <select name="pres-index" asp-items="ViewBag.PresIndex">
+                        <label class="control-label">Preservation Index:&nbsp;</label>
+                        <select class="form-control" name="pres-index" asp-items="ViewBag.PresIndex">
                             <option value="all">All</option>
                         </select>
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <label>Head Direction:&nbsp;</label>
-                        <select name="head" asp-items="ViewBag.HeadDirection">
+                        <label class="control-label">Head Direction:&nbsp;</label>
+                        <select class="form-control" name="head" asp-items="ViewBag.HeadDirection">
                             <option value="all">All</option>
                         </select>
                     </div>
@@ -77,7 +77,7 @@
             </form>
             <div class="d-flex justify-content-end">
                 <form asp-controller="Mummies" asp-action="ClearFilters" method="post">
-                    <button type="submit">Clear Filters</button>
+                    <button class="btn btn-primary" type="submit">Clear Filters</button>
                 </form>
             </div>
         </div>
