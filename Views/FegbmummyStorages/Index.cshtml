@@ -46,7 +46,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Shelf)
                         </th>
-                        <th></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -59,24 +59,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Shelf.Shelf)
                             </td>
-                            <td>
-                                <div class="p-1">
-                                    <a asp-action="Details" class="btn btn-admin" asp-route-id="@item.ShelfId">Details</a>
-                                </div>
-                                @if (User.IsInRole("Researcher") || User.IsInRole("Admin"))
-                                {
-                                    <div class="p-1">
-                                        <a asp-action="Edit" class="btn btn-admin" asp-route-id="@item.ShelfId">Edit</a>        
-                                    </div>
-                                }
-                                @if (User.IsInRole("Admin"))
-                                {
-                                    <div class="p-1">
-                                        <a asp-action="Delete" class="btn btn-primary" asp-route-id="@item.ShelfId">Delete</a>
-                                    </div>
-                                }
-
-                            </td>
+                            
                         </tr>
                     }
                 </tbody>
