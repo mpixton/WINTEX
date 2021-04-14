@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>@ViewData["Title"]</title>
 </head>
 <body>
     <div class="d-flex justify-content-center mt-2" style="z-index: 2; position: relative">
@@ -23,7 +23,7 @@
                          page-class-selected="btn-dark" class="btn-group p-2"></div>
                 </div>
                 <div class="d-flex justify-content-center" style="width: 60%">
-                    <h4>Description needed here</h4>
+                    <h4>Mummy Osteological Info</h4>
                 </div>
                 @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
                 {

@@ -1,5 +1,7 @@
-﻿@{
+@{
+
     ViewData["Title"] = "GIS Datums";
+
     Layout = "~/Views/Shared/_RestOfSiteLayout.cshtml";
 }
 
@@ -12,7 +14,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>GIS Datums</title>
 </head>
 <body>
     <div class="d-flex justify-content-center mt-2" style="z-index: 2; position: relative">
@@ -23,8 +25,8 @@
                          page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
                          page-class-selected="btn-dark" class="btn-group p-2"></div>
                 </div>
-                <div class="d-flex justify-content-center" style="width: 60%">
-                    <h4>Description needed here</h4>
+                <div class="d-flex justify-content-center" style="width: 60%;">
+                    <h4>GIS Info</h4>
                 </div>
                 @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
                 {
