@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "GIS Datums";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
 @model WINTEX.Models.Gisdatum
@@ -13,12 +14,9 @@
     <title>Create</title>
 </head>
 <body>
-
-    <h4>Gisdatum</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create">
+    <form asp-action="Create">
+        <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column ml-5 mr-2 my-2">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="MummyId" class="control-label"></label>
@@ -29,6 +27,8 @@
                     <input asp-for="MaturityCode" class="form-control" />
                     <span asp-validation-for="MaturityCode" class="text-danger"></span>
                 </div>
+            </div>
+            <div class="d-flex flex-column ml-2 mr-5 my-3">
                 <div class="form-group">
                     <label asp-for="WrappingCode" class="control-label"></label>
                     <input asp-for="WrappingCode" class="form-control" />
@@ -39,16 +39,22 @@
                     <input asp-for="Gisid" class="form-control" />
                     <span asp-validation-for="Gisid" class="text-danger"></span>
                 </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="d-flex justify-content-end mr-3" style="width: 50%">
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
-            </form>
+            </div>
+            <div class="d-flex justify-content-start ml-3" style="width: 50%">
+                <div>
+                    <a class="btn btn-admin" asp-action="Index">Back to List</a>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div>
-        <a class="btn btn-admin" asp-action="Index">Back to List</a>
-    </div>
+    </form>
+    
 
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
