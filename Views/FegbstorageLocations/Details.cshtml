@@ -1,5 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Storage Locations";
+    ViewData["Title"] = "Storage Location Details";
+    Layout = "~/Views/Shared/_DetailsLayout.cshtml";
 }
 
 @model WINTEX.Models.FegbstorageLocation
@@ -15,41 +16,39 @@
 </head>
 <body>
 
-<div>
-    <h4>FegbstorageLocation</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rack)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rack)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Shelf)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Shelf)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SubShelf)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SubShelf)
-        </dd>
-    </dl>
-</div>
-<div>
-    @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
-    {
-        <div class="p-1">
-            <a class="btn btn-admin" asp-action="Edit" asp-route-id="@Model.ShelfId">Edit</a>
-        </div>
-    }
-    <div class="p-1">
-        <a class="btn btn-admin" asp-action="Index">Back to List</a>
+    <div class="d-flex justify-content-center">
+        <dl class="row">
+            <dt class = "col-sm-5">
+                @Html.DisplayNameFor(model => model.Rack)
+            </dt>
+            <dd class = "col-sm-7">
+                @Html.DisplayFor(model => model.Rack)
+            </dd>
+            <dt class = "col-sm-5">
+                @Html.DisplayNameFor(model => model.Shelf)
+            </dt>
+            <dd class = "col-sm-7">
+                @Html.DisplayFor(model => model.Shelf)
+            </dd>
+            <dt class = "col-sm-5">
+                @Html.DisplayNameFor(model => model.SubShelf)
+            </dt>
+            <dd class = "col-sm-7">
+                @Html.DisplayFor(model => model.SubShelf)
+            </dd>
+        </dl>
     </div>
+    <div class="d-flex flex-row justify-content-center mt-4">
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        {
+            <div class="d-flex p-1 mr-1">
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.ShelfId">Edit</a>
+            </div>
+        }
+        <div class="d-flex p-1 ml-1">
+            <a class="btn btn-admin" asp-action="Index">Back to List</a>
+        </div>
 
-</div>
+    </div>
 </body>
 </html>
