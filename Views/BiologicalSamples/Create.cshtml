@@ -1,5 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Biological Samples";
+    ViewData["Title"] = " Create a Biological Sample";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
 @model WINTEX.Models.BiologicalSample
@@ -13,13 +14,10 @@
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
 </head>
-<body>
-
-    <h4>BiologicalSample</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create">
+<body> 
+    <form asp-action="Create">
+        <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column ml-5 mr-2 my-2">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="RackNum" class="control-label"></label>
@@ -49,6 +47,8 @@
                     <input asp-for="ClusterNum" class="form-control" />
                     <span asp-validation-for="ClusterNum" class="text-danger"></span>
                 </div>
+            </div>
+            <div class="d-flex flex-column ml-2 mr-5 my-3">
                 <div class="form-group">
                     <label asp-for="Notes" class="control-label"></label>
                     <input asp-for="Notes" class="form-control" />
@@ -79,16 +79,22 @@
                     <input asp-for="PreviouslySampled" class="form-control" />
                     <span asp-validation-for="PreviouslySampled" class="text-danger"></span>
                 </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="d-flex justify-content-end mr-3" style="width: 50%">
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
-            </form>
+            </div>
+            <div class="d-flex justify-content-start ml-3" style="width: 50%">
+                <div>
+                    <a class="btn btn-admin" asp-action="Index">Back to List</a>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div>
-        <a class="btn btn-admin" asp-action="Index">Back to List</a>
-    </div>
+    </form>
+    
 
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
